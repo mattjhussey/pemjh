@@ -7,3 +7,10 @@
 # Coverage analysis
 ^.coverage$
 ^htmlcov/.*$
+
+# Test environments
+^.tox/.*$
+^.eggs/.*$
+^pemjh.egg-info/.*$
+^.cache/.*$
+^.pylint.d/.*$

@@ -1,0 +1,3 @@
+# Documentation for file: http://nedbatchelder.com/code/coverage/config.html
+[run]
+branch = True

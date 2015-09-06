@@ -1,0 +1,9 @@
+# Emacs temporary files
+^.*~$
+
+# python compiled files
+^.*\.pyc$
+
+# Coverage analysis
+^.coverage$
+^htmlcov/.*$

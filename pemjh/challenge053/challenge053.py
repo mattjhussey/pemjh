@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import fact
+from ..utilities.numbers import fact
 
 def challenge053():
     count = 0

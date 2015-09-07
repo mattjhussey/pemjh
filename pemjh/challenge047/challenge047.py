@@ -3,7 +3,7 @@ from itertools import count
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import primeFactors
+from ..utilities.numbers import primeFactors
 
 def numPrimeFactors(nPrimes):
     n = 1

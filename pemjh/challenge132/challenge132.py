@@ -1,4 +1,4 @@
-from utils.numbers import sievedPrimes
+from ..utilities.numbers import sievedPrimes
 
 def R(k):
     primes = sievedPrimes(160002)

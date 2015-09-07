@@ -32,20 +32,25 @@ class Tox(TestCommand):
         errno = tox.cmdline(args=args)
         sys.exit(errno)
 
-setup(
-    name = "pemjh",
-    version = "0.0.1",
-    author = "Matthew Hussey",
-    author_email = "matthew.hussey@googlemail.com",
-    description = ("Project euler (https://projecteuler.net/) challenge "
-                   "code in Python."),
-    license = "None, private use by myself only",
-    keywords = "code challenge euler",
-    url = "none.non",
-    packages = ["pemjh"],
-    long_description = read("README"),
-    classifiers=[
-        "Development Status :: 1 - Planning"],
-    tests_require=['tox'],
-    cmdclass = {"test": Tox},
-)
+
+def main():
+    setup(
+        name = "pemjh",
+        version = "0.0.1",
+        author = "Matthew Hussey",
+        author_email = "matthew.hussey@googlemail.com",
+        description = ("Project euler (https://projecteuler.net/) challenge "
+                       "code in Python."),
+        license = "None, private use by myself only",
+        keywords = "code challenge euler",
+        url = "none.non",
+        packages = ["pemjh"],
+        long_description = read("README"),
+        classifiers=[
+            "Development Status :: 1 - Planning"],
+        tests_require=['tox'],
+        cmdclass = {"test": Tox},
+    )
+
+if __name__ == "__main__":
+    main()

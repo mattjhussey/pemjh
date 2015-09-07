@@ -1,4 +1,4 @@
-from utils.numbers import sievedPrimes
+from ..utilities.numbers import sievedPrimes
 
 def getRemainder(p, n):
     return 2 * (n + 1) * p

@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import fibo
+from ..utilities.numbers import fibo
 from itertools import izip, count
 
 def challenge025():

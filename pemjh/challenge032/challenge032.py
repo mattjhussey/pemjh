@@ -2,7 +2,7 @@ if __name__ == "__main__":
     import sys
     sys.path.append("..")
 
-from utils.strings import permutate
+from ..utilities.strings import permutate
 
 def challenge032():
     source = "123456789"

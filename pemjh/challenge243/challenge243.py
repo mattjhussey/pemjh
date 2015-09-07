@@ -1,4 +1,4 @@
-from utils.numbers import sievedPrimes
+from ..utilities.numbers import sievedPrimes
 
 def prime_factors(number, primes):
     for prime in primes:

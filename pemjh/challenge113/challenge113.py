@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import polytopicNumbers
+from ..utilities.numbers import polytopicNumbers
 
 def challenge113():
     digits = 100

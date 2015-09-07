@@ -3,7 +3,7 @@ from math import sqrt
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import isPrime
+from ..utilities.numbers import isPrime
 
 def hasCriteria(n):
     limit = int(sqrt(n // 2))

@@ -2,7 +2,7 @@ if __name__ == "__main__":
     import sys
     sys.path.append("..")
 
-from utils.numbers import phi
+from ..utilities.numbers import phi
 
 def challenge072():
     limit = 1000000

@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import isPrime, PrimeChecker
+from ..utilities.numbers import isPrime, PrimeChecker
 
 def challenge058():
 

@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import getTriangleRouteLength
+from ..utilities.numbers import getTriangleRouteLength
 
 def challenge018():
     # Build the pyramid

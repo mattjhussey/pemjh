@@ -1,4 +1,4 @@
-from utils.numbers import sievedPrimes
+from ..utilities.numbers import sievedPrimes
 
 def getFirstMultipleOnOrAfter(target, divisor):
     m = target % divisor

@@ -2,7 +2,7 @@ if __name__ == "__main__":
     import sys
     sys.path.append("..")
 
-from utils.numbers import sievedPrimes, PrimeChecker
+from ..utilities.numbers import sievedPrimes, PrimeChecker
 
 primeSet = PrimeChecker()
 maxPrime = 0

@@ -3,7 +3,7 @@ from itertools import cycle
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import PrimeChecker
+from ..utilities.numbers import PrimeChecker
 
 def substitutePrimes(n, substitute, checker):
     count = 0

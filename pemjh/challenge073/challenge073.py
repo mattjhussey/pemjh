@@ -3,7 +3,7 @@ from math import ceil, floor
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import divisors
+from ..utilities.numbers import divisors
 
 def shareDivisors(n1, n2):
     smallest = n1 if n1 < n2 else n2

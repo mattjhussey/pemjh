@@ -2,7 +2,7 @@ if __name__ == "__main__":
     import sys
     sys.path.append("..")
 
-from utils.numbers import lowestCommonTerms
+from ..utilities.numbers import lowestCommonTerms
 
 def challenge033():
     totalNum = 1.0

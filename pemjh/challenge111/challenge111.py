@@ -1,4 +1,4 @@
-from utils.numbers import PrimeChecker, roughPrimes
+from ..utilities.numbers import PrimeChecker, roughPrimes
 
 def isPrime(p, pc = PrimeChecker()):
     if p & 1:

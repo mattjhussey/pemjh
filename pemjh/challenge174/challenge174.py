@@ -1,4 +1,4 @@
-from utils.numbers import divisors
+from ..utilities.numbers import divisors
 
 def getDivisors(n, known = dict()):
     if n in known:

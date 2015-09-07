@@ -1,4 +1,4 @@
-from utils.numbers import continueGenerator
+from ..utilities.numbers import continueGenerator
 
 def getPeriodLength(n):
     # Get root of n, rounded down

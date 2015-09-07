@@ -1,4 +1,4 @@
-from utils.numbers import sievedPrimes, primeFactors, phi
+from ..utilities.numbers import sievedPrimes, primeFactors, phi
 
 def totients(n, primes = None):
     # Get the primes

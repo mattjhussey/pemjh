@@ -1,4 +1,4 @@
-from utils.numbers import rootConvergentGenerator
+from ..utilities.numbers import rootConvergentGenerator
 
 # Pell's equation
 

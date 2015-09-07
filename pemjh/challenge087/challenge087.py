@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     import sys
     sys.path.append("..")
-from utils.numbers import sievedPrimes
+from ..utilities.numbers import sievedPrimes
 from math import sqrt
 
 def challenge087():

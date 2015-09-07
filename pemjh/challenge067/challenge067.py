@@ -6,7 +6,7 @@ if __name__ == "__main__":
     sys.path.append("..")
 
 
-from utils.numbers import getTriangleRouteLength
+from ..utilities.numbers import getTriangleRouteLength
 
 def challenge067():
     rows = []

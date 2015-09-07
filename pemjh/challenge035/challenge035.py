@@ -2,7 +2,7 @@ if __name__ == "__main__":
     import sys
     sys.path.append("..")
 
-from utils.numbers import sievedPrimes, fact
+from ..utilities.numbers import sievedPrimes, fact
 from math import sqrt
 
 def circulars(n):

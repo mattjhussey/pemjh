@@ -1,4 +1,4 @@
-from utils.numbers import PrimeChecker
+from ..utilities.numbers import PrimeChecker
 
 def challenge077():
     pc = PrimeChecker()

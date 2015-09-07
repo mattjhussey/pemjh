@@ -1,4 +1,4 @@
-from utils.numbers import divisors, sievedPrimes
+from ..utilities.numbers import divisors, sievedPrimes
 from itertools import takewhile
 
 

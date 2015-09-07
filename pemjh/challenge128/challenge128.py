@@ -1,4 +1,4 @@
-from utils.numbers import sievedPrimes
+from ..utilities.numbers import sievedPrimes
 
 def nPrimes(primes, s):
     ans = len(list(n for n in s if n in primes))

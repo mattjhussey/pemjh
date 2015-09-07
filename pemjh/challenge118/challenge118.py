@@ -1,4 +1,4 @@
-from utils.numbers import PrimeChecker, sievedPrimes
+from ..utilities.numbers import PrimeChecker, sievedPrimes
 from itertools import permutations
 
 def too_long(current_length, last_length):

@@ -1,4 +1,4 @@
-from utils.numbers import fact
+from ..utilities.numbers import fact
 
 def winChance(probs, losses): # probs are always 1 in...
     if losses == 0:

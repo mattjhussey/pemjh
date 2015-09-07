@@ -1,4 +1,4 @@
-from utils.numbers import gcd, sievedPrimes
+from ..utilities.numbers import gcd, sievedPrimes
 
 def challenge127():
     maximum = 120000

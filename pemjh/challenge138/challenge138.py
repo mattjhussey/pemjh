@@ -1,4 +1,4 @@
-from utils.numbers import fibo
+from ..utilities.numbers import fibo
 
 def challenge138():
     b1 = fibo()

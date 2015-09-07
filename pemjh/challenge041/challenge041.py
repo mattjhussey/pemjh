@@ -2,8 +2,8 @@ if __name__ == "__main__":
     import sys
     sys.path.append("..")
 
-from utils.numbers import isPrime
-from utils.strings import permutate
+from ..utilities.numbers import isPrime
+from ..utilities.strings import permutate
 import string
 
 def challenge041():

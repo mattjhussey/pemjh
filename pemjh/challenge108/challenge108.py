@@ -1,4 +1,4 @@
-from utils.numbers import sievedPrimes
+from ..utilities.numbers import sievedPrimes
 
 def primeIndices(target, indexLimit, primes, primeIndex, limit = 0, known = dict()):
 

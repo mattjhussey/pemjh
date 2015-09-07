@@ -1,4 +1,4 @@
-from utils.numbers import primeFactors
+from ..utilities.numbers import primeFactors
 import math
 
 def pf(n, known = dict()):

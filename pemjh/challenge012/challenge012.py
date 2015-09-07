@@ -3,7 +3,7 @@ if __name__ == "__main__":
     sys.path.append("..")
 
 from math import sqrt
-from utils.numbers import getNumDivisorsHelped
+from ..utilities.numbers import getNumDivisorsHelped
 from itertools import izip, count
 
 def triangles():

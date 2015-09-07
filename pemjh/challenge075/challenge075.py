@@ -1,4 +1,4 @@
-from utils.numbers import getPrimitiveTriples
+from ..utilities.numbers import getPrimitiveTriples
 
 def challenge075():
     limit = 2000000

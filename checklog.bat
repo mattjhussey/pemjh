@@ -1,1 +1,0 @@
-@check.bat %* > python.log 2>&1

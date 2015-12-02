@@ -5,13 +5,20 @@
 ^.*\.pyc$
 
 # Coverage analysis
-^.coverage$
-^htmlcov/.*$
+^tests/.coverage$
+^tests/htmlcov/.*$
 
 # Test environments
-^.tox/.*$
+^.*\.tox/.*$
 ^.eggs/.*$
-^pemjh.egg-info/.*$
-^.cache/.*$
-^.pylint.d/.*$
+^.*\.egg-info/.*$
+^.*\.cache/.*$
+^.*\.pylint.d/.*$
 ^.venv/.*$
+^.devenv.*$
+
+# Log files
+^.*\.log$
+
+# Dist zips
+^.*dist/.*\.zip$

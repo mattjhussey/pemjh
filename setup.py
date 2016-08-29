@@ -86,11 +86,11 @@ def main():
         pass
 
     setup(
-        name="pybaseline",
+        name="pemjh",
         version="0.0.1",
         author="Matthew Hussey",
         author_email="matthew.hussey@googlemail.com",
-        description=("Baseline python setup."),
+        description=("Project Euler solutions in python."),
         license="None, private use by myself only",
         keywords="python",
         url="none.non",

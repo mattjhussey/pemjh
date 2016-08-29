@@ -1,0 +1,9 @@
+drone.io can be used to run tests on each commit to bitbucket.
+
+Setting an account is intuitive so I won't document it here.
+
+Add the repository and then set the commands to run:
+
+pip install -r requirements.txt --use-mirrors
+pip install tox
+tox --skip-missing-interpreters

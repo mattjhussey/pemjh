@@ -5,8 +5,8 @@
 ^.*\.pyc$
 
 # Coverage analysis
-^tests/.coverage$
-^tests/htmlcov/.*$
+^\.coverage$
+^htmlcov/.*$
 
 # Test environments
 ^.*\.tox/.*$
@@ -21,4 +21,5 @@
 ^.*\.log$
 
 # Dist zips
-^.*dist/.*\.zip$
+^dist/.*$
+^build/.*$

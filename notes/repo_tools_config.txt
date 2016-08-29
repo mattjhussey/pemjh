@@ -1,0 +1,3 @@
+PIP and other tools can be configured to use DEVPI, but this means configuring the tools to use the correct repository depending on the situation.
+
+In the User's directory configuring pip, setuptools, distutils by adding the files inside the repo_tools_config folder.

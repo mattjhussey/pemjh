@@ -1,4 +1,4 @@
-""" Challenge004 """
+""" Challenge4 """
 
 
 def main(digits):

@@ -1,6 +1,6 @@
-""" Challenge001 """
+""" Challenge1 """
 
 
 def main(upper):
-    """ challenge001 """
+    """ challenge1 """
     return sum(a for a in xrange(1, upper) if (a % 3 == 0) or (a % 5 == 0))

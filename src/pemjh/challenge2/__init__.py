@@ -1,4 +1,4 @@
-""" challenge002 """
+""" challenge2 """
 from .main import main
 
 __all__ = ['main']

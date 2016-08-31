@@ -1,8 +1,8 @@
-""" Challenge003 """
+""" Challenge3 """
 
 
 def main(target):
-    """ challenge003 """
+    """ challenge3 """
 
     current = 2
     # Loop until target is 1

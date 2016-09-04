@@ -1,9 +1,9 @@
 """ Challenge187 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def semiprimes(n):
-    primes = list(sievedPrimes(n // 2))[1:]
+    primes = list(sieved_primes(n // 2))[1:]
     nPrimes = len(primes)
 
     nTwos = 0

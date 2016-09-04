@@ -1,5 +1,5 @@
 """ Challenge060 """
-from pemjh.numbers import sievedPrimes, PrimeChecker
+from pemjh.numbers import sieved_primes, PrimeChecker
 
 PRIME_CHECKER = PrimeChecker()
 MAXIMUM_PRIME = 0
@@ -80,7 +80,7 @@ def next_digits_dictionary(found, number_to_find, pairs, limit, potential):
 
 def main():
     """ challenge060 """
-    primes = list(sievedPrimes(10000))
+    primes = list(sieved_primes(10000))
     primes.remove(1)
     primes.remove(2)
 

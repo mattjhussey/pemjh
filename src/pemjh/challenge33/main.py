@@ -1,5 +1,5 @@
 """ Challenge033 """
-from pemjh.numbers import lowestCommonTerms
+from pemjh.numbers import lowest_common_terms
 
 
 def main():
@@ -30,7 +30,7 @@ def main():
                         total_numerator *= numerator1
                         total_denominator *= denominator4
                         break
-    total_numerator, total_denominator = lowestCommonTerms(total_numerator,
-                                                           total_denominator)
+    total_numerator, total_denominator = lowest_common_terms(total_numerator,
+                                                             total_denominator)
 
     return int(total_denominator)

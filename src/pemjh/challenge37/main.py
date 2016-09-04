@@ -1,5 +1,5 @@
 """ Challenge037 """
-from pemjh.numbers import isPrime
+from pemjh.numbers import is_prime
 
 
 def is_truncated_prime(potential):
@@ -15,13 +15,13 @@ def is_truncated_prime(potential):
         trunc = potential // divisor
         if trunc <= 0:
             break
-        if trunc == 1 or not isPrime(trunc):
+        if trunc == 1 or not is_prime(trunc):
             return False
         divisor *= 10
 
     while (potential % divisor) > 0:
         trunc = potential % divisor
-        if trunc == 1 or not isPrime(potential % divisor):
+        if trunc == 1 or not is_prime(potential % divisor):
             return False
         divisor /= 10
 

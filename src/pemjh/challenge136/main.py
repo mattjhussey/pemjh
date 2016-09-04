@@ -1,9 +1,9 @@
 """ Challenge136 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def getNumTarget(limit):
-    primes = sievedPrimes(limit)
+    primes = sieved_primes(limit)
     primes.next()
     primes.next()
 

@@ -1,5 +1,5 @@
 """ Challenge204 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def getHams(current, limit, primes):
@@ -21,7 +21,7 @@ def getHams(current, limit, primes):
 
 def hamNums(maxPrime, limit):
     # generate primes without 1
-    primes = list(sievedPrimes(maxPrime))[1:]
+    primes = list(sieved_primes(maxPrime))[1:]
 
     return getHams(1, limit, primes) + 1
 

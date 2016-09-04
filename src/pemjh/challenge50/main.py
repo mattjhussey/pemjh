@@ -1,11 +1,11 @@
 """ Challenge050 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def main():
     """ challenge050 """
     limit = 1000000
-    primes = list(sievedPrimes(limit - 1))
+    primes = list(sieved_primes(limit - 1))
     known_primes = set(primes)
     del primes[0]
     number_of_primes = len(primes)

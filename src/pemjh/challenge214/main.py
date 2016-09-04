@@ -1,11 +1,11 @@
 """ Challenge214 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def totients(n, primes=None):
     # Get the primes
     if primes is None:
-        primes = sievedPrimes(n)
+        primes = sieved_primes(n)
         # Remove 1
         primes.next()
 
@@ -63,7 +63,7 @@ def main():
     """ challenge214 """
     limit = 40000000
     length = 25
-    primes = list(sievedPrimes(limit))
+    primes = list(sieved_primes(limit))
     phis = totients(limit, primes[1:])
     total = 0
     for p in primes:

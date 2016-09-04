@@ -1,6 +1,6 @@
 """ Challenge049 """
 import string
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def triplets(permutations):
@@ -17,7 +17,7 @@ def triplets(permutations):
 def main():
     """ challenge049 """
     permutation_primes = dict()
-    for prime in [n for n in sievedPrimes(9999) if n > 999]:
+    for prime in [n for n in sieved_primes(9999) if n > 999]:
         chars = string.join(sorted(list(str(prime))), "")
         if chars in permutation_primes:
             permutation_primes[chars] += [prime]

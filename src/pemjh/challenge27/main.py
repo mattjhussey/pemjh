@@ -1,5 +1,5 @@
 """ Challenge027 """
-from pemjh.numbers import sievedPrimes, isPrime
+from pemjh.numbers import sieved_primes, is_prime
 
 
 def main():
@@ -10,13 +10,13 @@ def main():
     maximum_b = 0
 
     maximum = 1
-    primes = list(sievedPrimes(limit + 1))
+    primes = list(sieved_primes(limit + 1))
     for prime in primes:
         for a_side in xrange(-prime, limit + 1):
             root = 1
             while True:
                 potential_prime = root * (root + a_side) + prime
-                if not isPrime(potential_prime):
+                if not is_prime(potential_prime):
                     break
                 root += 1
 

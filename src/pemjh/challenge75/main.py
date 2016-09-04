@@ -1,5 +1,5 @@
 """ Challenge075 """
-from pemjh.numbers import getPrimitiveTriples
+from pemjh.numbers import get_primitive_triples
 
 
 def main():
@@ -11,7 +11,7 @@ def main():
     for total, length_a, length_b, length_c in \
         [(length_a + length_b + length_c,
           length_a, length_b, length_c)
-         for length_a, length_b, length_c in getPrimitiveTriples(limit)]:
+         for length_a, length_b, length_c in get_primitive_triples(limit)]:
 
         # How many times does total go into limit?
         div = limit // total

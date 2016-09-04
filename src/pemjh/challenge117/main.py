@@ -1,9 +1,9 @@
 """ Challenge117 """
-from pemjh.numbers import numVariations
+from pemjh.numbers import num_variations
 
 
 def process(blocks):
-    n = numVariations(blocks, [2, 3, 4], dict())
+    n = num_variations(blocks, [2, 3, 4], dict())
     return n
 
 

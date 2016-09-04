@@ -1,5 +1,5 @@
 """ Challenge123 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def getRemainder(p, n):
@@ -8,7 +8,7 @@ def getRemainder(p, n):
 
 def main():
     """ challenge123 """
-    primes = list(sievedPrimes(250000))
+    primes = list(sieved_primes(250000))
     limit = 10**10
     for n in xrange(7038, len(primes), 2):
         p = primes[n]

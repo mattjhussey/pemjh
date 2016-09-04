@@ -1,5 +1,5 @@
 """ Challenge133 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def divs_repunit(n, limit):
@@ -10,7 +10,7 @@ def divs_repunit(n, limit):
 def main():
     """ challenge133 """
     limit = 50
-    divs = [prime for prime in list(sievedPrimes(100000))[1:]
+    divs = [prime for prime in list(sieved_primes(100000))[1:]
             if not divs_repunit(prime, limit)]
 
     return sum(divs) + 3

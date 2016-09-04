@@ -1,5 +1,5 @@
 """ Challenge134 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def jumpSize(t, c, s):
@@ -51,7 +51,7 @@ def f(target, current, step):
 def main():
     """ challenge134 """
     limit = 10**6
-    primes = sievedPrimes(limit + (limit / 10))
+    primes = sieved_primes(limit + (limit / 10))
     # Strip pre 5
     for _ in xrange(3):
         primes.next()

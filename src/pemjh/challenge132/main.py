@@ -1,9 +1,9 @@
 """ Challenge132 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def R(k):
-    primes = sievedPrimes(160002)
+    primes = sieved_primes(160002)
     primes.next()
     primes.next()
 

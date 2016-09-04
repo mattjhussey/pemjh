@@ -1,6 +1,6 @@
 """ Challenge067 """
 from pkgutil import get_data
-from pemjh.numbers import getTriangleRouteLength
+from pemjh.numbers import get_triangle_route_length
 
 
 def main():
@@ -12,4 +12,4 @@ def main():
         # Create a row
         vals = [int(x) for x in line.split()]
         rows.append(vals)
-    return getTriangleRouteLength(rows)
+    return get_triangle_route_length(rows)

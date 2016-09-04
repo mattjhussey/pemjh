@@ -1,5 +1,5 @@
 """ Challenge128 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def nPrimes(primes, s):
@@ -9,7 +9,7 @@ def nPrimes(primes, s):
 
 def main():
     """ challenge128 """
-    primes = set(sievedPrimes(1000000))
+    primes = set(sieved_primes(1000000))
     # Loop through the layers
     layer = 2
     current = 7

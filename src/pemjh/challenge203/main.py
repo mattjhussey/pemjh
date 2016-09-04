@@ -1,5 +1,5 @@
 """ Challenge203 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
     highest = max(nums)
 
     # Get primes up to root of highest
-    primes = list([x**2 for x in sievedPrimes(int(highest**0.5) + 1)])[1:]
+    primes = list([x**2 for x in sieved_primes(int(highest**0.5) + 1)])[1:]
 
     squareFree = []
 

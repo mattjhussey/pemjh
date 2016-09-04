@@ -1,6 +1,6 @@
 """ Challenge066 """
 from itertools import dropwhile
-from pemjh.numbers import rootConvergentGenerator
+from pemjh.numbers import root_convergent_generator
 
 # Pell's equation
 
@@ -14,7 +14,7 @@ def diophantine_x(num):
     """ Diophantine equation """
     answers = dropwhile(
         lambda coords: (coords[0]**2 - num * coords[1]**2) != 1,
-        rootConvergentGenerator(num, True))
+        root_convergent_generator(num, True))
     return next(answers)
 
 

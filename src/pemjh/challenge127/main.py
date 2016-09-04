@@ -1,12 +1,12 @@
 """ Challenge127 """
-from pemjh.numbers import gcd, sievedPrimes
+from pemjh.numbers import gcd, sieved_primes
 
 
 def main():
     """ challenge127 """
     maximum = 120000
 
-    primes = list(sievedPrimes(maximum))
+    primes = list(sieved_primes(maximum))
 
     rads = [1, ] * maximum
 

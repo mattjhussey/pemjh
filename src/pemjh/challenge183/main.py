@@ -1,5 +1,5 @@
 """ Challenge183 """
-from pemjh.numbers import primeFactors
+from pemjh.numbers import prime_factors
 import math
 
 
@@ -7,7 +7,7 @@ def pf(n, known=dict()):
     if n in known:
         return known[n]
 
-    known[n] = list(primeFactors(n))
+    known[n] = list(prime_factors(n))
 
     return [v for v in known[n]]
 

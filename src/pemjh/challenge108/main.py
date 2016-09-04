@@ -1,5 +1,5 @@
 """ Challenge108 """
-from pemjh.numbers import sievedPrimes, primeIndices
+from pemjh.numbers import sieved_primes, prime_indices
 
 
 def main():
@@ -7,9 +7,9 @@ def main():
     target = 1000
     primeLimit = 10000
 
-    primes = list(sievedPrimes(primeLimit))[1:]
+    primes = list(sieved_primes(primeLimit))[1:]
 
-    # Get suitable primeIndices
-    indices = primeIndices((target * 2 - 1), 0, primes, 0)
+    # Get suitable prime_indices
+    indices = prime_indices((target * 2 - 1), 0, primes, 0)
 
     return indices

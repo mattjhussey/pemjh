@@ -1,5 +1,5 @@
 """ Challenge064 """
-from pemjh.numbers import continueGenerator
+from pemjh.numbers import continue_generator
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
     for num in [num for num in xrange(2, limit + 1)
                 if int(num**0.5) != num**0.5]:
 
-        length = len(list(continueGenerator(num))) - 1
+        length = len(list(continue_generator(num))) - 1
 
         if length & 1:
             odd_count += 1

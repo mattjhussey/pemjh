@@ -1,5 +1,5 @@
 """ Challenge124 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def sort124(a, b):
@@ -27,7 +27,7 @@ def main():
 
     # Get primes needed
     # Multiply each by the primes
-    for p in sievedPrimes(limit + 1):
+    for p in sieved_primes(limit + 1):
         for i in xrange(p - 1, limit, p):
             numbers[i] *= p
 

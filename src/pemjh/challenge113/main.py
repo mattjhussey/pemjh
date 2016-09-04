@@ -1,11 +1,11 @@
 """ Challenge113 """
-from pemjh.numbers import polytopicNumbers
+from pemjh.numbers import polytopic_numbers
 
 
 def main():
     """ challenge113 """
     digits = 100
-    ascending = sum(polytopicNumbers(digits - 1, 10))
+    ascending = sum(polytopic_numbers(digits - 1, 10))
     # Remove the non-rising
     # 0*-9*
     ascending -= 10
@@ -15,11 +15,11 @@ def main():
 #    ascending -= 9 * (digits - 1)
 
     # Set descending to the same for now
-    descending = sum(polytopicNumbers(digits - 1, 10)) - 1
+    descending = sum(polytopic_numbers(digits - 1, 10)) - 1
 
     # Add leading zero numbers
     for d in xrange(1, digits):
-        p = sum(polytopicNumbers(d - 1, 10)) - 10
+        p = sum(polytopic_numbers(d - 1, 10)) - 10
         descending += p
 
     # 2 Digits

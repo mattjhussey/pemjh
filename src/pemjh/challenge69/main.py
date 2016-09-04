@@ -1,11 +1,11 @@
 """ Challenge069 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def main():
     """ challenge069 """
     limit = 1000000
-    primes = list(sievedPrimes(limit))
+    primes = list(sieved_primes(limit))
     primes.remove(1)
     prime_map = dict([p, float(p) / (p - 1)] for p in primes)
     num_phi = [1.0] * limit

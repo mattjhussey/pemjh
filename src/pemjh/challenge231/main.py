@@ -1,5 +1,5 @@
 """ Challenge231 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def getFirstMultipleOnOrAfter(target, divisor):
@@ -30,7 +30,7 @@ def main():
     n = 20000000
     k = 15000000
     # Get the primes needed
-    primes = sievedPrimes(n)
+    primes = sieved_primes(n)
     # Remove 1
     primes.next()
 

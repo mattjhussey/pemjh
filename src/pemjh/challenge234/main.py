@@ -1,5 +1,5 @@
 """ Challenge234 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def myrange(low, high, step):
@@ -13,7 +13,7 @@ def main():
     """ challenge234 """
     # Get primes needed
     limit = 999966663333
-    primes = sievedPrimes(1000000)
+    primes = sieved_primes(1000000)
 
     primes.next()
     current = primes.next()

@@ -1,5 +1,5 @@
 """ Challenge243 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def prime_factors(number, primes):
@@ -21,11 +21,11 @@ def main():
     test_val = float(15499) / float(94744)
     minimum = 1.0
 
-    primes = list(sievedPrimes(30))[1:]
+    primes = list(sieved_primes(30))[1:]
 
     # 2, 4, 6, 10, 12, 16, 18
     d = 1
-    for prime in sievedPrimes(30):
+    for prime in sieved_primes(30):
         if prime == 1:
             continue
 

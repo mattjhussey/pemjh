@@ -1,5 +1,5 @@
 """ Challenge139 """
-from pemjh.numbers import getPrimitiveTriples
+from pemjh.numbers import get_primitive_triples
 
 
 def main():
@@ -7,7 +7,7 @@ def main():
     maximum_size = 100000000
 
     total = 0
-    for a, b, c in getPrimitiveTriples(maximum_size):
+    for a, b, c in get_primitive_triples(maximum_size):
 
         if c % (b - a) == 0:
             # Fills...

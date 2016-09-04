@@ -1,5 +1,5 @@
 """ Challenge018 """
-from pemjh.numbers import getTriangleRouteLength
+from pemjh.numbers import get_triangle_route_length
 
 
 def main():
@@ -22,4 +22,4 @@ def main():
     rows.append([63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31])
     rows.append([4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23])
 
-    return getTriangleRouteLength(rows)
+    return get_triangle_route_length(rows)

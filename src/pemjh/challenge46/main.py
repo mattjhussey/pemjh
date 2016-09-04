@@ -1,6 +1,6 @@
 """ Challenge046 """
 from math import sqrt
-from pemjh.numbers import isPrime
+from pemjh.numbers import is_prime
 
 
 def has_criteria(potential):
@@ -13,7 +13,7 @@ def has_criteria(potential):
     limit = int(sqrt(potential // 2))
     for square_doubled in [2 * i**2 for i in xrange(limit, 0, -1)]:
         diff = potential - square_doubled
-        if diff == 1 or isPrime(diff):
+        if diff == 1 or is_prime(diff):
             return True
 
     return False
@@ -29,5 +29,5 @@ def main():
             return odd_composite
 
         odd_composite += 2
-        while odd_composite == 1 or isPrime(odd_composite):
+        while odd_composite == 1 or is_prime(odd_composite):
             odd_composite += 2

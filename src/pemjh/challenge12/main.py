@@ -1,5 +1,5 @@
 """ Challenge012 """
-from pemjh.numbers import getNumDivisorsHelped
+from pemjh.numbers import get_num_divisors_helped
 
 
 def triangle_divisors():
@@ -16,10 +16,10 @@ def triangle_divisors():
         # Get unknown divisors
         if number % 2 == 0:
             # number is even, reset odd
-            odd_divisors = getNumDivisorsHelped(number + 1, known_divisors)
+            odd_divisors = get_num_divisors_helped(number + 1, known_divisors)
         else:
             # number is odd, reset even
-            even_divisors = getNumDivisorsHelped((number + 1) / 2,
+            even_divisors = get_num_divisors_helped((number + 1) / 2,
                                                  known_divisors)
         yield odd_divisors * even_divisors
         number += 1

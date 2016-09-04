@@ -1,11 +1,11 @@
 """ Challenge130 """
-from pemjh.numbers import sievedPrimes, A
+from pemjh.numbers import sieved_primes, A
 
 
 def main():
     """ challenge130 """
     limit = 14702  # Optimised value
-    primes = set(sievedPrimes(limit))
+    primes = set(sieved_primes(limit))
 
     found = []
 

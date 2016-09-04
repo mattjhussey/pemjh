@@ -1,11 +1,11 @@
 """ Challenge131 """
-from pemjh.numbers import sievedPrimes
+from pemjh.numbers import sieved_primes
 
 
 def main():
     """ challenge131 """
     limit = 1000000
-    primes = list(sievedPrimes(limit))
+    primes = list(sieved_primes(limit))
 
     # n**3 + n**2*p = m**3
     # n**2 * (n + p) = m**3

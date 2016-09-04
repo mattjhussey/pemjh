@@ -1,12 +1,13 @@
 """ Tests for challenge102 """
+from os.path import abspath, dirname, join
 from robber import expect
 from pemjh.challenge102 import main
 
 
 def test_challenge102():
     """ Regression testing challenge102 """
-    expect(main(1)).to.eq(None)
-
-
-def test_challenge102_example():
-    expect(main(2)).to.eq(None)
+    triangle_file = join(dirname(abspath(__file__)), 'triangles.txt')
+    with open(triangle_file, 'r') as f:
+        triangles = [[float(i) for i in line.strip().split(',')]
+                     for line in f.readlines()]
+        expect(main(triangles)).to.eq(228)

@@ -44,13 +44,8 @@ def getYIntercept(x1, y1, x2, y2):
     return c
 
 
-def main():
+def main(triangles):
     """ challenge102 """
-    nEnclosing = 0
-    f = get_data(__name__, 'triangles.txt').split('\n')[:-1]
-    for l in [l.strip().split(",") for l in f]:
-        ax, ay, bx, by, cx, cy = [float(i) for i in l]
-        if enclosesOrigin(ax, ay, bx, by, cx, cy):
-            nEnclosing += 1
+    nEnclosing = sum(1 for ax, ay, bx, by, cx, cy in triangles if enclosesOrigin(ax, ay, bx, by, cx, cy))
 
     return nEnclosing

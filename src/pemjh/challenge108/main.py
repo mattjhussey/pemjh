@@ -2,9 +2,8 @@
 from pemjh.numbers import sieved_primes, prime_indices
 
 
-def main():
+def main(target):
     """ challenge108 """
-    target = 1000
     primeLimit = 10000
 
     primes = list(sieved_primes(primeLimit))[1:]

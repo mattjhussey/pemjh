@@ -52,15 +52,8 @@ def scoreGrid(grid):
     return total
 
 
-def main():
+def main(grid):
     """ challenge107 """
-    grid = list()
-    # Read in grid
-    f = get_data(__name__, 'network.txt').split('\n')[:-1]
-    for line in f:
-        # Read into grid
-        grid.append([int(link) if link != "-" else
-                     0 for link in line.strip().split(",")])
 
     # Score the grid in its current state
     originalScore = scoreGrid(grid)

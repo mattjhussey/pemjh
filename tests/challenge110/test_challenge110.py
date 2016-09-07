@@ -1,12 +1,14 @@
 """ Tests for challenge110 """
+import pytest
 from robber import expect
 from pemjh.challenge110 import main
 
 
-def test_challenge110():
+@pytest.mark.parametrize('input, expected',
+                         [
+                             (100, 1260),
+                             (4000000, 9350130049860600),
+                         ])
+def test_challenge110(input, expected):
     """ Regression testing challenge110 """
-    expect(main(1)).to.eq(None)
-
-
-def test_challenge110_example():
-    expect(main(2)).to.eq(None)
+    expect(main(input)).to.eq(expected)

@@ -5,14 +5,10 @@ def incrementTrilist(trl):
     rightIndex = len(trl) - 1
     # If the rightmost is 2 then increment the left part
     if trl[rightIndex] == 2:
-        if rightIndex == 0:
-            # No more incrementing possible.. shouldn't happen???
-            pass
-        else:
-            pre = trl[:rightIndex]
-            incrementTrilist(pre)
-            trl[:rightIndex] = pre
-            trl[rightIndex] = 0
+        pre = trl[:rightIndex]
+        incrementTrilist(pre)
+        trl[:rightIndex] = pre
+        trl[rightIndex] = 0
     else:
         trl[rightIndex] += 1
 

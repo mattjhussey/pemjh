@@ -52,13 +52,12 @@ def valid(l):
     return checkForDuplicateSetSums(l)
 
 
-def main():
+def main(sets):
     """ challenge105 """
     # Open the file
-    f = get_data(__name__, 'sets.txt').split('\n')
     ans = 0
 
-    for seq in [[int(i) for i in line.strip().split(',')] for line in f]:
+    for seq in sets:
         if valid(seq):
             ans += sum(seq)
 

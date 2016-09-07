@@ -9,7 +9,7 @@ def isPrime(p, pc=PrimeChecker()):
         if p % 5 == 0:
             return False
         else:
-            return pc.isPrime(p)
+            return pc.is_prime(p)
     else:
         return False
 

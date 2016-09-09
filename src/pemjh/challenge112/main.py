@@ -29,9 +29,8 @@ def isBouncy(n):
     return False
 
 
-def main():
+def main(target):
     """ challenge112 """
-    target = 99
     currentBouncy = 0
     currentNumber = 100
     bouncy = list()

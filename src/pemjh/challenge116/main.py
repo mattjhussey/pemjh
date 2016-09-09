@@ -2,27 +2,28 @@
 
 
 def numVariations(blocks, tileSize, dec=True, known=dict()):
-    if (blocks, tileSize) in known:
-        return known[(blocks, tileSize)]
-    nVariations = 0
+    key = (blocks, tileSize, dec)
+    if key not in known:
+        nVariations = 0
 
-    if blocks > 1:
-        # work out with tile here
-        if blocks >= tileSize:
-            nVariations += numVariations(blocks - tileSize, tileSize, False)
+        if blocks > 1:
+            # work out with tile here
+            if blocks >= tileSize:
+                nVariations += numVariations(blocks - tileSize, tileSize, False)
 
-        # work out with tile not here
-        nVariations += numVariations(blocks - 1, tileSize, False)
+            # work out with tile not here
+            nVariations += numVariations(blocks - 1, tileSize, False)
 
-    else:
-        nVariations = 1
+        else:
+            nVariations = 1
 
-    if dec:
-        nVariations -= 1
+        if dec:
+            nVariations -= 1
 
-    known[(blocks, tileSize)] = nVariations
+        known[key] = nVariations
 
-    return nVariations
+    print key, known[key]
+    return known[key]
 
 
 def process(blocks):
@@ -32,7 +33,6 @@ def process(blocks):
     return n2 + n3 + n4
 
 
-def main():
+def main(blocks):
     """ challenge116 """
-    blocks = 50
     return process(blocks)

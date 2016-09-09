@@ -2,9 +2,8 @@
 from pemjh.numbers import polytopic_numbers
 
 
-def main():
+def main(digits):
     """ challenge113 """
-    digits = 100
     ascending = sum(polytopic_numbers(digits - 1, 10))
     # Remove the non-rising
     # 0*-9*

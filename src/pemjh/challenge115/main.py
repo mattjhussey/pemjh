@@ -8,8 +8,6 @@ def numVariations(blocks, minimum, tileSizes, known=dict()):
 
     if blocks > 1:
         for tileSize in tileSizes:
-            if tileSize > blocks:
-                break
 
             # Always an extra 1 block length for the spacer
             left = blocks - tileSize - 1
@@ -33,9 +31,8 @@ def f(minimum, blocks):
     return n
 
 
-def main():
+def main(minimum):
     """ challenge115 """
-    minimum = 50
     b = 2
     while 1:
         ans = f(minimum, b)

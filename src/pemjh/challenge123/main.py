@@ -6,14 +6,16 @@ def getRemainder(p, n):
     return 2 * (n + 1) * p
 
 
-def main():
+def main(limit):
     """ challenge123 """
     primes = list(sieved_primes(250000))
-    limit = 10**10
-    for n in xrange(7038, len(primes), 2):
+    n = 1
+    answer = None
+    while not answer:
         p = primes[n]
         r = getRemainder(p, n)
+        print n, p, r
         if r > limit:
-            return n + 1
-        n += 1
-    return
+            answer = n
+        n += 2
+    return answer

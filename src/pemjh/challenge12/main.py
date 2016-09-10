@@ -25,9 +25,8 @@ def triangle_divisors():
         number += 1
 
 
-def main():
+def main(limit):
     """ challenge012 """
-    limit = 500
     triangle_root = 1
     divisors = triangle_divisors()
     while divisors.next() <= limit:

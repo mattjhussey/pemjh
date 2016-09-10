@@ -18,7 +18,8 @@ def winChance(probs, losses):  # probs are always 1 in...
     return chances
 
 
-def play(turns):
+def main(turns):
+    """ challenge121 """
     den = fact(turns + 1)
     lossesAllowed = turns // 2
     if not (turns & 1):
@@ -32,8 +33,3 @@ def play(turns):
 
     prize = den // chances
     return prize
-
-
-def main():
-    """ challenge121 """
-    return play(15)

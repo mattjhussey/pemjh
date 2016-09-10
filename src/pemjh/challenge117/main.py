@@ -2,12 +2,6 @@
 from pemjh.numbers import num_variations
 
 
-def process(blocks):
-    n = num_variations(blocks, [2, 3, 4], dict())
-    return n
-
-
-def main():
+def main(blocks):
     """ challenge117 """
-    blocks = 50
-    return process(blocks)
+    return num_variations(blocks, [2, 3, 4], dict())

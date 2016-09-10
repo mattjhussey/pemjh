@@ -10,7 +10,8 @@ def sumDigits(n):
     return total
 
 
-def an(target):
+def main(target):
+    """ challenge119 """
     # Loop through numbers and power them up, each time check if the
     # power sums to the number
     i = 2
@@ -25,10 +26,3 @@ def an(target):
             pwr *= i
 
     return [x for x in sorted(answers) if x > 9][target - 1]
-
-
-def main():
-    """ challenge119 """
-    target = 30
-
-    return an(target)

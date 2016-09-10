@@ -3,10 +3,6 @@ from pemjh.numbers import PrimeChecker
 from itertools import permutations
 
 
-def too_long(current_length, last_length):
-    return (9 - current_length) > 0 and (9 - current_length < last_length)
-
-
 def valid(num):
     return len(set(num)) == len(num)
 
@@ -43,7 +39,7 @@ def main():
 
     perms = ["".join(p) for p in perms]
 
-    primes = [prime for prime in perms if pc.isPrime(int(prime))]
+    primes = [prime for prime in perms if pc.is_prime(int(prime))]
 
     sets = build_sets("", primes)
 

@@ -1,0 +1,4 @@
+[flake8]
+doctests = True
+show-source = True
+statistics = True

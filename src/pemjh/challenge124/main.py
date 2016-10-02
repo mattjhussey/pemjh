@@ -17,10 +17,8 @@ def sort124(a, b):
         return -1
 
 
-def main():
+def main(kElement, limit):
     """ challenge124 """
-    limit = 100000
-    lookup = 10000
 
     # Setup array of 1s
     numbers = [1] * limit
@@ -37,6 +35,5 @@ def main():
     # Sort by rec then n
     numbers.sort(sort124)
 
-    # Get lookup
-
-    return numbers[lookup - 1][1]
+    # Get kElement
+    return numbers[kElement - 1][1]

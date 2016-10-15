@@ -101,7 +101,7 @@ def main():
         long_description=read("README"),
         classifiers=[
             "Development Status :: 1 - Planning"],
-        tests_require=['tox'],
+        tests_require=['tox==2.3.1'],
         cmdclass={"test": Tox},
     )
 

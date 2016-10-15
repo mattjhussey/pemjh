@@ -51,6 +51,11 @@ class Tox(TestCommand):
                                           for i in installed_packages])
         print(installed_packages_list)
         if not venv_in_env:
+            pip.main(['install', 'virtualenv'])
+            installed_packages = pip.get_installed_distributions()
+            installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+                                          for i in installed_packages])
+            print(installed_packages_list)
             import virtualenv
             from os.path import dirname
             ve_path = dirname(virtualenv.__file__)

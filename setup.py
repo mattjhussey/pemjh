@@ -64,6 +64,7 @@ class Tox(TestCommand):
             def wrap_venv_create(venv, action):
                 original_action_popen = action.popen
                 def wrap_action_popen(args, cwd, env, redirect, ignore_ret):
+                    print locals()
                     try:
                         env['PYTHONPATH'] += ';{0}'.format(ve_path)
                     except:

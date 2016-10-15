@@ -44,7 +44,12 @@ class Tox(TestCommand):
         # import here, cause outside the eggs aren't loaded
         import tox
         import shlex
-        
+
+        import pip
+        installed_packages = pip.get_installed_distributions()
+        installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+                                          for i in installed_packages])
+        print(installed_packages_list)
         if not venv_in_env:
             import virtualenv
             from os.path import dirname
@@ -101,7 +106,7 @@ def main():
         long_description=read("README"),
         classifiers=[
             "Development Status :: 1 - Planning"],
-        tests_require=['tox==2.3.1'],
+        tests_require=['tox'],
         cmdclass={"test": Tox},
     )
 

@@ -41,7 +41,7 @@ def main():
         classifiers=[
             "Development Status :: 1 - Planning"],
         setup_requires=['pytest-runner'],
-        tests_require=['pytest', 'pytest-bdd', 'pytest-cov', 'robber']
+        tests_require=['pytest-bdd', 'pytest-cov', 'robber', 'pytest']
     )
 
 if __name__ == "__main__":

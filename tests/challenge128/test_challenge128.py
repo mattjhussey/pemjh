@@ -1,12 +1,14 @@
 """ Tests for challenge128 """
+import pytest
 from robber import expect
 from pemjh.challenge128 import main
 
 
-def test_challenge128():
+@pytest.mark.parametrize('n, expected',
+                         [
+                             (10, 271),
+                             (2000, 14516824220)
+                         ])
+def test_challenge128(n, expected):
     """ Regression testing challenge128 """
-    expect(main(1)).to.eq(None)
-
-
-def test_challenge128_example():
-    expect(main(2)).to.eq(None)
+    expect(main(n)).to.eq(expected)

@@ -7,14 +7,14 @@ def nPrimes(primes, s):
     return ans
 
 
-def main():
+def main(n):
     """ challenge128 """
     primes = set(sieved_primes(1000000))
     # Loop through the layers
     layer = 2
     current = 7
     found = [1, 2]
-    maximum = 2000
+    maximum = n
     while len(found) < maximum:
         end = current + 6 * layer
         current += 1

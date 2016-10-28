@@ -2,11 +2,11 @@
 from pemjh.numbers import A
 
 
-def main():
+def main(limit):
     """ challenge129 """
     maximum = 1
-    n = 1000001
-    while maximum < 1000000:
+    n = limit + 1
+    while maximum < limit:
         n += 2
         if (n % 5 != 0):
             an = A(n)

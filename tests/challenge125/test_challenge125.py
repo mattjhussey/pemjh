@@ -1,12 +1,13 @@
 """ Tests for challenge125 """
+import pytest
 from robber import expect
 from pemjh.challenge125 import main
 
-
-def test_challenge125():
+@pytest.mark.parametrize('limit, expected',
+                         [
+                             (1000, 4164),
+                             (10**8, 2906969179)
+                         ])
+def test_challenge125(limit, expected):
     """ Regression testing challenge125 """
-    expect(main(1)).to.eq(None)
-
-
-def test_challenge125_example():
-    expect(main(2)).to.eq(None)
+    expect(main(limit)).to.eq(expected)

@@ -1,12 +1,8 @@
 """ Challenge125 """
 
 
-def main():
+def main(limit):
     """ challenge125 """
-    digits = 8
-
-    limit = 10**digits
-
     rtLimit = limit**0.5
     if rtLimit != int(rtLimit):
         rtLimit += 1

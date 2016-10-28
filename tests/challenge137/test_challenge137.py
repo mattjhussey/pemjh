@@ -1,12 +1,14 @@
 """ Tests for challenge137 """
+import pytest
 from robber import expect
 from pemjh.challenge137 import main
 
 
-def test_challenge137():
+@pytest.mark.parametrize('nuggetIndex, expected',
+                         [
+                             (10, 74049690),
+                             (15, 1120149658760)
+                         ])
+def test_challenge137(nuggetIndex, expected):
     """ Regression testing challenge137 """
-    expect(main(1)).to.eq(None)
-
-
-def test_challenge137_example():
-    expect(main(2)).to.eq(None)
+    expect(main(nuggetIndex)).to.eq(expected)

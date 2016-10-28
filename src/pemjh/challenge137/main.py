@@ -13,6 +13,6 @@ def a(n, known={0: 0, 1: 2, 2: 15}):
     return ans
 
 
-def main():
+def main(n):
     """ challenge137 """
-    return a(15)
+    return a(n)

@@ -2,9 +2,8 @@
 from pemjh.numbers import sieved_primes
 
 
-def main():
+def main(limit):
     """ challenge131 """
-    limit = 1000000
     primes = list(sieved_primes(limit))
 
     # n**3 + n**2*p = m**3
@@ -23,7 +22,6 @@ def main():
 
         while 1:
             diff = upperCube**3 - lowerCube**3
-#            print diff
             if diff > p:
                 lowerCube += 1
                 if lowerCube == upperCube:

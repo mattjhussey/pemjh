@@ -6,7 +6,7 @@ def surroundingCubes(x, y, z, layer):
         (layer - 1)
 
 
-def main():
+def main(quantity):
     """ challenge126 """
     maximumResult = 19000
 
@@ -39,5 +39,5 @@ def main():
                         results[cubes] += 1
 
     for i in xrange(maximumResult):
-        if results[i] == 1000:
+        if results[i] == quantity:
             return i

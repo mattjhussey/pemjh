@@ -2,7 +2,8 @@
 from pemjh.numbers import sieved_primes
 
 
-def getNumTarget(limit):
+def main(limit):
+    """ challenge136 """
     primes = sieved_primes(limit)
     primes.next()
     primes.next()
@@ -17,8 +18,3 @@ def getNumTarget(limit):
                 total += 1
 
     return total
-
-
-def main():
-    """ challenge136 """
-    return getNumTarget(50000000)

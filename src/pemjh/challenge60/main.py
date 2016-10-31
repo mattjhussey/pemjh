@@ -24,7 +24,7 @@ def is_concatenated_prime(new, existing):
 
     new_last = int(existing * 10**(get_number_length(new)) + new)
 
-    return PRIME_CHECKER.isPrime(new_first) and PRIME_CHECKER.isPrime(new_last)
+    return PRIME_CHECKER.is_prime(new_first) and PRIME_CHECKER.is_prime(new_last)
 
 
 def get_prime_pairs(primes):

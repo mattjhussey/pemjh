@@ -1,6 +1,5 @@
 """ Challenge096 """
 from __future__ import with_statement
-from pkgutil import get_data
 import copy
 
 
@@ -264,17 +263,16 @@ class SGrid:
         return "SGrid\n" + "\n".join(repr)
 
 
-def main():
+def main(data):
     """ challenge096 """
-    f = get_data(__name__, 'sudoku.txt').split('\n')
     total = 0
 
     # Read blocks of 10 lines for each puzzle
     for _ in xrange(50):
         # Read header line
-        f.pop(0)
+        data.pop(0)
         # Read next 9 lines into a list
-        input = [f.pop(0).strip() for _ in xrange(9)]
+        input = [data.pop(0).strip() for _ in xrange(9)]
 
         ans = SGrid(input)
 

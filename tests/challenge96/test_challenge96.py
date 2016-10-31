@@ -1,12 +1,12 @@
 """ Tests for challenge96 """
+from os.path import abspath, dirname, join
 from robber import expect
 from pemjh.challenge96 import main
 
 
 def test_challenge96():
     """ Regression testing challenge96 """
-    expect(main(1)).to.eq(None)
-
-
-def test_challenge96_example():
-    expect(main(2)).to.eq(None)
+    f_path = join(dirname(abspath(__file__)), 'sudoku.txt')
+    with open(f_path, 'r') as f_file:
+        sudokus = [s.strip() for s in f_file.readlines()]
+        expect(main(sudokus)).to.eq(24702)

@@ -13,7 +13,7 @@ def main():
         sums = set()
 
         # Is the current number a prime?
-        if prime_checker.isPrime(num):
+        if prime_checker.is_prime(num):
             sums.add(tuple([num]))
 
         # Check for previous sums

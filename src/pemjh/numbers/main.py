@@ -233,7 +233,7 @@ def is_prime(n):
         return True
     elif n > 3 and (n % 6 == 1 or n % 6 == 5):
         limit = int(sqrt(n)) + 1
-        for i in roughPrimes(limit):
+        for i in rough_primes(limit):
             if n % i == 0:
                 return False
     else:
@@ -446,6 +446,14 @@ def root_convergent_generator(square, infinite=False):
         yield [newA, newB]
 
         A_1, A, B_1, B = A, newA, B, newB
+
+
+def rough_primes(limit):
+    current = 5
+    while current <= limit:
+        yield current
+        yield current + 2
+        current += 6
 
 
 def sieved_primes(limit):

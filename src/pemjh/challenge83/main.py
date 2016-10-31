@@ -3,11 +3,10 @@ from __future__ import with_statement
 from pkgutil import get_data
 
 
-def get_grid():
+def get_grid(rows):
     """ Read from file """
-    matrix_file = get_data(__name__, 'matrix.txt').split('\n')[:-1]
     grid = []
-    for line in [x.strip() for x in matrix_file]:
+    for line in [x.strip() for x in rows]:
         next_line = []
         for i in [int(i) for i in line.split(",")]:
             next_line.append(i)
@@ -29,10 +28,10 @@ def compare_to_process(left, right):
         return 1
 
 
-def main():
+def main(rows):
     """ challenge083 """
     # Get grid
-    grid = get_grid()
+    grid = get_grid(rows)
 
     height = len(grid)
     width = len(grid[0])

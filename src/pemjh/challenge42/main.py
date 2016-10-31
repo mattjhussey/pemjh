@@ -1,5 +1,4 @@
 """ Challenge042 """
-from pkgutil import get_data
 
 
 def score_word(word):
@@ -10,13 +9,8 @@ def score_word(word):
     return sum(ord(x) - 64 for x in word)
 
 
-def main():
+def main(words):
     """ challenge042 """
-    word_file = get_data(__name__, 'words.txt').split('\n')
-    words = []
-    for line in word_file:
-        words.extend([s.strip("\"") for s in line.split(",")])
-
     # Score the words
     words = sorted([score_word(w) for w in words])
 

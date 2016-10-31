@@ -1,6 +1,5 @@
 """ Challenge022 """
 from __future__ import with_statement
-from pkgutil import get_data
 
 
 def get_names(raw_names):
@@ -34,12 +33,10 @@ def scored_names(sorted_names):
         line += 1
 
 
-def main():
+def main(names):
     """ challenge022 """
     total = 0
-    name_file = get_data(__name__, 'names.txt')
-    raw_names = [s.strip() for s in name_file.split('\n')]
-    for score in scored_names(get_names(raw_names)):
+    for score in scored_names(get_names(names)):
         total += score
 
     return total

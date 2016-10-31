@@ -20,7 +20,7 @@ def substitute_primes(template, substitute, checker):
         # Check if prime
         if working[0] != "0":
             working = int(working)
-            if checker.isPrime(int(working)):
+            if checker.is_prime(int(working)):
                 if working < smallest:
                     smallest = working
                 count += 1
@@ -54,7 +54,7 @@ def main():
     current = 5
     while True:
         # Check current
-        if prime_checker.isPrime(current) and has_3_same_digits(current):
+        if prime_checker.is_prime(current) and has_3_same_digits(current):
             # Substitute 0 to 9
             word = str(current)
             for i in xrange(0, 10):

@@ -4,7 +4,7 @@ from math import ceil, floor
 
 def main():
     """ challenge073 """
-    limit = 10000
+    limit = 12000
     upper_numerator = 1.0
     upper_denominator = 2.0
     lower_numerator = 1.0

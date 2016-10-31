@@ -1,5 +1,4 @@
 """ Challenge054 """
-from pkgutil import get_data
 
 
 def get_duplicate_counts(hand):
@@ -142,14 +141,13 @@ def compare_hands(hand_one, hand_two):
         return 1
 
 
-def main():
+def main(hands):
     """ challenge054 """
     face_convert = {"2": "02", "3": "03", "4": "04", "5": "05",
                     "6": "06", "7": "07", "8": "08", "9": "09", "T": "10",
                     "J": "11", "Q": "12", "K": "13", "A": "14"}
     number_hand_one_wins = 0
-    hand_file = get_data(__name__, 'poker.txt').split('\n')[:-1]
-    for line in hand_file:
+    for line in hands:
         cards = list(face_convert[c[0]] + c[1]
                      for c in line.strip().split(" "))
 

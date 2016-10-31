@@ -1,6 +1,5 @@
 """ Challenge098 """
 from __future__ import with_statement
-from pkgutil import get_data
 
 
 def getMap(word, square):
@@ -34,14 +33,12 @@ def mapWord(word, map):
     return "".join(mapped)
 
 
-def main():
+def main(words):
     """ challenge098 """
     largest = 0
 
     groupedWords = dict()
-    # Read in the words, grouping in anagrams
-    f = get_data(__name__, 'words.txt').split('\n')
-    for line in f:
+    for line in words:
         for word in [word.strip('"') for word in line.split(',')]:
             orderedWord = "".join(sorted(word))
             if orderedWord in groupedWords:

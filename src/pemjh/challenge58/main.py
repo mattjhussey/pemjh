@@ -16,7 +16,7 @@ def main():
         for _ in xrange(1, 4):
             current += sidestep
 
-            if prime_checker.isPrime(current):
+            if prime_checker.is_prime(current):
                 prime_count += 1
 
         current += sidestep

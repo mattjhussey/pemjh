@@ -23,6 +23,25 @@ def A(n):
     return k
 
 
+def combined_row(t, b):
+    # Step through each point and add it to the higher of
+    # the values to the left or right in the lower branch
+    topRow = []
+    bottomRow = []
+    topRow.extend(t)
+    bottomRow.extend(b)
+    while len(topRow) > 0:
+        nextNum = topRow[0]
+        leftNum = bottomRow[0]
+        rightNum = bottomRow[1]
+        if leftNum > rightNum:
+            yield nextNum + leftNum
+        else:
+            yield nextNum + rightNum
+        topRow.pop(0)
+        bottomRow.pop(0)
+
+
 def continue_generator(square, infinite=False):
     root = int(square**0.5)
     b = root
@@ -197,7 +216,7 @@ def get_triangle_route_length(rows):
         currentRow = rows[len(rows) - 1]
 
         newRow = []
-        for i in combinedRow(currentRow, bottomRow):
+        for i in combined_row(currentRow, bottomRow):
             newRow.append(i)
 
         # Set currentRow to the newRow

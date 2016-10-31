@@ -1,6 +1,5 @@
 """ Challenge081 """
 from __future__ import with_statement
-from pkgutil import get_data
 
 
 def add_rows(rows):
@@ -20,10 +19,9 @@ def add_rows(rows):
     return rows[0]
 
 
-def main():
+def main(rows):
     """ challenge081 """
     side = 80
-    rows = get_data(__name__, 'matrix.txt').split('\n')[:-1]
     routes = list()
     for i in xrange(2 * side - 1):
         routes.append(list())

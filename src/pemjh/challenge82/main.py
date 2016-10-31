@@ -39,10 +39,8 @@ def combine_columns(column1, column2):
     return list(reversed(new_row))
 
 
-def main():
+def main(rows):
     """ challenge082 """
-    # Open the file
-    rows = get_data(__name__, 'matrix.txt').split('\n')[:-1]
     # Read row data
     rows = [[int(i) for i in l.strip().split(",")] for l in rows]
     # Convert to columns

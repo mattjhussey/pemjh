@@ -29,12 +29,10 @@ def decrypt(key, code):
     return decryption
 
 
-def main():
+def main(ciphers):
     """ challenge059 """
-    # Open file
-    cipher_file = get_data(__name__, 'cipher1.txt').split('\n')[:-1]
     numbers = list()
-    for line in cipher_file:
+    for line in ciphers:
         numbers.extend(line.split(","))
     numbers = [int(n) for n in numbers]
 

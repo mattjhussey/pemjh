@@ -5,8 +5,4 @@ from pemjh.challenge231 import main
 
 def test_challenge231():
     """ Regression testing challenge231 """
-    expect(main(1)).to.eq(None)
-
-
-def test_challenge231_example():
-    expect(main(2)).to.eq(None)
+    expect(main()).to.eq(7526965179680)

@@ -3,10 +3,7 @@
 
 def buildRowOptions(start, end):
     options = list()
-    if (end - start == 2):
-        # Only a 2 can fit
-        options.append([])
-    elif (end - start == 3):
+    if (end - start == 3):
         # only a 3 can fit
         options.append([])
     elif (end - start == 4):
@@ -61,7 +58,6 @@ def main():
     for row in rows:
         linked = list(subRow for subRow in rows
                       if not runningCrack(row, subRow))
-        if len(linked) > 0:
-            rowLinks[row] = linked
+        rowLinks[row] = linked
 
     return sum(W(row, wallHeight, rowLinks) for row in rows)

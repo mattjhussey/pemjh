@@ -1,4 +1,5 @@
 """ Challenge126 """
+from itertools import dropwhile
 
 
 def surroundingCubes(x, y, z, layer):
@@ -33,11 +34,8 @@ def main(quantity):
                 for c in xrange(1, maximumC):
                     cubes = surroundingCubes(a, b, c, depth)
 
-                    if(cubes >= maximumResult):
-                        break
-                    else:
-                        results[cubes] += 1
+                    # Optimised out unused option
+                    results[cubes] += 1
 
-    for i in xrange(maximumResult):
-        if results[i] == quantity:
-            return i
+
+    return results.index(quantity)

@@ -1,14 +1,6 @@
 """ Challenge142 """
 
 
-def perfectSquare(n):
-    return (int(n ** 0.5))**2 == n
-
-
-def valid(a, b):
-    return perfectSquare(a + b) and perfectSquare(a - b)
-
-
 def main():
     """ challenge142 """
     n_squares = 1000
@@ -28,14 +20,22 @@ def main():
             else:
                 highest[upper] = [lower]
 
+    def findIntersect():
+        # Sort highest to low
+        matches = list(reversed(sorted(set(lows))))
+        for first in matches[:-1]:
+            if first in highest:
+                intersect = set(highest[first]).intersection(
+                    set(matches[matches.index(first) + 1:]))
+                if len(intersect) > 0:
+                    return high + first + list(intersect)[0]
+        return None
+
     # Find triples
-    for high, lows in highest.iteritems():
+    intersect = None
+    elements = highest.iteritems()
+    while not intersect:
+        high, lows = elements.next()
         if len(lows) > 1:
-            # Sort highest to low
-            matches = list(reversed(sorted(set(lows))))
-            for first in matches[:-1]:
-                if first in highest:
-                    intersect = set(highest[first]).intersection(
-                        set(matches[matches.index(first) + 1:]))
-                    if len(intersect) > 0:
-                        return high + first + list(intersect)[0]
+            intersect = findIntersect()
+    return intersect

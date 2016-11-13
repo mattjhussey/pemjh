@@ -1,12 +1,8 @@
 """ Challenge146 """
 
 
-def is_pseudo_prime(n, known={1: True, 2: True}):
-    if n in known:
-        return known[n]
-    else:
-        known[n] = pow(2, n - 1, n) == 1
-        return known[n]
+def is_pseudo_prime(n):
+    return pow(2, n - 1, n) == 1
 
 
 def check(n):

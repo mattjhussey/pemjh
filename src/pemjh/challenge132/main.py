@@ -9,11 +9,10 @@ def R(k):
 
     facts = list()
 
-    for p in primes:
+    while len(facts) != 40:
+        p = primes.next()
         if pow(10, k, 9*p) == 1:
             facts.append(p)
-            if len(facts) == 40:
-                break
 
     return facts
 

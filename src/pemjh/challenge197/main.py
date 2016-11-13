@@ -13,14 +13,15 @@ def main():
 
     even = 0
 
-    while i < n:
+    found = False
+    while i < n and not found:
         u = f(u)
         i += 1
 
         if not i & 1:
             # Even
             if u == even:
-                break
+                found = True
             even = u
 
     return u + f(u)

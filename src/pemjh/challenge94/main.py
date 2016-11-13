@@ -16,12 +16,8 @@ def process(limit):
     prev_2 = (4,  0)
     prev_1 = (15,  1)
 
-    if 16 > limit:
-        return
     yield 6, 5, 5
 
-    if 50 > limit:
-        return
     yield 16, 17, 17
 
     while 1:

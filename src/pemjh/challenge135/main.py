@@ -13,8 +13,8 @@ def getNumTarget(limit, target):
             if n >= limit:
                 break
 
-            if n > 0:
-                possible[n] += 1
+            # Optimised. Always is greater than 0
+            possible[n] += 1
 
     return possible.count(target)
 

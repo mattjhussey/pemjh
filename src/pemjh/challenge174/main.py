@@ -1,10 +1,7 @@
 """ Challenge174 """
 
 
-def getNumEvenDivisors(n, known=dict()):
-    if n in known:
-        return known[n]
-
+def getNumEvenDivisors(n):
     nDiv = 0
 
     two = 2

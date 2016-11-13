@@ -19,10 +19,7 @@ def hasMask(n):
         num = int(w[index: index + 1])
         if num != i:
             return False, index
-    if int(w[-1:]) == 0:
-        return True, -1
-    else:
-        return False, 19
+    return True, -1
 
 
 def main():
@@ -56,9 +53,6 @@ def main():
             sq += diff
 
             root = int(ceil(sqrt(sq)))
-
-            if sq > maximum:
-                return 0
 
             if root == current:
                 root += 1

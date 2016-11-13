@@ -22,8 +22,8 @@ def main():
             total += int(v)
         else:
             v = ((next // 2)**2 + (next - 1)**2)**0.5
-            if v == int(v):
-                total += int(v)
+
+            total += int(v)
 
         # Step on
         for _ in xrange(2):

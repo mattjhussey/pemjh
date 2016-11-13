@@ -18,14 +18,19 @@ def main(limit):
 
     result = 0
     for c in xrange(1, limit + 1):
-        for next in rad_lookup:
+        found = False
+        index = 0
+        while not found:
+            next = rad_lookup[index]
             a = next[1]
             if next[0] * rads[c - 1] >= c:
-                break
-            b = c - a
+                found = True
+            else:
+                b = c - a
 
-            if a < (c / 2) and next[0] * rads[b - 1] * rads[c - 1] < c and \
-                    gcd(a, b) == 1:
-                result += c
+                if a < (c / 2) and next[0] * rads[b - 1] * rads[c - 1] < c and \
+                   gcd(a, b) == 1:
+                    result += c
+                index += 1
 
     return result

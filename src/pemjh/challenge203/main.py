@@ -29,12 +29,15 @@ def main():
 
     for n in nums:
         free = True
-        for p in primes:
+        primeIter = iter(primes)
+        found = False
+        while not found:
+            p = primeIter.next()
             if p > n:
-                break
+                found = True
             if n % p == 0:
                 free = False
-                break
+                found = True
 
         if free:
             squareFree.append(n)

@@ -28,8 +28,6 @@ def main():
                            current))
 
         highest = next**2 - next
-        while highest > limit:
-            highest -= next
 
         highs = set(myrange(highest, current**2, -next))
 

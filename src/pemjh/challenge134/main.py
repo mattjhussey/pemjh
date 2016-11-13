@@ -58,9 +58,9 @@ def main():
 
     p1 = primes.next()
     S = 0
-    for p2 in primes:
-        if p1 > limit:
-            break
+
+    while p1 <= limit:
+        p2 = primes.next()
 
         # f(target, current, step)
         n = f(p1, p2, p2)

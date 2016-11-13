@@ -3,11 +3,6 @@ from pemjh.numbers import sieved_primes
 
 
 def totients(n, primes=None):
-    # Get the primes
-    if primes is None:
-        primes = sieved_primes(n)
-        # Remove 1
-        primes.next()
 
     # Get result grid
     ans = range(n + 1)
@@ -48,15 +43,12 @@ def totientChainLength(n, limit, steps, known=dict()):
             # Record route
             route.append(pos)
 
-    if pos == 1:
-        # valid route, cache
-        i = 25
-        for v in route:
-            known[v] = i
-            i -= 1
-        return True
-    else:
-        return False
+    # valid route, cache
+    i = 25
+    for v in route:
+        known[v] = i
+        i -= 1
+    return True
 
 
 def main():

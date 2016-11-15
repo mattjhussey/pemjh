@@ -7,9 +7,10 @@ def tetrate(a, b):
     while b:
         val = pow(a, val, 10**8)
         if val == prev:
-            return val
-        prev = val
-        b -= 1
+            b = 0
+        else:
+            prev = val
+            b -= 1
     return val
 
 

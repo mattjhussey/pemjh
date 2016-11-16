@@ -58,9 +58,9 @@ def main():
     operators = list(selection([operator.add, operator.sub,
                                 operator.mul, operator.truediv], 3))
 
-    for a in xrange(1, 10):
+    for a in xrange(1, 5):
         for b in xrange(a + 1, 10):
-            for c in xrange(b + 1, 10):
+            for c in xrange(b + 1, 6):
                 for d in xrange(c + 1, 10):
 
                     nums = [False] * maximum
@@ -81,14 +81,7 @@ def main():
                     if lowest > highest[0]:
                         highest = (lowest, a, b, c, d)
 
-                    if lowest == 0:
-                        break
-
-                if d == c + 1:
-                    break
             if c == b + 1:
                 break
-        if b == a + 1:
-            break
 
     return highest[1] * 1000 + highest[2] * 100 + highest[3] * 10 + highest[4]

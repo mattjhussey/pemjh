@@ -25,9 +25,7 @@ def main():
 
     # 2, 4, 6, 10, 12, 16, 18
     d = 1
-    for prime in sieved_primes(30):
-        if prime == 1:
-            continue
+    for prime in primes[:10]:
 
         d *= prime
 
@@ -43,8 +41,4 @@ def main():
                 for m in xrange(2, 5):
                     d = found * m
                     ratio = float(phi(d, primes)) / float(d - 1)
-
-                    if ratio < test_val:
-                        return d
-
-    return "Don't know"
+    return d

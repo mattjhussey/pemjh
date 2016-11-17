@@ -31,14 +31,18 @@ class primez():
         self.sieve = syze * [True]
         for i in xrange(4, syze, 2):
             self.sieve[i] = False
-        for nprime in xrange(3, syze, 2):
+        finished = False
+        loop = iter(xrange(3, syze, 2))
+        while not finished:
+            nprime = loop.next()
             if self.sieve[nprime] is False:
                 continue
             spt = nprime*nprime
             if spt > syze:
-                break
-            for i in xrange(spt, syze, nprime):
-                self.sieve[i] = False
+                finished = True
+            else:
+                for i in xrange(spt, syze, nprime):
+                    self.sieve[i] = False
 
     def getList(self):
         """
@@ -54,16 +58,15 @@ class primez():
         """
         Return True if number is prime, False if it is not.
         """
-        if number < self.limit:
-            return self.sieve[number]
-        if len(self.plist) == 0:
-            self.getList()
-        for chkn in self.plist:
+        result = None
+        loop = iter(self.plist)
+        while result is None:
+            chkn = loop.next()
             if chkn * chkn > number:
-                return True
-            if number % chkn == 0:
-                return False
-        return True
+                result = True
+            elif number % chkn == 0:
+                result = False
+        return result
 
 
 class problem211():
@@ -198,34 +201,11 @@ class problem211():
         """
         combtab = [prodarr]
         prevind = 0
-        while True:
-            newdata = self.multMerge(keyz, combtab[prevind])
-            if len(newdata) == 0:
-                break
-            prevind += 1
-            combtab.append(newdata)
         retval = []
         for pentry in combtab:
             keyz += pentry
         retval.sort()
         return retval
-
-    def multMerge(self, keyz, resultz):
-        """
-        Multiply the keyz values with resultz values, saving any valid
-        numbers generated in mData (the parameter returned).
-        """
-        mData = []
-        for i in keyz:
-            if i * resultz[0] > self.biglimit:
-                return mData
-            for j in resultz:
-                nbnum = i * j
-                if nbnum > self.biglimit:
-                    break
-                if gcd(j, i) == 1:
-                    mData.append(nbnum)
-        return mData
 
     def solvePell(self):
         """
@@ -246,50 +226,55 @@ class problem211():
         localans = []
         keyl = self.lowhist.keys()
         keyl.sort()
-        for i in keyl[1:]:
+        loop1 = iter(keyl[1:])
+        finished1 = False
+        while not finished1:
+            i = loop1.next()
             if i > self.biglimit/2:
-                break
-            modv = i % 4
-            if modv < 1 or modv > 2:
-                continue
-            a2val = 0
-            a1val = 1
-            b2val = 1
-            b1val = 0
-            pval = 0
-            qval = 1
-            sqrtd = sqrt(i)
-            anum = int((pval+sqrtd)/qval)
-            aval = anum*a1val + a2val
-            bval = anum*b1val + b2val
-            origa = anum
-            period = 0
-            for c in xrange(0, self.limit):
-                if period == 0:
-                    if anum == origa*2:
-                        period = c
-                        if period % 2 == 0:
-                            break
-                        localans += self.chkPellVal(a1val, self.lowhist[i])
-                if period > 0:
-                    temp = c + 1
-                    if temp % period == 0:
-                        temp1 = temp / period
-                        if temp1 % 2 == 1:
-                            localans += self.chkPellVal(aval, self.lowhist[i])
-                p1val = pval
-                q1val = qval
-                b2val = b1val
-                b1val = bval
-                a2val = a1val
-                a1val = aval
-                pval = anum*q1val - p1val
-                qval = (i-pval*pval)/q1val
+                finished1 = True
+            else:
+                modv = i % 4
+                a2val = 0
+                a1val = 1
+                b2val = 1
+                b1val = 0
+                pval = 0
+                qval = 1
+                sqrtd = sqrt(i)
                 anum = int((pval+sqrtd)/qval)
                 aval = anum*a1val + a2val
                 bval = anum*b1val + b2val
-                if a1val > self.biglimit:
-                    break
+                origa = anum
+                period = 0
+                loop2 = iter(xrange(self.limit))
+                finished = False
+                while not finished:
+                    c = loop2.next()
+                    if period == 0:
+                        if anum == origa*2:
+                            period = c
+                            if period % 2 == 0:
+                                break
+                            localans += self.chkPellVal(a1val, self.lowhist[i])
+                    if period > 0:
+                        temp = c + 1
+                        if temp % period == 0:
+                            temp1 = temp / period
+                            if temp1 % 2 == 1:
+                                localans += self.chkPellVal(aval, self.lowhist[i])
+                    p1val = pval
+                    q1val = qval
+                    b2val = b1val
+                    b1val = bval
+                    a2val = a1val
+                    a1val = aval
+                    pval = anum*q1val - p1val
+                    qval = (i-pval*pval)/q1val
+                    anum = int((pval+sqrtd)/qval)
+                    aval = anum*a1val + a2val
+                    bval = anum*b1val + b2val
+                    if a1val > self.biglimit:
+                        finished = True
         return localans
 
     def chkPellVal(self, aval, histind):
@@ -364,7 +349,10 @@ class problem211():
         for i in xrange(2, self.limit):
             if len(first8k[i]) == 0:
                 temp = i
-                for j in self.plist:
+                finished = False
+                loop = iter(self.plist)
+                while not finished:
+                    j = loop.next()
                     fact = 1
                     while temp % j == 0:
                         fact *= j
@@ -372,7 +360,7 @@ class problem211():
                     if fact > 1:
                         xvec = self.addVecs(first8k[fact], first8k[temp])
                         first8k[i] = xvec
-                        break
+                        finished = True
         self.lowhist = {}
         for i in xrange(2, self.limit):
             prod = 1
@@ -426,11 +414,11 @@ class problem211():
         (third parameter) entries that contain i (second parameter).
         """
         proda = []
-        for j in self.solutions:
+        loop = iter(self.solutions)
+        while len(proda) != count:
+            j = loop.next()
             if i in self.solutions[j]:
                 proda.append(j)
-                if len(proda) == count:
-                    break
         return proda
 
     def reducev(self, vector):

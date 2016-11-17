@@ -24,11 +24,6 @@ class SGrid:
         row = [[copy.deepcopy(square), False] for _ in xrange(9)]
         self.__rows = [copy.deepcopy(row) for _ in xrange(9)]
 
-        # Add row and column data...
-        # for r in xrange(9):
-        #    for c in xrange(9):
-        #        self.__rows[r][c].append([r, c])
-
         # Load in data
         self.__loadData(s)
 
@@ -155,13 +150,10 @@ class SGrid:
         return changes
 
     def __getLocation(self, sq):
-        # Find the containing row
-        for r, row in enumerate(self.__rows):
-            for c, sq2 in enumerate(row):
-                if sq is sq2:
-                    return [r, c]
-
-        return None
+        return [[r, c]
+                for r, row in enumerate(self.__rows)
+                for c, sq2 in enumerate(row)
+                if sq is sq2][0]
 
     def __processOnlyInOneSquare(self):
         changes = False
@@ -211,30 +203,27 @@ class SGrid:
 
             unsolvedSquares.sort(sortSquareLengths)
 
-            for sq in unsolvedSquares:
+            foundSolution = False
+            unsolvedSquares = iter(unsolvedSquares)
+            while not foundSolution:
+                sq = unsolvedSquares.next()
                 loc = self.__getLocation(sq)
-                for val in sq[0]:
+                sqIter = iter(sq[0])
+                while not foundSolution:
+                    val = sqIter.next()
                     # Create a clone
                     clone = copy.deepcopy(self)
                     # Set value
                     clone.__setValue(loc[0], loc[1], val)
-                    if clone.valid():
 
-                        clone.__solve()
+                    clone.__solve()
 
-                        if clone.solved():
+                    if clone.solved():
 
-                            # Set self to the same as clone
-                            self.__copy(clone)
+                        # Set self to the same as clone
+                        self.__copy(clone)
 
-                            return
-
-    def valid(self):
-        for r in self.__rows:
-            for sq in r:
-                if len(sq[0]) == 0:
-                    return False
-        return True
+                        foundSolution = True
 
     def solved(self):
         for r in self.__rows:
@@ -244,23 +233,8 @@ class SGrid:
         return True
 
     def __int__(self):
-        if not self.solved():
-            return 0
-
         return sum(self.__rows[0][i][0][0] * 10**(2 - i) for i in xrange(3))
 
-    def __repr__(self):
-        repr = []
-        for r in self.__rows:
-            row = []
-            for sq in r:
-                # concat the square
-                f1 = "(" if sq[1] else ""
-                f2 = ")" if sq[1] else ""
-
-                row.append(f1 + "".join(str(c) for c in sq[0]) + f2)
-            repr.append("\t".join(row))
-        return "SGrid\n" + "\n".join(repr)
 
 
 def main(data):

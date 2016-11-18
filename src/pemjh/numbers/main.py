@@ -159,8 +159,7 @@ def get_num_divisors_helped(n, known):
                     divideCount += 1
                     remainingN /= potentialDivisor
 
-                if divideCount > 0:
-                    nDivisors *= (divideCount + 1)
+                nDivisors *= (divideCount + 1)
 
                 # Is the remaining already known?
                 if remainingN in known:

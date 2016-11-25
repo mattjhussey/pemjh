@@ -20,7 +20,7 @@ def triangle_divisors():
         else:
             # number is odd, reset even
             even_divisors = get_num_divisors_helped((number + 1) / 2,
-                                                 known_divisors)
+                                                    known_divisors)
         yield odd_divisors * even_divisors
         number += 1
 

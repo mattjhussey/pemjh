@@ -1,7 +1,6 @@
 """ Challenge059 """
 from __future__ import with_statement
 from itertools import cycle, product
-from pkgutil import get_data
 
 
 def decrypt(key, code):

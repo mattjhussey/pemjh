@@ -264,13 +264,13 @@ def num_variations(blocks, tileSizes, known):
             # work out with tile here
             if blocks >= tileSize:
                 nVariations += num_variations(blocks - tileSize,
-                                             tileSizes,
-                                             known)
+                                              tileSizes,
+                                              known)
 
         # work out with no tile here
         nVariations += num_variations(blocks - 1,
-                                     tileSizes,
-                                     known)
+                                      tileSizes,
+                                      known)
 
     else:
         nVariations = 1
@@ -331,11 +331,11 @@ def prime_factors(n):
 
 
 def prime_indices(target,
-                 indexLimit,
-                 primes,
-                 primeIndex,
-                 limit=0,
-                 known=dict()):
+                  indexLimit,
+                  primes,
+                  primeIndex,
+                  limit=0,
+                  known=dict()):
 
     key = (target, indexLimit, primeIndex)
     if key in known:

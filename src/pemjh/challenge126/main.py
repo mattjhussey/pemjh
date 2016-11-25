@@ -1,5 +1,4 @@
 """ Challenge126 """
-from itertools import dropwhile
 
 
 def surroundingCubes(x, y, z, layer):
@@ -36,6 +35,5 @@ def main(quantity):
 
                     # Optimised out unused option
                     results[cubes] += 1
-
 
     return results.index(quantity)

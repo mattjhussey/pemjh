@@ -1,6 +1,5 @@
 """ Challenge102 """
 from __future__ import with_statement
-from pkgutil import get_data
 
 
 def enclosesOrigin(x1, y1, x2, y2, x3, y3):
@@ -46,6 +45,8 @@ def getYIntercept(x1, y1, x2, y2):
 
 def main(triangles):
     """ challenge102 """
-    nEnclosing = sum(1 for ax, ay, bx, by, cx, cy in triangles if enclosesOrigin(ax, ay, bx, by, cx, cy))
+    nEnclosing = sum(1
+                     for ax, ay, bx, by, cx, cy in triangles
+                     if enclosesOrigin(ax, ay, bx, by, cx, cy))
 
     return nEnclosing

@@ -9,7 +9,9 @@ def numVariations(blocks, tileSize, dec=True, known=dict()):
         if blocks > 1:
             # work out with tile here
             if blocks >= tileSize:
-                nVariations += numVariations(blocks - tileSize, tileSize, False)
+                nVariations += numVariations(blocks - tileSize,
+                                             tileSize,
+                                             False)
 
             # work out with tile not here
             nVariations += numVariations(blocks - 1, tileSize, False)

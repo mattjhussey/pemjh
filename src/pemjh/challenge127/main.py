@@ -28,7 +28,8 @@ def main(limit):
             else:
                 b = c - a
 
-                if a < (c / 2) and next[0] * rads[b - 1] * rads[c - 1] < c and \
+                if a < (c / 2) and \
+                   next[0] * rads[b - 1] * rads[c - 1] < c and \
                    gcd(a, b) == 1:
                     result += c
                 index += 1

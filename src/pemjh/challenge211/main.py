@@ -200,7 +200,6 @@ class problem211():
         individual values in the lists in the combtab list as one list.
         """
         combtab = [prodarr]
-        prevind = 0
         retval = []
         for pentry in combtab:
             keyz += pentry
@@ -233,7 +232,6 @@ class problem211():
             if i > self.biglimit/2:
                 finished1 = True
             else:
-                modv = i % 4
                 a2val = 0
                 a1val = 1
                 b2val = 1
@@ -261,7 +259,8 @@ class problem211():
                         if temp % period == 0:
                             temp1 = temp / period
                             if temp1 % 2 == 1:
-                                localans += self.chkPellVal(aval, self.lowhist[i])
+                                localans += self.chkPellVal(aval,
+                                                            self.lowhist[i])
                     p1val = pval
                     q1val = qval
                     b2val = b1val

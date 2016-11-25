@@ -236,7 +236,6 @@ class SGrid:
         return sum(self.__rows[0][i][0][0] * 10**(2 - i) for i in xrange(3))
 
 
-
 def main(data):
     """ challenge096 """
     total = 0

@@ -1,6 +1,5 @@
 """ Challenge082 """
 from __future__ import with_statement
-from pkgutil import get_data
 
 
 def combine_columns(column1, column2):

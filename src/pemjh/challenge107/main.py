@@ -1,6 +1,5 @@
 """ Challenge107 """
 from __future__ import with_statement
-from pkgutil import get_data
 
 
 def skimNetwork(grid):

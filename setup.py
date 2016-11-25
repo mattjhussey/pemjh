@@ -6,7 +6,6 @@ https://pytest.org/latest/goodpractises.html"""
 import os
 from setuptools import setup
 from setuptools import find_packages
-from setuptools.command.test import test as TestCommand
 
 
 def read(fname):
@@ -17,12 +16,6 @@ def read(fname):
 
 def main():
     """ Run the setup. """
-    try:
-        import virtualenv
-        global venv_in_env
-        venv_in_env = True
-    except ImportError:
-        pass
 
     setup(
         name="pemjh",
@@ -43,6 +36,7 @@ def main():
         setup_requires=['pytest-runner'],
         tests_require=['pytest-bdd', 'robber', 'pytest']
     )
+
 
 if __name__ == "__main__":
     main()

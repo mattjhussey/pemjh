@@ -1,6 +1,5 @@
 """ Challenge105 """
 from __future__ import with_statement
-from pkgutil import get_data
 
 
 def sizedSubsets(l, size):

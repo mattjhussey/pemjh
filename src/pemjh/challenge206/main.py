@@ -27,7 +27,6 @@ def main():
     # Get potential numbers roots
     mask = "1234567890"
     zeroed = splice(mask, "000000000")
-    maximum = splice(mask, "999999999")
     lowest = zeroed
     lowestRoot = int(ceil(sqrt(float(lowest))))
 

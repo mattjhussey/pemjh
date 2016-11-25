@@ -1,6 +1,6 @@
 """ Challenge183 """
-from pemjh.numbers import prime_factors
 import math
+from pemjh.numbers import prime_factors
 
 
 def memoize(function):

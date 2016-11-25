@@ -1,6 +1,6 @@
 """ Challenge118 """
-from pemjh.numbers import PrimeChecker
 from itertools import permutations
+from pemjh.numbers import PrimeChecker
 
 
 def valid(num):

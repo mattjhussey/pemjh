@@ -30,7 +30,7 @@ def getSequences(prefix, remaining):
     seq = list()
     # Find those with the prefix at the start + ?
     for b in xrange(2):
-        if (prefix + str(b)) in remaining:
+        if prefix + str(b) in remaining:
             # Create new remaining
             remain = [s for s in remaining if s != (prefix + str(b))]
             for s in getSequences((prefix + str(b))[1:], remain):

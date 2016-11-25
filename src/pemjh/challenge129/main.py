@@ -8,7 +8,7 @@ def main(limit):
     n = limit + 1
     while maximum < limit:
         n += 2
-        if (n % 5 != 0):
+        if n % 5 != 0:
             an = A(n)
 
             if an > maximum:

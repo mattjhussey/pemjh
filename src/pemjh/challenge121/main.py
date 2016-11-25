@@ -22,7 +22,7 @@ def main(turns):
     """ challenge121 """
     den = fact(turns + 1)
     lossesAllowed = turns // 2
-    if not (turns & 1):
+    if not turns & 1:
         lossesAllowed -= 1
 
     chances = 0

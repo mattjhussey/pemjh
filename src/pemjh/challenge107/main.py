@@ -27,7 +27,7 @@ def skimNetwork(grid):
         # Add the target row to the available connections
         availableConnections.extend([(l, shortest[2], i)
                                      for i, l in enumerate(grid[shortest[2]])
-                                     if (l > 0) and not (i in connectedRows)])
+                                     if l > 0 and i not in connectedRows])
 
         availableConnections.sort()
 

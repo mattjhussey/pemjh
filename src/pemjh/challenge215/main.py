@@ -19,13 +19,13 @@ def memoize(function):
 
 def buildRowOptions(start, end):
     options = list()
-    if (end - start == 3):
+    if end - start == 3:
         # only a 3 can fit
         options.append([])
-    elif (end - start == 4):
+    elif end - start == 4:
         # only two 2s can fit
         options.append([start + 2])
-    elif (end - start == 5):
+    elif end - start == 5:
         # only 2 and 3 or 3 and 2 can fit
         options.append([start + 2])
         options.append([start + 3])

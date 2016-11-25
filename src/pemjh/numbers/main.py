@@ -56,7 +56,7 @@ def continue_generator(square, infinite=False):
     num = 1
 
     # root is first number, no yield
-    while(1):
+    while 1:
         # Multiply all by (square - b)
         den = square - b**2
 

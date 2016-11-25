@@ -13,8 +13,8 @@ def main():
 
 def process(limit):
     # middle, offset
-    prev_2 = (4,  0)
-    prev_1 = (15,  1)
+    prev_2 = (4, 0)
+    prev_1 = (15, 1)
 
     yield 6, 5, 5
 

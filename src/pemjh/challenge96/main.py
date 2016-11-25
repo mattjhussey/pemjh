@@ -3,6 +3,17 @@ from __future__ import with_statement
 import copy
 
 
+def removeValueFromList(l, value):
+    nRemoved = 0
+
+    for sq in l:
+        if value in sq[0]:
+            nRemoved += 1
+            sq[0].remove(value)
+
+    return nRemoved
+
+
 def sortSquareLengths(a, b):
     la = len(a[0])
     lb = len(b[0])
@@ -54,29 +65,19 @@ class SGrid:
             for column in xrange(columnStart, columnStart + 3):
                 yield self.__rows[row][column]
 
-    def __removeValueFromList(self, l, value):
-        nRemoved = 0
-
-        for sq in l:
-            if value in sq[0]:
-                nRemoved += 1
-                sq[0].remove(value)
-
-        return nRemoved
-
     def __setValue(self, r, c, value):
         # Remove value from rest of row r
-        self.__removeValueFromList(self.__rows[r], value)
+        removeValueFromList(self.__rows[r], value)
 
         # Remove value from rest of column c
-        self.__removeValueFromList([self.__rows[i][c] for i in xrange(9)],
-                                   value)
+        removeValueFromList([self.__rows[i][c] for i in xrange(9)],
+                            value)
 
         # Get the box
         box = list(self.__getBox(r, c))
 
         # Remove value from rest of box
-        self.__removeValueFromList(box, value)
+        removeValueFromList(box, value)
 
         # Remove all but value from square
         sq = self.__rows[r][c]
@@ -138,7 +139,7 @@ class SGrid:
 
                         # Remove from list
                         for val in stored:
-                            nRemoved = self.__removeValueFromList(block, val)
+                            nRemoved = removeValueFromList(block, val)
                             if nRemoved != lSq:
                                 changes = True
 

@@ -6,6 +6,41 @@ for i in range(256):
     sqs[(i * i) & 255] = True
 
 
+def addVecs(vec1, vec2):
+    """
+    Combine two divisor sum lists (happens when sigma2(n) is multiplied b
+    sigma2(m).  All list entries that occur on only one of the lists are
+    included in the returned list.
+    """
+    xvec = []
+    for x in vec1:
+        if x not in vec2:
+            xvec.append(x)
+    for x in vec2:
+        if x not in vec1:
+            xvec.append(x)
+    xvec.sort()
+    return xvec
+
+
+def chkForMore(keyz, prodarr):
+    """
+    keyz is a set of identity solutions.  Prodarr is a list of products
+    of 2 keyz values that form another valid number.  Generate further
+    identities (if they exist) by multiplying keyz values with prodarr
+    values. and if any are generated, loop again using the newly generated
+    list as the next prodarr input.  Prodarr values are stored in the
+    combtab list.  When no further entries can be generated, return all
+    individual values in the lists in the combtab list as one list.
+    """
+    combtab = [prodarr]
+    retval = []
+    for pentry in combtab:
+        keyz += pentry
+    retval.sort()
+    return retval
+
+
 def gcd(big, lit):
     """
     Compute the greatest common denominator between two integers
@@ -125,7 +160,7 @@ class problem211():
         keyz = self.solutions.keys()
         keyz.sort()
         prodarr = self.mergeIdent(keyz)
-        keyz += self.chkForMore(keyz, prodarr)
+        keyz += chkForMore(keyz, prodarr)
         localans = self.solvePell()
         setx = set(keyz+localans)
         ansvec = list(setx)
@@ -188,23 +223,6 @@ class problem211():
                 prodarr.append(prod)
         prodarr.sort()
         return prodarr
-
-    def chkForMore(self, keyz, prodarr):
-        """
-        keyz is a set of identity solutions.  Prodarr is a list of products
-        of 2 keyz values that form another valid number.  Generate further
-        identities (if they exist) by multiplying keyz values with prodarr
-        values. and if any are generated, loop again using the newly generated
-        list as the next prodarr input.  Prodarr values are stored in the
-        combtab list.  When no further entries can be generated, return all
-        individual values in the lists in the combtab list as one list.
-        """
-        combtab = [prodarr]
-        retval = []
-        for pentry in combtab:
-            keyz += pentry
-        retval.sort()
-        return retval
 
     def solvePell(self):
         """
@@ -357,7 +375,7 @@ class problem211():
                         fact *= j
                         temp /= j
                     if fact > 1:
-                        xvec = self.addVecs(first8k[fact], first8k[temp])
+                        xvec = addVecs(first8k[fact], first8k[temp])
                         first8k[i] = xvec
                         finished = True
         self.lowhist = {}
@@ -376,22 +394,6 @@ class problem211():
                 self.lowhist[prod] = [i]
             else:
                 self.lowhist[prod].append(i)
-
-    def addVecs(self, vec1, vec2):
-        """
-        Combine two divisor sum lists (happens when sigma2(n) is multiplied b
-        sigma2(m).  All list entries that occur on only one of the lists are
-        included in the returned list.
-        """
-        xvec = []
-        for x in vec1:
-            if x not in vec2:
-                xvec.append(x)
-        for x in vec2:
-            if x not in vec1:
-                xvec.append(x)
-        xvec.sort()
-        return xvec
 
     def polNums(self):
         """
@@ -435,7 +437,7 @@ class problem211():
                     continue
                 newi = i*j
                 if newi < self.biglimit:
-                    nvec = self.addVecs(self.solutions[i], self.solutions[j])
+                    nvec = addVecs(self.solutions[i], self.solutions[j])
                     self.solutions[newi] = nvec
         for i in vector:
             del self.solutions[i]

@@ -3,26 +3,33 @@ from pemjh.numbers import prime_factors
 import math
 
 
-def pf(n, known=dict()):
-    if n in known:
-        return known[n]
+def memoize(function):
+    """ Memoize passed function """
+    known = {}
 
-    known[n] = list(prime_factors(n))
-
-    return [v for v in known[n]]
-
-
-def factPower(b, f, known=dict()):
-    "The number of times f divides into b"
-    key = (b, f)
-    if key in known:
+    def wrapped(*args, **kwargs):
+        """ Perform lookup and call function if needed """
+        key = tuple(args)
+        print key
+        if key not in known:
+            known[key] = function(*args, **kwargs)
         return known[key]
+    return wrapped
+
+
+@memoize
+def pf(n):
+    return list(prime_factors(n))
+
+
+@memoize
+def factPower(b, f):
+    "The number of times f divides into b"
 
     divs = 0
     while 1:
         b, m = divmod(b, f)
         if m != 0:
-            known[key] = divs
             return divs
         divs += 1
 

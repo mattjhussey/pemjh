@@ -1,12 +1,22 @@
 """ Challenge191 """
 
 
-def numLosses(days, previousThree, latesLeft, known=dict()):
-    key = (days, previousThree, latesLeft)
-    # Check for known
-    if key in known:
-        return known[key]
+def memoize(function):
+    """ Memoize passed function """
+    known = {}
 
+    def wrapped(*args, **kwargs):
+        """ Perform lookup and call function if needed """
+        key = tuple(args)
+        print key
+        if key not in known:
+            known[key] = function(*args, **kwargs)
+        return known[key]
+    return wrapped
+
+
+@memoize
+def numLosses(days, previousThree, latesLeft):
     nVariations = 0
 
     # If previous 3 are all Absent or LatesLeft == 0 then
@@ -22,8 +32,6 @@ def numLosses(days, previousThree, latesLeft, known=dict()):
                                       previousThree[2],
                                       next),
                                      latesLeft if next != 2 else latesLeft - 1)
-
-    known[key] = nVariations
 
     return nVariations
 

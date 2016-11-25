@@ -1,6 +1,22 @@
 """ Challenge215 """
 
 
+def memoize(function):
+    """ Memoize passed function """
+    known = {}
+
+    def wrapped(*args, **kwargs):
+        """ Perform lookup and call function if needed """
+        def make_key(startRow, depth, _):
+            """ Return the arguments as a hashable key """
+            return (startRow, depth)
+        key = make_key(*args, **kwargs)
+        if key not in known:
+            known[key] = function(*args, **kwargs)
+        return known[key]
+    return wrapped
+
+
 def buildRowOptions(start, end):
     options = list()
     if (end - start == 3):
@@ -30,20 +46,16 @@ def runningCrack(row1, row2):
     return False
 
 
-def W(startRow, depth, data, known=dict()):
-    key = (startRow, depth,)
+@memoize
+def W(startRow, depth, data):
+    num = 0
+    if depth == 2:
+        num = len(data[startRow])
+    else:
+        for subRow in data[startRow]:
+            num += W(subRow, depth - 1, data)
 
-    if key not in known:
-        num = 0
-        if depth == 2:
-            num = len(data[startRow])
-        else:
-            for subRow in data[startRow]:
-                num += W(subRow, depth - 1, data)
-
-        known[key] = num
-
-    return known[key]
+    return num
 
 
 def main():

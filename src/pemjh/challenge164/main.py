@@ -1,12 +1,22 @@
 """ Challenge164 """
 
 
-def numLosses(size, previousThree, useZero, known=dict()):
+def memoize(function):
+    """ Memoize passed function """
+    known = {}
 
-    key = (size, previousThree, useZero)
-
-    if key in known:
+    def wrapped(*args, **kwargs):
+        """ Perform lookup and call function if needed """
+        key = tuple(args)
+        print key
+        if key not in known:
+            known[key] = function(*args, **kwargs)
         return known[key]
+    return wrapped
+
+
+@memoize
+def numLosses(size, previousThree, useZero):
 
     nVariations = 0
 
@@ -22,9 +32,6 @@ def numLosses(size, previousThree, useZero, known=dict()):
                                       previousThree[2],
                                       next),
                                      True)
-
-    known[key] = nVariations
-
     return nVariations
 
 

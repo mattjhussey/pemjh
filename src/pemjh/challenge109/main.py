@@ -1,36 +1,49 @@
 """ Challenge109 """
 
 
-def getNonDoubleOuts(n, darts, nums, known=dict()):
-    key = (n, darts, tuple(nums))
-    if key in known:
+def memoize(func):
+    """ Remember the calls made and return cached """
+    known = {}
+
+    def decorated(*args, **kwargs):
+        """ The decorating call """
+        def make_key(out, darts, nums):
+            """ Return the arguments as a hashable key """
+            return (out, darts, tuple(nums))
+        key = make_key(*args, **kwargs)
+        if key not in known:
+            known[key] = func(*args, **kwargs)
         return known[key]
+    return decorated
 
-    nCount = 0
-    for d in nums:
-        if d[0] > n:
+
+@memoize
+def get_non_double_outs(out, darts, nums):
+    """ Get non-double outs """
+    out_count = 0
+    for duble in nums:
+        if duble[0] > out:
             break
-        left = n - d[0]
+        left = out - duble[0]
 
         if left == 0:
-            nCount += 1
+            out_count += 1
         elif darts > 1:
-            nCount += getNonDoubleOuts(left, darts - 1, nums[nums.index(d):])
+            out_count += get_non_double_outs(left,
+                                             darts - 1,
+                                             nums[nums.index(duble):])
+    return out_count
 
-    known[key] = nCount
 
-    return nCount
-
-
-def getDoubleOuts(n, nums, doubles):
-    # Get possible double outs
-    nCount = 0
-    for left, d in [(n - d[0], d) for d in doubles if d[0] <= n]:
+def get_double_outs(out, nums, doubles):
+    """ Get possible double outs """
+    out_count = 0
+    for left in [out - d[0] for d in doubles if d[0] <= out]:
         if left == 0:
-            nCount += 1
+            out_count += 1
         else:
-            nCount += getNonDoubleOuts(left, 2, nums)
-    return nCount
+            out_count += get_non_double_outs(left, 2, nums)
+    return out_count
 
 
 def main():
@@ -43,9 +56,9 @@ def main():
 
     doubles = [(x*2, x) for x in range(1, 21)] + [(50, 25)]
 
-    nCount = 0
+    out_count = 0
     for out in range(1, 100):
-        outs = getDoubleOuts(out, nums, doubles)
-        nCount += outs
+        outs = get_double_outs(out, nums, doubles)
+        out_count += outs
 
-    return nCount
+    return out_count

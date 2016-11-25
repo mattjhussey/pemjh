@@ -1,31 +1,41 @@
 """ Challenge116 """
 
 
-def numVariations(blocks, tileSize, dec=True, known=dict()):
-    key = (blocks, tileSize, dec)
-    if key not in known:
-        nVariations = 0
+def memoize(function):
+    """ Memoize passed function """
+    known = {}
 
-        if blocks > 1:
-            # work out with tile here
-            if blocks >= tileSize:
-                nVariations += numVariations(blocks - tileSize,
-                                             tileSize,
-                                             False)
+    def wrapped(*args, **kwargs):
+        """ Perform lookup and call function if needed """
+        key = tuple(args)
+        print key
+        if key not in known:
+            known[key] = function(*args, **kwargs)
+        return known[key]
+    return wrapped
 
-            # work out with tile not here
-            nVariations += numVariations(blocks - 1, tileSize, False)
 
-        else:
-            nVariations = 1
+@memoize
+def numVariations(blocks, tileSize, dec=True):
+    nVariations = 0
 
-        if dec:
-            nVariations -= 1
+    if blocks > 1:
+        # work out with tile here
+        if blocks >= tileSize:
+            nVariations += numVariations(blocks - tileSize,
+                                         tileSize,
+                                         False)
 
-        known[key] = nVariations
+        # work out with tile not here
+        nVariations += numVariations(blocks - 1, tileSize, False)
 
-    print key, known[key]
-    return known[key]
+    else:
+        nVariations = 1
+
+    if dec:
+        nVariations -= 1
+
+    return nVariations
 
 
 def process(blocks):

@@ -2,6 +2,20 @@
 from fractions import gcd
 
 
+def memoize(function):
+    """ Memoize passed function """
+    known = {}
+
+    def wrapped(*args, **kwargs):
+        """ Perform lookup and call function if needed """
+        key = tuple(args)
+        print key
+        if key not in known:
+            known[key] = function(*args, **kwargs)
+        return known[key]
+    return wrapped
+
+
 def tidy(a):
     g = abs(gcd(a[0], a[1]))
     if a[1] < 0:
@@ -26,38 +40,33 @@ def div(a, b):
     return mul(a, (b[1], b[0]))
 
 
-def get_totals(start, end, known={}):
-    key = (start, end)
-    if key in known:
-        return known[key]
-    else:
-        totals = set()
+@memoize
+def get_totals(start, end):
+    totals = set()
 
-        # Loop pivot point
-        concatenated = start
-        for pivot in xrange(start + 1, end):
-            # Get left pivot
-            for left in get_totals(start, pivot):
-                # Get right pivot
-                for right in get_totals(pivot, end):
-                    # create new from left (+, -, *, /) right
+    # Loop pivot point
+    concatenated = start
+    for pivot in xrange(start + 1, end):
+        # Get left pivot
+        for left in get_totals(start, pivot):
+            # Get right pivot
+            for right in get_totals(pivot, end):
+                # create new from left (+, -, *, /) right
 
-                    totals.add(add(left, right))
+                totals.add(add(left, right))
 
-                    totals.add(sub(left, right))
+                totals.add(sub(left, right))
 
-                    totals.add(mul(left, right))
+                totals.add(mul(left, right))
 
-                    if right[0] != 0:
-                        totals.add(div(left, right))
-            concatenated *= 10
-            concatenated += pivot
+                if right[0] != 0:
+                    totals.add(div(left, right))
+        concatenated *= 10
+        concatenated += pivot
 
-        totals.add((concatenated, 1))
+    totals.add((concatenated, 1))
 
-        known[key] = totals
-
-        return totals
+    return totals
 
 
 def main():

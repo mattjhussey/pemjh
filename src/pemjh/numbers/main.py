@@ -330,17 +330,32 @@ def prime_factors(n):
             yield p
 
 
+def memoize(func):
+    """ Remember the calls made and return cached """
+    known = {}
+
+    def decorated(*args, **kwargs):
+        """ The decorating call """
+        def make_key(target,
+                     indexLimit,
+                     dummy_primes,
+                     primeIndex,
+                     dummy_limit=0):
+            """ Return the arguments as a hashable key """
+            return (target, indexLimit, primeIndex)
+        key = make_key(*args, **kwargs)
+        if key not in known:
+            known[key] = func(*args, **kwargs)
+        return known[key]
+    return decorated
+
+
+@memoize
 def prime_indices(target,
                   indexLimit,
                   primes,
                   primeIndex,
-                  limit=0,
-                  known=dict()):
-
-    key = (target, indexLimit, primeIndex)
-    if key in known:
-        return known[key]
-
+                  limit=0):
     answer = limit
 
     index = 3
@@ -375,8 +390,6 @@ def prime_indices(target,
         next = primes[primeIndex]**((index - 1) // 2)
         if not answer or next < answer:
             answer = next
-
-    known[key] = answer
 
     return answer
 

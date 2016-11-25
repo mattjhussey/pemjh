@@ -1,41 +1,48 @@
 """ Challenge115 """
 
 
-def numVariations(blocks, minimum, tileSizes, known=dict()):
-    if (blocks, minimum) in known:
-        return known[(blocks, minimum)]
-    nVariations = 0
+def memoize(function):
+    """ Memoize passed function """
+    known = {}
+
+    def wrapped(*args, **kwargs):
+        """ Perform lookup and call function if needed """
+        key = tuple(args)
+        print key
+        if key not in known:
+            known[key] = function(*args, **kwargs)
+        return known[key]
+    return wrapped
+
+
+@memoize
+def num_variations(blocks, minimum):
+    """ Get the number of variations """
+    num = 0
 
     if blocks > 1:
-        for tileSize in tileSizes:
+        tile_sizes = range(minimum, blocks + 1)
+        for tile_size in tile_sizes:
 
             # Always an extra 1 block length for the spacer
-            left = blocks - tileSize - 1
+            left = blocks - tile_size - 1
             if left < 0:
                 left = 0
-            nVariations += numVariations(left, minimum, tileSizes)
+            num += num_variations(left, minimum)
 
         # work out with no tile here
-        nVariations += numVariations(blocks - 1, minimum, tileSizes)
+        num += num_variations(blocks - 1, minimum)
 
     else:
-        nVariations = 1
-
-    known[(blocks, minimum)] = nVariations
-
-    return nVariations
-
-
-def f(minimum, blocks):
-    n = numVariations(blocks, minimum, range(minimum, blocks + 1))
-    return n
+        num = 1
+    return num
 
 
 def main(minimum):
     """ challenge115 """
-    b = 2
+    blocks = 2
     while 1:
-        ans = f(minimum, b)
+        ans = num_variations(blocks, minimum)
         if ans > 1000000:
-            return b
-        b += 1
+            return blocks
+        blocks += 1

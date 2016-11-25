@@ -20,35 +20,38 @@ def totients(n, primes=None):
     return ans
 
 
-def totientChainLength(n, limit, steps, known=dict()):
+def totientChainLength():
+    known = dict()
 
-    route = [n]
-    pos = n
-    for i in xrange(2, limit + 1):
-        # Get next
-        pos = steps[pos]
+    def func(n, limit, steps):
+        route = [n]
+        pos = n
+        for i in xrange(2, limit + 1):
+            # Get next
+            pos = steps[pos]
 
-        if pos in known:
-            if known[pos] == (limit - i + 1):
-                pos = 1
-                break
+            if pos in known:
+                if known[pos] == (limit - i + 1):
+                    pos = 1
+                    break
+                else:
+                    return False
             else:
-                return False
-        else:
-            # Check still possible
-            if pos < (2**(limit - i)):
-                # Too low
-                return False
+                # Check still possible
+                if pos < (2**(limit - i)):
+                    # Too low
+                    return False
 
-            # Record route
-            route.append(pos)
+                # Record route
+                route.append(pos)
 
-    # valid route, cache
-    i = 25
-    for v in route:
-        known[v] = i
-        i -= 1
-    return True
+        # valid route, cache
+        i = 25
+        for v in route:
+            known[v] = i
+            i -= 1
+        return True
+    return func
 
 
 def main():
@@ -58,9 +61,10 @@ def main():
     primes = list(sieved_primes(limit))
     phis = totients(limit, primes[1:])
     total = 0
+    tcl = totientChainLength()
     for p in primes:
         if (p - 1) >= (2**(length - 2)):
-            if totientChainLength(p, length, phis):
+            if tcl(p, length, phis):
                 total += p
 
     return total

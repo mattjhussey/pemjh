@@ -4,7 +4,7 @@
 def get_biggest_triangle(row):
     current = row
     power = 0
-    while 7 <= current:
+    while current >= 7:
         current //= 7
         power += 1
 

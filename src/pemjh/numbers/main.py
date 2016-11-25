@@ -417,7 +417,7 @@ class PrimeChecker:
             limit = int(sqrt(n)) + 1
 
             # Do rough check
-            if not ((1 == (n % 6)) or (5 == (n % 6))):
+            if not (((n % 6) == 1) or ((n % 6) == 5)):
                 return False
 
             if self._factorInPrimes(n):

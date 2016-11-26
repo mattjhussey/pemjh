@@ -60,6 +60,7 @@ def main():
 
     for a in xrange(1, 5):
         for b in xrange(a + 1, 10):
+            c = None
             for c in xrange(b + 1, 6):
                 for d in xrange(c + 1, 10):
 

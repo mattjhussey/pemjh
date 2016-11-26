@@ -37,13 +37,13 @@ def equatedNumbers(a, b, c, d, operators):
         # w ? ((x ? y) ? z)
         try:
             nums.append(ops[0](a, ops[2](ops[1](b, c), d)))
-        except:
+        except ZeroDivisionError:
             pass
 
         # w ? (x ? (y ? z))
         try:
             nums.append(ops[0](a, ops[1](b, ops[2](c, d))))
-        except:
+        except ZeroDivisionError:
             pass
 
     return [int(n) for n in nums if n == int(n) and n > 0]

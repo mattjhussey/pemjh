@@ -27,18 +27,17 @@ def sortSquareLengths(a, b):
 
 class SGrid:
 
-    __rows = None
-
     def __init__(self, s):
         # Setup 81 squares
         square = range(1, 10)
         row = [[copy.deepcopy(square), False] for _ in xrange(9)]
         self.__rows = [copy.deepcopy(row) for _ in xrange(9)]
+        self.__solution = None
 
         # Load in data
         self.__loadData(s)
 
-        self.__solve()
+        self.solve()
 
     def __loadData(self, s):
         # 9 rows of input data, read into rows
@@ -48,7 +47,7 @@ class SGrid:
             # Loop through columns
             for c, value in enumerate(row):
                 if value != "0":
-                    self.__setValue(r, c, int(value))
+                    self.setValue(r, c, int(value))
 
     def __getBox(self, r, c):
         def getStartIndex(i):
@@ -65,7 +64,7 @@ class SGrid:
             for column in xrange(columnStart, columnStart + 3):
                 yield self.__rows[row][column]
 
-    def __setValue(self, r, c, value):
+    def setValue(self, r, c, value):
         # Remove value from rest of row r
         removeValueFromList(self.__rows[r], value)
 
@@ -110,9 +109,9 @@ class SGrid:
         for r in self.__rows:
             for sq in r:
                 if len(sq[0]) == 1 and not sq[1]:
-                    self.__setValue(self.__rows.index(r),
-                                    r.index(sq),
-                                    sq[0][0])
+                    self.setValue(self.__rows.index(r),
+                                  r.index(sq),
+                                  sq[0][0])
                     changes = True
         return changes
 
@@ -170,19 +169,12 @@ class SGrid:
                 if len(containers) == 1:
                     # Set the value in this square
                     location = self.__getLocation(containers[0])
-                    self.__setValue(location[0], location[1], i)
+                    self.setValue(location[0], location[1], i)
                     changes = True
 
         return changes
 
-    def __copy(self, source):
-        # Loop through the rows
-        for sRow, tRow in zip(source.__rows, self.__rows):
-            for sSquare, tSquare in zip(sRow, tRow):
-                tSquare[0] = sSquare[0]
-                tSquare[1] = sSquare[1]
-
-    def __solve(self):
+    def solve(self):
         progressMade = True
 
         while progressMade:
@@ -215,26 +207,31 @@ class SGrid:
                     # Create a clone
                     clone = copy.deepcopy(self)
                     # Set value
-                    clone.__setValue(loc[0], loc[1], val)
+                    clone.setValue(loc[0], loc[1], val)
 
-                    clone.__solve()
+                    clone.solve()
 
                     if clone.solved():
 
                         # Set self to the same as clone
-                        self.__copy(clone)
+                        self.__solution = int(clone)
 
                         foundSolution = True
 
     def solved(self):
-        for r in self.__rows:
-            for sq in r:
-                if len(sq[0]) != 1:
-                    return False
-        return True
+        if self.__solution is None:
+            for r in self.__rows:
+                for sq in r:
+                    if len(sq[0]) != 1:
+                        return False
+            self.__solution = sum(self.__rows[0][i][0][0] * 10**(2 - i)
+                                  for i in xrange(3))
+            return True
+        else:
+            return True
 
     def __int__(self):
-        return sum(self.__rows[0][i][0][0] * 10**(2 - i) for i in xrange(3))
+        return self.__solution
 
 
 def main(data):

@@ -241,6 +241,7 @@ class problem211(object):
         algorithm.
         """
         localans = []
+
         def acc():
             axval = [1, 0]
             bxval = [0, 1]

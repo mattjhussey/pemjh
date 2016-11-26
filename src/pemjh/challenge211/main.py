@@ -2,8 +2,8 @@
 from math import sqrt
 
 sqs = [False] * 256
-for i in range(256):
-    sqs[(i * i) & 255] = True
+for initial in range(256):
+    sqs[(initial * initial) & 255] = True
 
 
 def addVecs(vec1, vec2):

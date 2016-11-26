@@ -446,18 +446,18 @@ class PrimeChecker:
 
 
 def root_convergent_generator(square, infinite=False):
-    A = 1  # Current A
-    A_1 = 0  # Previous A
+    A_current = 1  # Current A
+    A_previous = 0  # Previous A
 
     B = 0  # Current B
     B_1 = 1  # Previous B
 
     for b in continue_generator(square, infinite):
-        newA = b * A + A_1
+        newA = b * A_current + A_previous
         newB = b * B + B_1
         yield [newA, newB]
 
-        A_1, A, B_1, B = A, newA, B, newB
+        A_previous, A_current, B_1, B = A_current, newA, B, newB
 
 
 def rough_primes(limit):

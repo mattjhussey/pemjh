@@ -52,7 +52,7 @@ def gcd(big, lit):
     return big
 
 
-class primez():
+class primez(object):
     """
     Prime number generator
     """
@@ -104,7 +104,7 @@ class primez():
         return result
 
 
-class problem211():
+class problem211(object):
     def __init__(self, upbound):
         """
         self.limit is the sqrt of self.biglimit.

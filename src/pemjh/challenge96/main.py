@@ -25,7 +25,7 @@ def sortSquareLengths(a, b):
         return -1
 
 
-class SGrid:
+class SGrid(object):
 
     def __init__(self, s):
         # Setup 81 squares

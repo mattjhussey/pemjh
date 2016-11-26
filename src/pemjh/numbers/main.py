@@ -394,7 +394,7 @@ def prime_indices(target,
     return answer
 
 
-class PrimeChecker:
+class PrimeChecker(object):
     def __init__(self):
         self._primes = list([2, 3, 5])
         self._highestFound = 5

@@ -241,6 +241,44 @@ class problem211(object):
         algorithm.
         """
         localans = []
+        def acc():
+            axval = [1, 0]
+            bxval = [0, 1]
+            pval = 0
+            qval = 1
+            sqrtd = sqrt(i)
+            anum = int((pval+sqrtd)/qval)
+            aval = anum*axval[0] + axval[1]
+            bval = anum*bxval[0] + bxval[1]
+            origa = anum
+            period = 0
+            loop2 = iter(xrange(self.limit))
+            finished = False
+            while not finished:
+                c = loop2.next()
+                if period == 0 and anum == origa*2:
+                    period = c
+                    if period % 2 == 0:
+                        break
+                    localans.extend(self.chkPellVal(axval[0], self.lowhist[i]))
+                if period > 0:
+                    temp = c + 1
+                    if temp % period == 0 and \
+                       temp / period % 2 == 1:
+                        localans.extend(self.chkPellVal(aval,
+                                                        self.lowhist[i]))
+                bxval[1] = bxval[0]
+                bxval[0] = bval
+                axval[1] = axval[0]
+                axval[0] = aval
+                pval = anum*qval - pval
+                qval = (i-pval*pval)/qval
+                anum = int((pval+sqrtd)/qval)
+                aval = anum*axval[0] + axval[1]
+                bval = anum*bxval[0] + bxval[1]
+                if axval[0] > self.biglimit:
+                    finished = True
+
         keyl = self.lowhist.keys()
         keyl.sort()
         loop1 = iter(keyl[1:])
@@ -250,46 +288,7 @@ class problem211(object):
             if i > self.biglimit/2:
                 finished1 = True
             else:
-                a2val = 0
-                a1val = 1
-                b2val = 1
-                b1val = 0
-                pval = 0
-                qval = 1
-                sqrtd = sqrt(i)
-                anum = int((pval+sqrtd)/qval)
-                aval = anum*a1val + a2val
-                bval = anum*b1val + b2val
-                origa = anum
-                period = 0
-                loop2 = iter(xrange(self.limit))
-                finished = False
-                while not finished:
-                    c = loop2.next()
-                    if period == 0 and anum == origa*2:
-                        period = c
-                        if period % 2 == 0:
-                            break
-                        localans += self.chkPellVal(a1val, self.lowhist[i])
-                    if period > 0:
-                        temp = c + 1
-                        if temp % period == 0 and \
-                           temp / period % 2 == 1:
-                            localans += self.chkPellVal(aval,
-                                                        self.lowhist[i])
-                    p1val = pval
-                    q1val = qval
-                    b2val = b1val
-                    b1val = bval
-                    a2val = a1val
-                    a1val = aval
-                    pval = anum*q1val - p1val
-                    qval = (i-pval*pval)/q1val
-                    anum = int((pval+sqrtd)/qval)
-                    aval = anum*a1val + a2val
-                    bval = anum*b1val + b2val
-                    if a1val > self.biglimit:
-                        finished = True
+                acc()
         return localans
 
     def chkPellVal(self, aval, histind):

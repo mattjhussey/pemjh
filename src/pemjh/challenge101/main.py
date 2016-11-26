@@ -1,6 +1,19 @@
 """ Challenge101 """
 
 
+def get_frac(value, power, index, x):
+    # Work out the numerator and denomintaor for this value
+    numerator = value
+    denominator = 1
+    if power != 0:
+        for diff in xrange(1, power + 2):
+            if diff != (index + 1):
+                numerator *= (x - diff)
+                denominator *= ((index + 1) - diff)
+
+    return numerator / denominator
+
+
 def main():
     """ challenge101 """
     highestPower = 10
@@ -21,16 +34,7 @@ def main():
         for x in xrange(1, highestPower + 2):
             y = 0
             for index, value in enumerate(sequence[:power + 1]):
-                # Work out the numerator and denomintaor for this value
-                numerator = value
-                denominator = 1
-                if power != 0:
-                    for diff in xrange(1, power + 2):
-                        if diff != (index + 1):
-                            numerator *= (x - diff)
-                            denominator *= ((index + 1) - diff)
-
-                y += numerator / denominator
+                y += get_frac(value, power, index, x)
 
             workedSequence.append(y)
 

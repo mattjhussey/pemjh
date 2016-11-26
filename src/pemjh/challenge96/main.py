@@ -123,29 +123,30 @@ class SGrid(object):
         # the list
         blocks = self.__getAllBlocks()
 
-        for block in blocks:
-            for sq in block:
-                # Get each square that is longer than 1
-                if len(sq[0]) > 1:
-                    # Count qty in the block that are the same
-                    identical = [sq2 for sq2 in block if sq[0] == sq2[0]]
-                    # If count matches length then remove the values from all
-                    # non-matching squares
-                    if len(identical) == len(sq[0]):
-                        lSq = len(sq[0])
-                        # Store values
-                        stored = copy.copy(sq[0])
+        for block, sq in ((block, sq)
+                          for block in blocks
+                          for sq in block):
+            # Get each square that is longer than 1
+            if len(sq[0]) > 1:
+                # Count qty in the block that are the same
+                identical = [sq2 for sq2 in block if sq[0] == sq2[0]]
+                # If count matches length then remove the values from all
+                # non-matching squares
+                if len(identical) == len(sq[0]):
+                    lSq = len(sq[0])
+                    # Store values
+                    stored = copy.copy(sq[0])
 
-                        # Remove from list
-                        for val in stored:
-                            nRemoved = removeValueFromList(block, val)
-                            if nRemoved != lSq:
-                                changes = True
+                    # Remove from list
+                    for val in stored:
+                        nRemoved = removeValueFromList(block, val)
+                        if nRemoved != lSq:
+                            changes = True
 
-                        # Reinstate in identicals
-                        for val in stored:
-                            for sq2 in identical:
-                                sq2[0].append(val)
+                    # Reinstate in identicals
+                    for val in stored:
+                        for sq2 in identical:
+                            sq2[0].append(val)
 
         return changes
 

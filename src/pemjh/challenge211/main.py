@@ -266,19 +266,17 @@ class problem211(object):
                 finished = False
                 while not finished:
                     c = loop2.next()
-                    if period == 0:
-                        if anum == origa*2:
-                            period = c
-                            if period % 2 == 0:
-                                break
-                            localans += self.chkPellVal(a1val, self.lowhist[i])
+                    if period == 0 and anum == origa*2:
+                        period = c
+                        if period % 2 == 0:
+                            break
+                        localans += self.chkPellVal(a1val, self.lowhist[i])
                     if period > 0:
                         temp = c + 1
-                        if temp % period == 0:
-                            temp1 = temp / period
-                            if temp1 % 2 == 1:
-                                localans += self.chkPellVal(aval,
-                                                            self.lowhist[i])
+                        if temp % period == 0 and \
+                           temp / period % 2 == 1:
+                            localans += self.chkPellVal(aval,
+                                                        self.lowhist[i])
                     p1val = pval
                     q1val = qval
                     b2val = b1val

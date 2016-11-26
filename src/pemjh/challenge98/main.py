@@ -91,8 +91,8 @@ def main(words):
 
                         word2Square = mapWord(word2, word_squares)
 
-                        if word2Square in squares[lWord - 2]:
-                            if int(word2Square) > largest:
-                                largest = int(word2Square)
+                        if word2Square in squares[lWord - 2] and \
+                           int(word2Square) > largest:
+                            largest = int(word2Square)
 
     return largest

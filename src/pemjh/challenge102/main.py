@@ -2,29 +2,29 @@
 from __future__ import with_statement
 
 
-def enclosesOrigin(x1, y1, x2, y2, x3, y3):
+def enclosesOrigin(p1, p2, p3):
     # To enclose, 1 point should be left (or right) of 0
     # 0 should be between the two lines joining this point with the other 2
 
     # Remove invalid cases
-    x12 = x1 * x2
-    x23 = x2 * x3
-    x31 = x3 * x1
+    x12 = p1[0] * p2[0]
+    x23 = p2[0] * p3[0]
+    x31 = p3[0] * p1[0]
     if not (x12 > 0 and x23 > 0 and x31 > 0):
         # Points cross the divide
         # Find the differing point
         if x12 * x23 > 0:
-            # x2 is on the other side
-            i1 = getYIntercept(x2, y2, x1, y1)
-            i2 = getYIntercept(x2, y2, x3, y3)
+            # p2[0] is on the other side
+            i1 = getYIntercept(p2[0], p2[1], p1[0], p1[1])
+            i2 = getYIntercept(p2[0], p2[1], p3[0], p3[1])
         elif x23 * x31 > 0:
-            # x3 is on the other side
-            i1 = getYIntercept(x3, y3, x1, y1)
-            i2 = getYIntercept(x3, y3, x2, y2)
+            # p3[0] is on the other side
+            i1 = getYIntercept(p3[0], p3[1], p1[0], p1[1])
+            i2 = getYIntercept(p3[0], p3[1], p2[0], p2[1])
         else:
-            # x1 is on the other side
-            i1 = getYIntercept(x1, y1, x2, y2)
-            i2 = getYIntercept(x1, y1, x3, y3)
+            # p1[0] is on the other side
+            i1 = getYIntercept(p1[0], p1[1], p2[0], p2[1])
+            i2 = getYIntercept(p1[0], p1[1], p3[0], p3[1])
 
         if i1 * i2 < 0:
             return True
@@ -47,6 +47,8 @@ def main(triangles):
     """ challenge102 """
     nEnclosing = sum(1
                      for ax, ay, bx, by, cx, cy in triangles
-                     if enclosesOrigin(ax, ay, bx, by, cx, cy))
+                     if enclosesOrigin((ax, ay),
+                                       (bx, by),
+                                       (cx, cy)))
 
     return nEnclosing

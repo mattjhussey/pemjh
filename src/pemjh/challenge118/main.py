@@ -1,6 +1,6 @@
 """ Challenge118 """
 from itertools import permutations
-from pemjh.numbers import PrimeChecker
+from pemjh.numbers import is_prime
 
 
 def valid(num):
@@ -31,7 +31,6 @@ def build_sets(existing, left, lExist=0):
 
 def main():
     """ challenge118 """
-    pc = PrimeChecker()
     perms = ["1", "2", "3", "5", "7"]
     for size in xrange(2, 10):
         perms.extend([l for l in permutations("123456789", size)
@@ -39,7 +38,7 @@ def main():
 
     perms = ["".join(p) for p in perms]
 
-    primes = [prime for prime in perms if pc.is_prime(int(prime))]
+    primes = [prime for prime in perms if is_prime(int(prime))]
 
     sets = build_sets("", primes)
 

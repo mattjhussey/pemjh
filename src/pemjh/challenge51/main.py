@@ -1,15 +1,13 @@
 """ Challenge051 """
 from itertools import cycle
-from pemjh.numbers import PrimeChecker
+from pemjh.numbers import is_prime
 
 
-def substitute_primes(template, substitute, checker):
+def substitute_primes(template, substitute):
     """
-    >>> checker = PrimeChecker()
-    >>> substitute_primes("13", "1", checker)
+    >>> substitute_primes("13", "1")
     (6, 13)
-    >>> checker = PrimeChecker()
-    >>> substitute_primes("56223", "2", checker)
+    >>> substitute_primes("56223", "2")
     (7, 56003)
     """
     count = 0
@@ -20,7 +18,7 @@ def substitute_primes(template, substitute, checker):
         # Check if prime
         if working[0] != "0":
             working = int(working)
-            if checker.is_prime(int(working)):
+            if is_prime(int(working)):
                 if working < smallest:
                     smallest = working
                 count += 1
@@ -49,18 +47,16 @@ def has_3_same_digits(i):
 
 def main():
     """ challenge051 """
-    prime_checker = PrimeChecker()
     step = cycle([2, 4])
     current = 5
     while True:
         # Check current
-        if prime_checker.is_prime(current) and has_3_same_digits(current):
+        if is_prime(current) and has_3_same_digits(current):
             # Substitute 0 to 9
             word = str(current)
             for i in xrange(0, 10):
                 number_of_primes, smallest = substitute_primes(word,
-                                                               str(i),
-                                                               prime_checker)
+                                                               str(i))
                 if number_of_primes == 8:
                     return smallest
 

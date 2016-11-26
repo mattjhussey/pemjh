@@ -1,17 +1,5 @@
 """ Challenge111 """
-from pemjh.numbers import PrimeChecker
-
-
-def isPrime(p, pc=PrimeChecker()):
-    if p & 1:
-        # Odd, ok
-        # divisible by 5?
-        if p % 5 == 0:
-            return False
-        else:
-            return pc.is_prime(p)
-    else:
-        return False
+from pemjh.numbers import is_prime
 
 
 def buildNums(repeated, other):
@@ -47,7 +35,7 @@ def main():
                                                              m)]:
                     if b >= 10**(9):
                         # Check each for primality
-                        if isPrime(b):
+                        if is_prime(b):
                             n += 1
                             s += b
         N.append(n)

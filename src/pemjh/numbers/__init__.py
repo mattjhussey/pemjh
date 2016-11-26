@@ -17,7 +17,6 @@ from .main import \
     polytopic_numbers, \
     prime_factors, \
     prime_indices, \
-    PrimeChecker, \
     root_convergent_generator, \
     sieved_primes
 
@@ -39,6 +38,5 @@ __all__ = [
     'polytopic_numbers',
     'prime_factors',
     'prime_indices',
-    'PrimeChecker',
     'root_convergent_generator',
     'sieved_primes']

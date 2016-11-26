@@ -1,11 +1,9 @@
 """ Challenge077 """
-from pemjh.numbers import PrimeChecker
+from pemjh.numbers import is_prime
 
 
 def main():
     """ challenge077 """
-    prime_checker = PrimeChecker()
-
     nums = dict()
 
     num = 2
@@ -13,7 +11,7 @@ def main():
         sums = set()
 
         # Is the current number a prime?
-        if prime_checker.is_prime(num):
+        if is_prime(num):
             sums.add(tuple([num]))
 
         # Check for previous sums

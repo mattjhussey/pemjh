@@ -1,7 +1,6 @@
 """ Challenge060 """
-from pemjh.numbers import sieved_primes, PrimeChecker
+from pemjh.numbers import sieved_primes, is_prime
 
-PRIME_CHECKER = PrimeChecker()
 MAXIMUM_PRIME = 0
 
 
@@ -24,8 +23,8 @@ def is_concatenated_prime(new, existing):
 
     new_last = int(existing * 10**(get_number_length(new)) + new)
 
-    return PRIME_CHECKER.is_prime(new_first) \
-        and PRIME_CHECKER.is_prime(new_last)
+    return is_prime(new_first) \
+        and is_prime(new_last)
 
 
 def get_prime_pairs(primes):

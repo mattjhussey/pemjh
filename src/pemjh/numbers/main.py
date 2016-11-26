@@ -224,6 +224,20 @@ def get_triangle_route_length(rows):
     return rows[0][0]
 
 
+def memoize(func):
+    """ Remember the calls made and return cached """
+    known = {}
+
+    def decorated(*args, **kwargs):
+        """ The decorating call """
+        key = tuple(args)
+        if key not in known:
+            known[key] = func(*args, **kwargs)
+        return known[key]
+    return decorated
+
+
+@memoize
 def is_prime(n):
     if n <= 1:
         return False
@@ -252,6 +266,26 @@ def lowest_common_terms(n, d):
         divisor += 1
 
     return n2, d2
+
+
+def memoize_prime_indices(func):
+    """ Remember the calls made and return cached """
+    known = {}
+
+    def decorated(*args, **kwargs):
+        """ The decorating call """
+        def make_key(target,
+                     indexLimit,
+                     dummy_primes,
+                     primeIndex,
+                     dummy_limit=0):
+            """ Return the arguments as a hashable key """
+            return (target, indexLimit, primeIndex)
+        key = make_key(*args, **kwargs)
+        if key not in known:
+            known[key] = func(*args, **kwargs)
+        return known[key]
+    return decorated
 
 
 def num_variations(blocks, tileSizes, known):
@@ -330,27 +364,7 @@ def prime_factors(n):
             yield p
 
 
-def memoize(func):
-    """ Remember the calls made and return cached """
-    known = {}
-
-    def decorated(*args, **kwargs):
-        """ The decorating call """
-        def make_key(target,
-                     indexLimit,
-                     dummy_primes,
-                     primeIndex,
-                     dummy_limit=0):
-            """ Return the arguments as a hashable key """
-            return (target, indexLimit, primeIndex)
-        key = make_key(*args, **kwargs)
-        if key not in known:
-            known[key] = func(*args, **kwargs)
-        return known[key]
-    return decorated
-
-
-@memoize
+@memoize_prime_indices
 def prime_indices(target,
                   indexLimit,
                   primes,
@@ -392,57 +406,6 @@ def prime_indices(target,
             answer = next_prime_index
 
     return answer
-
-
-class PrimeChecker(object):
-    def __init__(self):
-        self._primes = list([2, 3, 5])
-        self._highestFound = 5
-        self._steps = cycle([2, 4])
-
-    def _factorInPrimes(self, n):
-        limit = int(sqrt(n)) + 1
-        for p in self._primes:
-            if n % p == 0:
-                return True
-            if p > limit:
-                break
-        return False
-
-    def is_prime(self, n):
-        # If n <= highest then check if in
-        if n <= self._highestFound:
-            return n in set(self._primes)
-        else:
-            limit = int(sqrt(n)) + 1
-
-            # Do rough check
-            if not (((n % 6) == 1) or ((n % 6) == 5)):
-                return False
-
-            if self._factorInPrimes(n):
-                return False
-
-            nextTested = self._highestFound
-            while self._highestFound <= limit:
-                nextTested += self._steps.next()
-
-                # Check against the current primes
-                prime = True
-                for p in self._primes:
-                    if nextTested % p == 0:
-                        prime = False
-                        break
-
-                if prime:
-                    self._primes.append(nextTested)
-                    self._highestFound = nextTested
-                    if n % nextTested == 0:
-                        return False
-
-            return True
-        # Build primes until greater or equal to n
-        # if equal then true
 
 
 def root_convergent_generator(square, infinite=False):

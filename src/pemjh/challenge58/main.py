@@ -1,5 +1,5 @@
 """ Challenge058 """
-from pemjh.numbers import PrimeChecker
+from pemjh.numbers import is_prime
 
 
 def main():
@@ -8,15 +8,13 @@ def main():
     prime_count = 0
     diagonals = 1
 
-    prime_checker = PrimeChecker()
-
     # Cycle through layers
     sidestep = 2
     while True:
         for _ in xrange(1, 4):
             current += sidestep
 
-            if prime_checker.is_prime(current):
+            if is_prime(current):
                 prime_count += 1
 
         current += sidestep

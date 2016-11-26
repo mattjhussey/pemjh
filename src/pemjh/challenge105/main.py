@@ -5,7 +5,7 @@ from __future__ import with_statement
 def sizedSubsets(l, size):
     subsets = list()
     sizeL = len(l)
-    for index in range(len(l)):
+    for index in xrange(len(l)):
 
         if size > (sizeL - index):
             break

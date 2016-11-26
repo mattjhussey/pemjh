@@ -20,22 +20,22 @@ def main():
 
     total = list()
 
-    for next in primes:
+    for prime in primes:
 
         # square of current will definitely not be semidivisable
         lows = set(myrange(current**2 + current,
-                           next**2 if next**2 < limit + 1 else limit + 1,
+                           prime**2 if prime**2 < limit + 1 else limit + 1,
                            current))
 
-        highest = next**2 - next
+        highest = prime**2 - prime
 
-        highs = set(myrange(highest, current**2, -next))
+        highs = set(myrange(highest, current**2, -prime))
 
         # Get numbers in one or other but not both
         valid = lows.symmetric_difference(highs)
 
         total.extend(list(valid))
 
-        current = next
+        current = prime
 
     return sum(t for t in total if t < limit)

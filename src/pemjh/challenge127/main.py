@@ -21,15 +21,15 @@ def main(limit):
         found = False
         index = 0
         while not found:
-            next = rad_lookup[index]
-            a = next[1]
-            if next[0] * rads[c - 1] >= c:
+            next_rad = rad_lookup[index]
+            a = next_rad[1]
+            if next_rad[0] * rads[c - 1] >= c:
                 found = True
             else:
                 b = c - a
 
                 if a < (c / 2) and \
-                   next[0] * rads[b - 1] * rads[c - 1] < c and \
+                   next_rad[0] * rads[b - 1] * rads[c - 1] < c and \
                    gcd(a, b) == 1:
                     result += c
                 index += 1

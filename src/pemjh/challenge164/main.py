@@ -26,11 +26,11 @@ def numLosses(size, previousThree, useZero):
 
     elif size > 0:
 
-        for next in xrange(0 if useZero else 1, 10):
+        for next_digit in xrange(0 if useZero else 1, 10):
             nVariations += numLosses(size - 1,
                                      (previousThree[1],
                                       previousThree[2],
-                                      next),
+                                      next_digit),
                                      True)
     return nVariations
 

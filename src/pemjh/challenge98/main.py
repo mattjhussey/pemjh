@@ -2,33 +2,33 @@
 from __future__ import with_statement
 
 
-def getMap(word, square):
-    map = dict()
+def getWord_Squares(word, square):
+    word_squares = dict()
     for w, s in zip(word, square):
-        if w in map:
-            if map[w] != s:
-                map = None
+        if w in word_squares:
+            if word_squares[w] != s:
+                word_squares = None
                 return
-        map[w] = s
+        word_squares[w] = s
 
-    return map
+    return word_squares
 
 
-def uniqueRight(map):
+def uniqueRight(word_squares):
     rights = set()
-    for key in map:
-        if map[key] in rights:
+    for key in word_squares:
+        if word_squares[key] in rights:
             return False
 
-        rights.add(map[key])
+        rights.add(word_squares[key])
 
     return True
 
 
-def mapWord(word, map):
+def mapWord(word, word_squares):
     mapped = list()
     for c in word:
-        mapped.append(map[c])
+        mapped.append(word_squares[c])
 
     return "".join(mapped)
 
@@ -83,13 +83,13 @@ def main(words):
                 # Make sure the word maps onto word1
                 # (duplicate letters/numbers etc)
                 # Create the map
-                map = getMap(word1, potentialSquare)
-                if map and uniqueRight(map):
+                word_squares = getWord_Squares(word1, potentialSquare)
+                if word_squares and uniqueRight(word_squares):
                     # Loop through word2
                     for j in xrange(i + 1, nWords):
                         word2 = anagrams[j]
 
-                        word2Square = mapWord(word2, map)
+                        word2Square = mapWord(word2, word_squares)
 
                         if word2Square in squares[lWord - 2]:
                             if int(word2Square) > largest:

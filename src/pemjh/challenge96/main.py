@@ -243,9 +243,9 @@ def main(data):
         # Read header line
         data.pop(0)
         # Read next 9 lines into a list
-        input = [data.pop(0).strip() for _ in xrange(9)]
+        grid = [data.pop(0).strip() for _ in xrange(9)]
 
-        ans = SGrid(input)
+        ans = SGrid(grid)
 
         total += int(ans)
 

@@ -36,14 +36,14 @@ def process(limit):
         # Should be a integer
         if short == int(short):
             short = int(short)
-            long = 2 * short - 1
+            long_side = 2 * short - 1
         else:
             short = int((rt - 4) // 6)
-            long = 2 * short + 1
+            long_side = 2 * short + 1
 
-        if (short * 2 + long * 2) > limit:
+        if (short * 2 + long_side * 2) > limit:
             break
-        yield short * 2, long, long
+        yield short * 2, long_side, long_side
 
         prev_2 = prev_1
         prev_1 = (middle, offset)

@@ -15,13 +15,13 @@ def main():
 
     total = 0
     for _ in xrange(12):
-        next = b1.next() * b2.next()
+        next_b = b1.next() * b2.next()
 
-        v = ((next // 2)**2 + (next + 1)**2)**0.5
+        v = ((next_b // 2)**2 + (next_b + 1)**2)**0.5
         if v == int(v):
             total += int(v)
         else:
-            v = ((next // 2)**2 + (next - 1)**2)**0.5
+            v = ((next_b // 2)**2 + (next_b - 1)**2)**0.5
 
             total += int(v)
 

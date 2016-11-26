@@ -372,14 +372,14 @@ def prime_indices(target,
         if answer != 0 and mult > answer:
             break
         else:
-            next = mult * prime_indices(target // index,
-                                        index - 1,
-                                        primes,
-                                        primeIndex + 1,
-                                        answer)
+            next_prime_index = mult * prime_indices(target // index,
+                                                    index - 1,
+                                                    primes,
+                                                    primeIndex + 1,
+                                                    answer)
 
-            if not answer or next < answer:
-                answer = next
+            if not answer or next_prime_index < answer:
+                answer = next_prime_index
 
         index += 2
 
@@ -387,9 +387,9 @@ def prime_indices(target,
 
     if indexLimit == 1 or index <= indexLimit:
         # Return this index
-        next = primes[primeIndex]**((index - 1) // 2)
-        if not answer or next < answer:
-            answer = next
+        next_prime_index = primes[primeIndex]**((index - 1) // 2)
+        if not answer or next_prime_index < answer:
+            answer = next_prime_index
 
     return answer
 

@@ -358,9 +358,12 @@ class problem211(object):
         the product of whose divisor sum squares equals the index of the
         entry (excluding internal integer powers that are factored out).
         """
-        first8k = self.limit * [[]]
-        for i in self.solutions:
-            first8k[i] = self.solutions[i][::]
+        def get_first_8k():
+            first8k = self.limit * [[]]
+            for i in self.solutions:
+                first8k[i] = self.solutions[i][::]
+            return first8k
+        first8k = get_first_8k()
         for i in xrange(2, self.limit):
             if len(first8k[i]) == 0:
                 temp = i

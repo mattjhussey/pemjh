@@ -58,33 +58,28 @@ def main():
     operators = list(selection([operator.add, operator.sub,
                                 operator.mul, operator.truediv], 3))
 
-    for a, b in ((a, b)
-                 for a in xrange(1, 5)
-                 for b in xrange(a + 1, 10)):
-        c = None
-        for c, d in ((c, d)
-                     for c in xrange(b + 1, 6)
-                     for d in xrange(c + 1, 10)):
+    for a, b, c, d in ((a, b, c, d)
+                       for a in xrange(1, 5)
+                       for b in xrange(a + 1, 10)
+                       for c in xrange(b + 1, 6)
+                       for d in xrange(c + 1, 10)):
 
-            nums = [False] * maximum
+        nums = [False] * maximum
 
-            # Get sequences of abcd
-            for com in combinations([a, b, c, d]):
-                for n in equatedNumbers(com[0],
-                                        com[1],
-                                        com[2],
-                                        com[3],
-                                        operators):
-                    if n < maximum:
-                        nums[n] = True
+        # Get sequences of abcd
+        for com in combinations([a, b, c, d]):
+            for n in equatedNumbers(com[0],
+                                    com[1],
+                                    com[2],
+                                    com[3],
+                                    operators):
+                if n < maximum:
+                    nums[n] = True
 
-            # Find first
-            lowest = nums[1:].index(False)
+        # Find first
+        lowest = nums[1:].index(False)
 
-            if lowest > highest[0]:
-                highest = (lowest, a, b, c, d)
-
-        if c == b + 1:
-            break
+        if lowest > highest[0]:
+            highest = (lowest, a, b, c, d)
 
     return highest[1] * 1000 + highest[2] * 100 + highest[3] * 10 + highest[4]

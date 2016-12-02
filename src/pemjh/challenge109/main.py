@@ -1,23 +1,8 @@
 """ Challenge109 """
+from pemjh.function_tools import memoize
 
 
-def memoize(func):
-    """ Remember the calls made and return cached """
-    known = {}
-
-    def decorated(*args, **kwargs):
-        """ The decorating call """
-        def make_key(out, darts, nums):
-            """ Return the arguments as a hashable key """
-            return (out, darts, tuple(nums))
-        key = make_key(*args, **kwargs)
-        if key not in known:
-            known[key] = func(*args, **kwargs)
-        return known[key]
-    return decorated
-
-
-@memoize
+@memoize()
 def get_non_double_outs(out, darts, nums):
     """ Get non-double outs """
     out_count = 0
@@ -53,6 +38,7 @@ def main():
     nums += [(x*3, x) for x in range(1, 21)]
     nums += [(25, 25), (50, 25)]
     nums.sort()
+    nums = tuple(nums)
 
     doubles = [(x*2, x) for x in range(1, 21)] + [(50, 25)]
 

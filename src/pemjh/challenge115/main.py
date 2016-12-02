@@ -1,21 +1,8 @@
 """ Challenge115 """
+from pemjh.function_tools import memoize
 
 
-def memoize(function):
-    """ Memoize passed function """
-    known = {}
-
-    def wrapped(*args, **kwargs):
-        """ Perform lookup and call function if needed """
-        key = tuple(args)
-        print key
-        if key not in known:
-            known[key] = function(*args, **kwargs)
-        return known[key]
-    return wrapped
-
-
-@memoize
+@memoize()
 def num_variations(blocks, minimum):
     """ Get the number of variations """
     num = 0

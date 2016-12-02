@@ -1,19 +1,6 @@
 """ Challenge259 """
 from fractions import gcd
-
-
-def memoize(function):
-    """ Memoize passed function """
-    known = {}
-
-    def wrapped(*args, **kwargs):
-        """ Perform lookup and call function if needed """
-        key = tuple(args)
-        print key
-        if key not in known:
-            known[key] = function(*args, **kwargs)
-        return known[key]
-    return wrapped
+from pemjh.function_tools import memoize
 
 
 def tidy(a):
@@ -40,7 +27,7 @@ def div(a, b):
     return mul(a, (b[1], b[0]))
 
 
-@memoize
+@memoize()
 def get_totals(start, end):
     totals = set()
 

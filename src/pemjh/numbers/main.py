@@ -268,26 +268,6 @@ def lowest_common_terms(n, d):
     return n2, d2
 
 
-def memoize_prime_indices(func):
-    """ Remember the calls made and return cached """
-    known = {}
-
-    def decorated(*args, **kwargs):
-        """ The decorating call """
-        def make_key(target,
-                     indexLimit,
-                     dummy_primes,
-                     primeIndex,
-                     dummy_limit=0):
-            """ Return the arguments as a hashable key """
-            return (target, indexLimit, primeIndex)
-        key = make_key(*args, **kwargs)
-        if key not in known:
-            known[key] = func(*args, **kwargs)
-        return known[key]
-    return decorated
-
-
 def num_variations(blocks, tileSizes, known):
     if blocks in known:
         return known[blocks]
@@ -362,50 +342,6 @@ def prime_factors(n):
         while workingN % p == 0:
             workingN /= p
             yield p
-
-
-@memoize_prime_indices
-def prime_indices(target,
-                  indexLimit,
-                  primes,
-                  primeIndex,
-                  limit=0):
-    answer = limit
-
-    index = 3
-
-    indexLimit = indexLimit + 1
-
-    newProduct = index
-    while newProduct <= target:
-        if indexLimit != 1 and index > indexLimit:
-            break
-
-        # Recur
-        mult = primes[primeIndex]**((index - 1) // 2)
-        if answer != 0 and mult > answer:
-            break
-        else:
-            next_prime_index = mult * prime_indices(target // index,
-                                                    index - 1,
-                                                    primes,
-                                                    primeIndex + 1,
-                                                    answer)
-
-            if not answer or next_prime_index < answer:
-                answer = next_prime_index
-
-        index += 2
-
-        newProduct = index
-
-    if indexLimit == 1 or index <= indexLimit:
-        # Return this index
-        next_prime_index = primes[primeIndex]**((index - 1) // 2)
-        if not answer or next_prime_index < answer:
-            answer = next_prime_index
-
-    return answer
 
 
 def root_convergent_generator(square, infinite=False):

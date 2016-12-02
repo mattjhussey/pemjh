@@ -1,4 +1,4 @@
 """ challenge110 """
-from .main import main
+from pemjh.challenge108 import main
 
 __all__ = ['main']

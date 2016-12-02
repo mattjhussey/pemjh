@@ -16,7 +16,6 @@ from .main import \
     phi, \
     polytopic_numbers, \
     prime_factors, \
-    prime_indices, \
     root_convergent_generator, \
     sieved_primes
 
@@ -37,6 +36,5 @@ __all__ = [
     'phi',
     'polytopic_numbers',
     'prime_factors',
-    'prime_indices',
     'root_convergent_generator',
     'sieved_primes']

@@ -1,4 +1,5 @@
 """ Challenge146 """
+# pylint: disable=invalid-name
 
 
 def is_pseudo_prime(n):

@@ -14,6 +14,7 @@ def A(n):
     A(41) = 5.
 
     The least value of n for which A(n) first exceeds ten is 17. """
+    # pylint: disable=invalid-name
     rep = 1
     k = 1
     while rep % n != 0:
@@ -23,26 +24,27 @@ def A(n):
     return k
 
 
-def combined_row(t, b):
+def combined_row(top_row, bottom_row):
     # Step through each point and add it to the higher of
     # the values to the left or right in the lower branch
-    topRow = []
-    bottomRow = []
-    topRow.extend(t)
-    bottomRow.extend(b)
-    while len(topRow) > 0:
-        nextNum = topRow[0]
-        leftNum = bottomRow[0]
-        rightNum = bottomRow[1]
-        if leftNum > rightNum:
-            yield nextNum + leftNum
+    top_row_remaining = []
+    bottom_row_remaining = []
+    top_row_remaining.extend(top_row)
+    bottom_row_remaining.extend(bottom_row)
+    while len(top_row_remaining) > 0:
+        next_num = top_row_remaining[0]
+        left_num = bottom_row_remaining[0]
+        right_num = bottom_row_remaining[1]
+        if left_num > right_num:
+            yield next_num + left_num
         else:
-            yield nextNum + rightNum
-        topRow.pop(0)
-        bottomRow.pop(0)
+            yield next_num + right_num
+        top_row_remaining.pop(0)
+        bottom_row_remaining.pop(0)
 
 
 def continue_generator(square, infinite=False):
+    # pylint: disable=invalid-name
     root = int(square**0.5)
     b = root
     yield b
@@ -67,22 +69,22 @@ def continue_generator(square, infinite=False):
             den = 1
 
         # Get new b
-        newB = b
+        new_b = b
         limit = den - root
-        nSubtracts = 0
-        while newB >= limit:
-            newB -= den
-            nSubtracts += 1
+        n_subtracts = 0
+        while new_b >= limit:
+            new_b -= den
+            n_subtracts += 1
 
-        b = -newB
+        b = -new_b
         num = den
 
         if infinite:
-            yield nSubtracts
+            yield n_subtracts
         else:
 
             # Add number to answers
-            answers.append([nSubtracts, b, num])
+            answers.append([n_subtracts, b, num])
 
             # Check for end?
             if check:
@@ -94,18 +96,18 @@ def continue_generator(square, infinite=False):
             check = not check
 
 
-def divisors(n, includeN):
+def divisors(root, include_n):
     yield 1
-    limit = int(sqrt(n)) + 1
+    limit = int(sqrt(root)) + 1
     mirrored = []
-    if includeN:
-        mirrored.append(n)
+    if include_n:
+        mirrored.append(root)
     for i in xrange(2, limit):
-        if not n % i:
+        if not root % i:
             # Divisor
             yield i
 
-            pair = n / i
+            pair = root / i
             if pair != i:
                 mirrored.append(pair)
 
@@ -114,9 +116,9 @@ def divisors(n, includeN):
         yield i
 
 
-def fact(x):
+def fact(root):
     total = 1
-    for i in range(1, x + 1):
+    for i in range(1, root + 1):
         total *= i
     return total
 
@@ -131,6 +133,7 @@ def fibo():
 
 
 def gcd(a, b):
+    # pylint: disable=invalid-name
     if b > a:
         a, b = b, a
 
@@ -143,38 +146,39 @@ def gcd(a, b):
         return gcd(b, r)
 
 
-def get_num_divisors_helped(n, known):
+def get_num_divisors_helped(num, known):
     # Is the number already known?
-    if n in known:
-        return known[n]
+    if num in known:
+        return known[num]
     else:
-        nDivisors = 1  # Always 1 or more
+        n_divisors = 1  # Always 1 or more
 
-        potentialDivisor = 2
-        remainingN = n
-        while remainingN > 1:
-            if remainingN % potentialDivisor == 0:
-                divideCount = 0
-                while remainingN % potentialDivisor == 0:
-                    divideCount += 1
-                    remainingN /= potentialDivisor
+        potential_divisor = 2
+        remaining_n = num
+        while remaining_n > 1:
+            if remaining_n % potential_divisor == 0:
+                divide_count = 0
+                while remaining_n % potential_divisor == 0:
+                    divide_count += 1
+                    remaining_n /= potential_divisor
 
-                nDivisors *= (divideCount + 1)
+                n_divisors *= (divide_count + 1)
 
                 # Is the remaining already known?
-                if remainingN in known:
-                    nDivisors *= known[remainingN]
-                    remainingN = 1
+                if remaining_n in known:
+                    n_divisors *= known[remaining_n]
+                    remaining_n = 1
 
-            potentialDivisor += 1
+            potential_divisor += 1
 
-        known[n] = nDivisors
+        known[num] = n_divisors
 
-        return nDivisors
+        return n_divisors
 
 
 def get_primitive_triples(limit):
     " Generates primitive pythagorean triples "
+    # pylint: disable=invalid-name
 
     n = 1
     while True:
@@ -209,17 +213,17 @@ def get_primitive_triples(limit):
 def get_triangle_route_length(rows):
     while len(rows) > 1:
         # Get the bottom row
-        bottomRow = rows.pop(len(rows) - 1)
+        bottom_row = rows.pop(len(rows) - 1)
 
         # Get the row one above the bottom
-        currentRow = rows[len(rows) - 1]
+        current_row = rows[len(rows) - 1]
 
-        newRow = []
-        for i in combined_row(currentRow, bottomRow):
-            newRow.append(i)
+        new_row = []
+        for i in combined_row(current_row, bottom_row):
+            new_row.append(i)
 
-        # Set currentRow to the newRow
-        rows[len(rows) - 1] = newRow
+        # Set current_row to the new_row
+        rows[len(rows) - 1] = new_row
 
     return rows[0][0]
 
@@ -238,16 +242,17 @@ def memoize(func):
 
 
 @memoize
-def is_prime(n):
-    if n <= 1:
+def is_prime(potential_prime):
+    if potential_prime <= 1:
         return False
 
-    if n == 2 or n == 3:
+    if potential_prime == 2 or potential_prime == 3:
         return True
-    elif n > 3 and (n % 6 == 1 or n % 6 == 5):
-        limit = int(sqrt(n)) + 1
+    elif potential_prime > 3 and (potential_prime % 6 == 1 or
+                                  potential_prime % 6 == 5):
+        limit = int(sqrt(potential_prime)) + 1
         for i in rough_primes(limit):
-            if n % i == 0:
+            if potential_prime % i == 0:
                 return False
     else:
         return False
@@ -255,54 +260,55 @@ def is_prime(n):
     return True
 
 
-def lowest_common_terms(n, d):
-    n2 = n
-    d2 = d
+def lowest_common_terms(numerator, denominator):
+    numerator_2 = numerator
+    denominator_2 = denominator
     divisor = 2
-    while divisor <= n2 or divisor <= d2:
-        while n2 % divisor == 0 and d2 % divisor == 0:
-            n2 /= divisor
-            d2 /= divisor
+    while divisor <= numerator_2 or divisor <= denominator_2:
+        while numerator_2 % divisor == 0 and denominator_2 % divisor == 0:
+            numerator_2 /= divisor
+            denominator_2 /= divisor
         divisor += 1
 
-    return n2, d2
+    return numerator_2, denominator_2
 
 
-def num_variations(blocks, tileSizes, known):
+def get_num_variations(blocks, tile_sizes, known):
     if blocks in known:
         return known[blocks]
-    nVariations = 0
+    num_variations = 0
 
     if blocks > 1:
-        for tileSize in tileSizes:
+        for tile_size in tile_sizes:
             # work out with tile here
-            if blocks >= tileSize:
-                nVariations += num_variations(blocks - tileSize,
-                                              tileSizes,
-                                              known)
+            if blocks >= tile_size:
+                num_variations += get_num_variations(blocks - tile_size,
+                                                     tile_sizes,
+                                                     known)
 
         # work out with no tile here
-        nVariations += num_variations(blocks - 1,
-                                      tileSizes,
-                                      known)
+        num_variations += get_num_variations(blocks - 1,
+                                             tile_sizes,
+                                             known)
 
     else:
-        nVariations = 1
+        num_variations = 1
 
-    known[blocks] = nVariations
+    known[blocks] = num_variations
 
-    return nVariations
+    return num_variations
 
 
-def permutate(s):
-    if len(s) == 2:
-        yield s
-        yield s[1] + s[0]
+def permutate(sequence):
+    if len(sequence) == 2:
+        yield sequence
+        yield sequence[1] + sequence[0]
     else:
         # Pull out each and permutate the remainder
-        for n, c in enumerate(s):
-            for p in permutate(s[:n] + s[n + 1:]):
-                build = c + p
+        for item_index, item in enumerate(sequence):
+            for permutation in permutate(
+                    sequence[:item_index] + sequence[item_index + 1:]):
+                build = item + permutation
                 yield build
 
 
@@ -324,39 +330,44 @@ def phi(limit):
     return phis
 
 
-def polytopic_numbers(f, qty):
-    div = fact(f)
-    for n in xrange(1, qty + 1):
-        val = 1
-        for i in xrange(f):
-            val *= (n + i)
-        yield val / div
+def polytopic_numbers(root, qty):
+    div = fact(root)
+    return (product([n + i for i in xrange(root)], 1) / div
+            for n in xrange(1, qty + 1))
 
 
-def prime_factors(n):
-    workingN = n
-    for p in [sp for sp in sieved_primes(n) if sp > 1]:
-        if p > workingN:
+def prime_factors(limit):
+    working_n = limit
+    for prime in [sp for sp in sieved_primes(limit) if sp > 1]:
+        if prime > working_n:
             break
 
-        while workingN % p == 0:
-            workingN /= p
-            yield p
+        while working_n % prime == 0:
+            working_n /= prime
+            yield prime
+
+
+def product(collection, initial):
+    return reduce(lambda x, y: x*y, collection, initial)
 
 
 def root_convergent_generator(square, infinite=False):
-    A_current = 1  # Current A
-    A_previous = 0  # Previous A
+    # pylint: disable=invalid-name
+    current_a = 1  # Current A
+    previous_a = 0  # Previous A
 
-    B = 0  # Current B
-    B_1 = 1  # Previous B
+    current_b = 0  # Current B
+    previous_b = 1  # Previous B
 
     for b in continue_generator(square, infinite):
-        newA = b * A_current + A_previous
-        newB = b * B + B_1
-        yield [newA, newB]
+        new_a = b * current_a + previous_a
+        new_b = b * current_b + previous_b
+        yield [new_a, new_b]
 
-        A_previous, A_current, B_1, B = A_current, newA, B, newB
+        previous_a = current_a
+        current_a = new_a
+        previous_b = current_b
+        current_b = new_b
 
 
 def rough_primes(limit):

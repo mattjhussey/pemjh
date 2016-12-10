@@ -7,11 +7,11 @@ from .main import \
     fibo, \
     gcd, \
     get_num_divisors_helped, \
+    get_num_variations, \
     get_primitive_triples, \
     get_triangle_route_length, \
     is_prime, \
     lowest_common_terms, \
-    num_variations, \
     permutate, \
     phi, \
     polytopic_numbers, \
@@ -27,11 +27,11 @@ __all__ = [
     'fibo',
     'gcd',
     'get_num_divisors_helped',
+    'get_num_variations',
     'get_primitive_triples',
     'get_triangle_route_length',
     'is_prime',
     'lowest_common_terms',
-    'num_variations',
     'permutate',
     'phi',
     'polytopic_numbers',

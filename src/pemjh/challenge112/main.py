@@ -1,29 +1,29 @@
 """ Challenge112 """
 
 
-def isBouncy(n):
-    d, m = divmod(n, 10)
+def is_bouncy(potential_bouncy):
+    divisor, current_digit = divmod(potential_bouncy, 10)
     movement = 0
-    while d > 0:
+    while divisor > 0:
         # get the new movement
-        d, nextM = divmod(d, 10)
-        if nextM < m:
-            nextMovement = -1
-        elif nextM > m:
-            nextMovement = 1
+        divisor, next_digit = divmod(divisor, 10)
+        if next_digit < current_digit:
+            next_movement = -1
+        elif next_digit > current_digit:
+            next_movement = 1
         else:
-            nextMovement = 0
+            next_movement = 0
 
-        m = nextM
+        current_digit = next_digit
 
-        if nextMovement != 0:
+        if next_movement != 0:
             # A move found
 
             # Compare to previous movements
             if movement == 0:
                 # First directional movement
-                movement = nextMovement
-            elif movement != nextMovement:
+                movement = next_movement
+            elif movement != next_movement:
                 # Change in direction found
                 return True
     return False
@@ -31,17 +31,17 @@ def isBouncy(n):
 
 def main(target):
     """ challenge112 """
-    currentBouncy = 0
-    currentNumber = 100
+    current_bouncy = 0
+    current_number = 100
     bouncy = list()
     while True:
-        if isBouncy(currentNumber):
-            currentBouncy += 100
-            bouncy.append(currentNumber)
+        if is_bouncy(current_number):
+            current_bouncy += 100
+            bouncy.append(current_number)
 
-        if (currentBouncy / currentNumber) >= target:
+        if (current_bouncy / current_number) >= target:
             break
 
-        currentNumber += 1
+        current_number += 1
 
-    return currentNumber
+    return current_number

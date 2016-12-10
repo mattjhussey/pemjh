@@ -1,4 +1,5 @@
 """ Challenge135 """
+# pylint: disable=invalid-name
 
 
 def getNumTarget(limit, target):

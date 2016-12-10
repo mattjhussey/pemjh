@@ -2,53 +2,53 @@
 from __future__ import with_statement
 
 
-def sizedSubsets(l, size):
+def sized_subsets(sequence, size):
     subsets = list()
-    sizeL = len(l)
-    for index in xrange(len(l)):
+    sequence_length = len(sequence)
+    for index in xrange(len(sequence)):
 
-        if size > (sizeL - index):
+        if size > (sequence_length - index):
             break
 
         # More needed?
         if size > 1:
-            for sub in sizedSubsets(l[index + 1:], size - 1):
-                subsets.append([l[index]] + sub)
+            for sub in sized_subsets(sequence[index + 1:], size - 1):
+                subsets.append([sequence[index]] + sub)
         else:
-            subsets.append([l[index]])
+            subsets.append([sequence[index]])
 
     return subsets
 
 
-def checkForDuplicateSetSums(l):
-    for setSize in range(1, len(l) // 2 + 1):
-        sumSub = [sum(seq) for seq in sizedSubsets(l, setSize)]
-        sumSub.sort()
-        if len(sumSub) != len(set(sumSub)):
+def check_for_duplicate_set_sums(sequence):
+    for set_size in range(1, len(sequence) // 2 + 1):
+        sum_sub = [sum(seq) for seq in sized_subsets(sequence, set_size)]
+        sum_sub.sort()
+        if len(sum_sub) != len(set(sum_sub)):
             # Remove duplicates should be identical
             return False
     return True
 
 
-def valid(l):
+def valid(sequence):
     # Sort it
-    l.sort()
+    sequence.sort()
     # Check that all greater sized sets are bigger than smaller sized ones
     # Get the largest set from small numbers and the smaller set from large
     # numbers
-    nItems = len(l)
+    num_items = len(sequence)
 
-    if nItems & 1:
-        large = l[:(nItems // 2) + 1]
+    if num_items & 1:
+        large = sequence[:(num_items // 2) + 1]
     else:
-        large = l[:(nItems // 2)]
+        large = sequence[:(num_items // 2)]
 
-    small = l[(nItems // 2) + 1:]
+    small = sequence[(num_items // 2) + 1:]
 
     if sum(large) <= sum(small):
         return False
 
-    return checkForDuplicateSetSums(l)
+    return check_for_duplicate_set_sums(sequence)
 
 
 def main(sets):

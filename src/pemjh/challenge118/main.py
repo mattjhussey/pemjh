@@ -7,25 +7,25 @@ def valid(num):
     return len(set(num)) == len(num)
 
 
-def build_sets(existing, left, lExist=0):
+def build_sets(existing, left, sequence_exist=0):
     sets = 0
     for prime_index in xrange(len(left)):
         new = existing + left[prime_index]
 
-        lLeft = len(left[prime_index])
-        lNew = lExist + lLeft
+        sequence_left = len(left[prime_index])
+        sequence_new = sequence_exist + sequence_left
 
-        if lNew > 9:
+        if sequence_new > 9:
             # Cannot be any more
             break
-        elif lNew < 9 and (9 - lNew < lLeft):
+        elif sequence_new < 9 and (9 - sequence_new < sequence_left):
             continue
 
         if valid(new):
-            if lNew == 9:
+            if sequence_new == 9:
                 sets += 1
             else:
-                sets += build_sets(new, left[prime_index + 1:], lNew)
+                sets += build_sets(new, left[prime_index + 1:], sequence_new)
     return sets
 
 

@@ -1,4 +1,5 @@
 """ Challenge173 """
+# pylint: disable=invalid-name
 
 
 def numOfSquares(bits):

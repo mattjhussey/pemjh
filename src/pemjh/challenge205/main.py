@@ -1,4 +1,5 @@
 """ Challenge205 """
+# pylint: disable=invalid-name
 
 
 def product(*args):

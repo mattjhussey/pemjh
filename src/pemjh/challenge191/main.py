@@ -1,4 +1,5 @@
 """ Challenge191 """
+# pylint: disable=invalid-name
 from pemjh.function_tools import memoize
 
 

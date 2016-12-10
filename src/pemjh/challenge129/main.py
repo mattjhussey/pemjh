@@ -1,4 +1,5 @@
 """ Challenge129 """
+# pylint: disable=invalid-name
 from pemjh.numbers import A
 
 

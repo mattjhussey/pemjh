@@ -3,22 +3,22 @@
 
 def main(limit):
     """ challenge125 """
-    rtLimit = limit**0.5
-    if rtLimit != int(rtLimit):
-        rtLimit += 1
-    rtLimit = int(rtLimit)
+    rt_limit = limit**0.5
+    if rt_limit != int(rt_limit):
+        rt_limit += 1
+    rt_limit = int(rt_limit)
 
     found = set()
-    for start in xrange(1, rtLimit):
-        sq = start**2
-        for end in xrange(start + 1, rtLimit):
-            sq += end**2
+    for start in xrange(1, rt_limit):
+        square = start**2
+        for end in xrange(start + 1, rt_limit):
+            square += end**2
 
-            if sq >= limit:
+            if square >= limit:
                 break
 
-            pal = str(sq)
+            pal = str(square)
             if pal == pal[::-1]:
-                found.add(sq)
+                found.add(square)
 
     return sum(found)

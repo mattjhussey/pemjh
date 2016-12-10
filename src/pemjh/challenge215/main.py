@@ -1,4 +1,5 @@
 """ Challenge215 """
+# pylint: disable=invalid-name
 
 
 def memoize(function):

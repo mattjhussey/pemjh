@@ -1,4 +1,5 @@
 """ Challenge188 """
+# pylint: disable=invalid-name
 
 
 def tetrate(a, b):

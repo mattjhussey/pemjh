@@ -2,50 +2,50 @@
 from __future__ import with_statement
 
 
-def skimNetwork(grid):
+def skim_network(grid):
     # Choose row A as the first working row
-    connectedRows = [0]
-    availableConnections = sorted([(l, 0, i) for i, l in enumerate(grid[0])
-                                   if l > 0])
+    connected_rows = [0]
+    available_connections = sorted([(l, 0, i) for i, l in enumerate(grid[0])
+                                    if l > 0])
     connections = list()
 
     # While there are available connections
-    while len(availableConnections) > 0:
+    while len(available_connections) > 0:
         # Get shortest available connection
-        shortest = availableConnections[0]
+        shortest = available_connections[0]
 
         # Add as a connected row
-        connectedRows.append(shortest[2])
+        connected_rows.append(shortest[2])
 
         # Add the connection
         connections.append(shortest)
 
-        # Remove any from availableConnections that go to a destination
-        availableConnections = [link for link in availableConnections
-                                if link[2] not in connectedRows]
+        # Remove any from available_connections that go to a destination
+        available_connections = [link for link in available_connections
+                                 if link[2] not in connected_rows]
 
         # Add the target row to the available connections
-        availableConnections.extend([(l, shortest[2], i)
-                                     for i, l in enumerate(grid[shortest[2]])
-                                     if l > 0 and i not in connectedRows])
+        available_connections.extend([(l, shortest[2], i)
+                                      for i, l in enumerate(grid[shortest[2]])
+                                      if l > 0 and i not in connected_rows])
 
-        availableConnections.sort()
+        available_connections.sort()
 
     # Create the new grid
-    newGrid = [[0] * len(grid) for _ in grid]
+    new_grid = [[0] * len(grid) for _ in grid]
     for connection in connections:
-        newGrid[connection[1]][connection[2]] = connection[0]
-        newGrid[connection[2]][connection[1]] = connection[0]
-    return newGrid
+        new_grid[connection[1]][connection[2]] = connection[0]
+        new_grid[connection[2]][connection[1]] = connection[0]
+    return new_grid
 
 
-def scoreGrid(grid):
+def score_grid(grid):
     total = 0
     offset = 1
     # Loop through rows
-    for r in grid[:-1]:
-        for v in r[offset:]:
-            total += v
+    for row in grid[:-1]:
+        for value in row[offset:]:
+            total += value
         offset += 1
 
     return total
@@ -55,13 +55,13 @@ def main(grid):
     """ challenge107 """
 
     # Score the grid in its current state
-    originalScore = scoreGrid(grid)
+    original_score = score_grid(grid)
 
     # Shorten the grid to only essentials
-    newGrid = skimNetwork(grid)
+    new_grid = skim_network(grid)
 
     # Score the new grid
-    newScore = scoreGrid(newGrid)
+    new_score = score_grid(new_grid)
 
     # Return original - new
-    return originalScore - newScore
+    return original_score - new_score

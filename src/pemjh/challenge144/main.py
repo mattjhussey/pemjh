@@ -1,4 +1,5 @@
 """ Challenge144 """
+# pylint: disable=invalid-name
 from math import atan2, tan
 
 

@@ -3,33 +3,33 @@ from pemjh.function_tools import memoize
 
 
 @memoize()
-def numVariations(blocks, tileSize, dec=True):
-    nVariations = 0
+def num_variations(blocks, tile_size, dec=True):
+    num = 0
 
     if blocks > 1:
         # work out with tile here
-        if blocks >= tileSize:
-            nVariations += numVariations(blocks - tileSize,
-                                         tileSize,
-                                         False)
+        if blocks >= tile_size:
+            num += num_variations(blocks - tile_size,
+                                  tile_size,
+                                  False)
 
         # work out with tile not here
-        nVariations += numVariations(blocks - 1, tileSize, False)
+        num += num_variations(blocks - 1, tile_size, False)
 
     else:
-        nVariations = 1
+        num = 1
 
     if dec:
-        nVariations -= 1
+        num -= 1
 
-    return nVariations
+    return num
 
 
 def process(blocks):
-    n2 = numVariations(blocks, 2)
-    n3 = numVariations(blocks, 3)
-    n4 = numVariations(blocks, 4)
-    return n2 + n3 + n4
+    num_2_variations = num_variations(blocks, 2)
+    num_3_variations = num_variations(blocks, 3)
+    num_4_variations = num_variations(blocks, 4)
+    return num_2_variations + num_3_variations + num_4_variations
 
 
 def main(blocks):

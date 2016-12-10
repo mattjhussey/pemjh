@@ -3,8 +3,8 @@
 
 def main(limit):
     """ challenge100 """
-    b = 3
-    n = 4
-    while n <= limit:
-        b, n = 3*b + 2*n - 2, 4*b + 3*n - 3
-    return b
+    blue = 3
+    total = 4
+    while total <= limit:
+        blue, total = 3*blue + 2*total - 2, 4*blue + 3*total - 3
+    return blue

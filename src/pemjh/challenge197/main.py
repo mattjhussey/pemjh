@@ -1,4 +1,5 @@
 """ Challenge197 """
+# pylint: disable=invalid-name
 
 
 def f(x):

@@ -1,4 +1,5 @@
 """ Challenge207 """
+# pylint: disable=invalid-name
 
 
 def main():

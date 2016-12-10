@@ -1,4 +1,5 @@
 """ Challenge174 """
+# pylint: disable=invalid-name
 
 
 def getNumEvenDivisors(n):

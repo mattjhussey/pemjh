@@ -1,4 +1,5 @@
 """ Challenge206 """
+# pylint: disable=invalid-name
 from math import sqrt, ceil
 from itertools import chain, izip
 import string

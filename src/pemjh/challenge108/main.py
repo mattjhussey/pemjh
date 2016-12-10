@@ -3,30 +3,30 @@ from pemjh.numbers import sieved_primes
 
 
 def prime_indices(target,
-                  indexLimit,
+                  index_limit,
                   primes,
-                  primeIndex,
+                  prime_index,
                   limit=0):
     answer = limit
 
     index = 3
 
-    indexLimit = indexLimit + 1
+    index_limit = index_limit + 1
 
-    newProduct = index
-    while newProduct <= target:
-        if indexLimit != 1 and index > indexLimit:
+    new_product = index
+    while new_product <= target:
+        if index_limit != 1 and index > index_limit:
             break
 
         # Recur
-        mult = primes[primeIndex]**((index - 1) // 2)
+        mult = primes[prime_index]**((index - 1) // 2)
         if answer != 0 and mult > answer:
             break
         else:
             next_prime_index = mult * prime_indices(target // index,
                                                     index - 1,
                                                     primes,
-                                                    primeIndex + 1,
+                                                    prime_index + 1,
                                                     answer)
 
             if not answer or next_prime_index < answer:
@@ -34,11 +34,11 @@ def prime_indices(target,
 
         index += 2
 
-        newProduct = index
+        new_product = index
 
-    if indexLimit == 1 or index <= indexLimit:
+    if index_limit == 1 or index <= index_limit:
         # Return this index
-        next_prime_index = primes[primeIndex]**((index - 1) // 2)
+        next_prime_index = primes[prime_index]**((index - 1) // 2)
         if not answer or next_prime_index < answer:
             answer = next_prime_index
 
@@ -47,9 +47,9 @@ def prime_indices(target,
 
 def main(target):
     """ challenge108 """
-    primeLimit = 10000
+    prime_limit = 10000
 
-    primes = list(sieved_primes(primeLimit))[1:]
+    primes = list(sieved_primes(prime_limit))[1:]
 
     # Get suitable prime_indices
     indices = prime_indices((target * 2 - 1), 0, primes, 0)

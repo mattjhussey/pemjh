@@ -1,4 +1,5 @@
 """ Challenge127 """
+# pylint: disable=invalid-name
 from pemjh.numbers import gcd, sieved_primes
 
 

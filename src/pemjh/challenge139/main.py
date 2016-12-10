@@ -1,4 +1,5 @@
 """ Challenge139 """
+# pylint: disable=invalid-name
 from pemjh.numbers import get_primitive_triples
 
 

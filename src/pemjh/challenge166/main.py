@@ -1,4 +1,5 @@
 """ Challenge166 """
+# pylint: disable=invalid-name
 
 
 def quad():

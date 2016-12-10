@@ -1,4 +1,5 @@
 """ Challenge230 """
+# pylint: disable=invalid-name
 
 
 def D(a, b, n):

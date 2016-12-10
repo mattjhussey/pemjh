@@ -17,9 +17,8 @@ def main(digits):
     descending = sum(polytopic_numbers(digits - 1, 10)) - 1
 
     # Add leading zero numbers
-    for d in xrange(1, digits):
-        p = sum(polytopic_numbers(d - 1, 10)) - 10
-        descending += p
+    for digit in xrange(1, digits):
+        descending += sum(polytopic_numbers(digit - 1, 10)) - 10
 
     # 2 Digits
     # Rising

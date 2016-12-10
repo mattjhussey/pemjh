@@ -1,4 +1,5 @@
 """ Challenge138 """
+# pylint: disable=invalid-name
 from pemjh.numbers import fibo
 
 

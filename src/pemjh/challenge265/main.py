@@ -1,4 +1,5 @@
 """ Challenge265 """
+# pylint: disable=invalid-name
 
 
 def tobin(h):

@@ -13,12 +13,9 @@ def main():
         for j in xrange(1, i // 2 + 1):
 
             # Get list of sums
-            for f in best[i - j]:
-
-                # Is j in sumB?
-                if j in f:
-                    # Add sumB + i to the sums
-                    facts.append(f.union([i]))
+            facts.extend(f.union([i])
+                         for f in best[i - j]
+                         if j in f)
 
         # Get the shortest
         shortest = min(len(eq) for eq in facts)

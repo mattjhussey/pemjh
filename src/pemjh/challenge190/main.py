@@ -1,4 +1,5 @@
 """ Challenge190 """
+# pylint: disable=invalid-name
 
 
 def P(m):

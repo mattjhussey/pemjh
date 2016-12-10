@@ -1,4 +1,5 @@
 """ Challenge093 """
+# pylint: disable=invalid-name
 import operator
 
 

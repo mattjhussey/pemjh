@@ -1,15 +1,15 @@
 """ Challenge120 """
 
 
-def highestMod(n):
-    if n & 1:
+def highest_mod(num):
+    if num & 1:
         # odd
-        return (n**2) - n
+        return (num**2) - num
     else:
-        return (n**2) - 2 * n
+        return (num**2) - 2 * num
 
 
 def main():
     """ challenge120 """
-    mods = [highestMod(a) for a in xrange(3, 1001)]
+    mods = [highest_mod(a) for a in xrange(3, 1001)]
     return sum(mods)

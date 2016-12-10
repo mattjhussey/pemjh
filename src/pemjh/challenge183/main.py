@@ -1,4 +1,5 @@
 """ Challenge183 """
+# pylint: disable=invalid-name
 import math
 from pemjh.function_tools import memoize
 from pemjh.numbers import prime_factors

@@ -1,12 +1,12 @@
 """ Challenge119 """
 
 
-def sumDigits(n):
-    w = n
+def sum_digits(num):
+    remaining = num
     total = 0
-    while w:
-        w, m = divmod(w, 10)
-        total += m
+    while remaining:
+        remaining, digit = divmod(remaining, 10)
+        total += digit
     return total
 
 
@@ -20,8 +20,8 @@ def main(target):
         pwr = i
         for _ in xrange(100):
             # Do the digits of pwr == i?
-            s = sumDigits(pwr)
-            if s == i:
+            total = sum_digits(pwr)
+            if total == i:
                 answers.append(pwr)
             pwr *= i
 

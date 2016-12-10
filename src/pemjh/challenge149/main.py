@@ -1,4 +1,5 @@
 """ Challenge149 """
+# pylint: disable=invalid-name
 
 
 def sk1(k):

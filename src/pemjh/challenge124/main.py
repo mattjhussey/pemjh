@@ -2,17 +2,17 @@
 from pemjh.numbers import sieved_primes
 
 
-def sort124(a, b):
+def sort124(first, second):
     # Optimised for the test.
-    if a[0] > b[0] or \
-       (a[0] == b[0] and a[1] > b[1]):
+    if first[0] > second[0] or \
+       (first[0] == second[0] and first[1] > second[1]):
 
         return 1
     else:
         return -1
 
 
-def main(kElement, limit):
+def main(k_element, limit):
     """ challenge124 """
 
     # Setup array of 1s
@@ -20,9 +20,9 @@ def main(kElement, limit):
 
     # Get primes needed
     # Multiply each by the primes
-    for p in sieved_primes(limit + 1):
-        for i in xrange(p - 1, limit, p):
-            numbers[i] *= p
+    for prime in sieved_primes(limit + 1):
+        for i in xrange(prime - 1, limit, prime):
+            numbers[i] *= prime
 
     # enumerate the list
     numbers = [[rad, n + 1] for n, rad in enumerate(numbers)]
@@ -30,5 +30,5 @@ def main(kElement, limit):
     # Sort by rec then n
     numbers.sort(sort124)
 
-    # Get kElement
-    return numbers[kElement - 1][1]
+    # Get k_element
+    return numbers[k_element - 1][1]

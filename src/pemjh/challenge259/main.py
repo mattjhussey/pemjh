@@ -1,4 +1,5 @@
 """ Challenge259 """
+# pylint: disable=invalid-name
 from fractions import gcd
 from pemjh.function_tools import memoize
 

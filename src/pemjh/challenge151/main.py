@@ -1,4 +1,5 @@
 """ Challenge151 """
+# pylint: disable=invalid-name
 
 
 def batch(a5, a4, a3, a2):

@@ -1,4 +1,5 @@
 """ Challenge099 """
+# pylint: disable=invalid-name
 from __future__ import with_statement
 
 

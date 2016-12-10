@@ -1,4 +1,5 @@
 """ Challenge211 """
+# pylint: disable=invalid-name
 from math import sqrt
 
 sqs = [False] * 256

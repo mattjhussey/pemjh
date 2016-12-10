@@ -1,4 +1,5 @@
 """ Challenge179 """
+# pylint: disable=invalid-name
 
 
 def working(limit):

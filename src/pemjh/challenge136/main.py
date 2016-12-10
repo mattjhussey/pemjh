@@ -1,4 +1,5 @@
 """ Challenge136 """
+# pylint: disable=invalid-name
 from pemjh.numbers import sieved_primes
 
 

@@ -1,4 +1,5 @@
 """ Challenge250 """
+# pylint: disable=missing-docstring
 
 
 def slow_way(limit):

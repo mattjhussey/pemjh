@@ -1,5 +1,6 @@
 """ Challenge173 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def numOfSquares(bits):

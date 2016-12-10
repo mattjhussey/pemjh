@@ -1,4 +1,5 @@
 """ Challenge106 """
+# pylint: disable=missing-docstring
 
 
 def increment_trilist(trl):

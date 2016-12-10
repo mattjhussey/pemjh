@@ -1,4 +1,5 @@
 """ Challenge120 """
+# pylint: disable=missing-docstring
 
 
 def highest_mod(num):

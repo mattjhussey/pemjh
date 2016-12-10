@@ -1,5 +1,6 @@
 """ Challenge211 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 from math import sqrt
 
 sqs = [False] * 256

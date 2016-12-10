@@ -2,6 +2,7 @@
 
 
 def fibo_trunc(trunc):
+    """ Return the first 9 and last 9 digits of the fibonacci sequences """
     a_start, b_start = 0, 1
     a_end, b_end = 0, 1
 

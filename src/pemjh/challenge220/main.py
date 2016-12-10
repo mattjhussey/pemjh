@@ -1,5 +1,6 @@
 """ Challenge220 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def dragonpos(n):

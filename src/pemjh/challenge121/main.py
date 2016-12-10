@@ -1,4 +1,5 @@
 """ Challenge121 """
+# pylint: disable=missing-docstring
 from pemjh.numbers import fact
 
 

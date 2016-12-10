@@ -1,5 +1,6 @@
 """ Challenge265 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def tobin(h):

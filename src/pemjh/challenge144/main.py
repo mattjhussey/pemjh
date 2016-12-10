@@ -1,5 +1,6 @@
 """ Challenge144 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 from math import atan2, tan
 
 

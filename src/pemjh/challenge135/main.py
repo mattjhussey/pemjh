@@ -1,5 +1,6 @@
 """ Challenge135 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def getNumTarget(limit, target):

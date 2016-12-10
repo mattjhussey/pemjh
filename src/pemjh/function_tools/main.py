@@ -2,6 +2,7 @@
 
 
 def memoize(already_known=None):
+    """ Create a memoize function with a primed dictionary. """
     def decorator(function):
         """ Memoize passed function """
         known = already_known \

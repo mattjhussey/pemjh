@@ -1,4 +1,5 @@
 """ Challenge111 """
+# pylint: disable=missing-docstring
 from pemjh.numbers import is_prime
 
 

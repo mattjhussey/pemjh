@@ -1,5 +1,6 @@
 """ Challenge191 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 from pemjh.function_tools import memoize
 
 

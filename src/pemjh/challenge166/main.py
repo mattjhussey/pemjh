@@ -1,5 +1,6 @@
 """ Challenge166 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def quad():

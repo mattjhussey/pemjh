@@ -1,5 +1,6 @@
 """ Challenge206 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 from math import sqrt, ceil
 from itertools import chain, izip
 import string

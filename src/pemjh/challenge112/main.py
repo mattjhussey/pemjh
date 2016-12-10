@@ -2,6 +2,8 @@
 
 
 def is_bouncy(potential_bouncy):
+    """ Return true if the number is 'bouncy', else false.
+    Bouncy means that the digits ascend and descend e.g. 12353527 """
     divisor, current_digit = divmod(potential_bouncy, 10)
     movement = 0
     while divisor > 0:

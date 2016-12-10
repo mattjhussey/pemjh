@@ -1,5 +1,6 @@
 """ Challenge188 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def tetrate(a, b):

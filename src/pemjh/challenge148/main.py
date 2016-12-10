@@ -1,4 +1,5 @@
 """ Challenge148 """
+# pylint: disable=missing-docstring
 
 
 def get_biggest_triangle(row):

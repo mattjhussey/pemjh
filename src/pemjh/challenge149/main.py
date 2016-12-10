@@ -1,5 +1,6 @@
 """ Challenge149 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def sk1(k):

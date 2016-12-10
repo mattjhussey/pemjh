@@ -1,4 +1,5 @@
 """ Challenge119 """
+# pylint: disable=missing-docstring
 
 
 def sum_digits(num):

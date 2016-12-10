@@ -1,5 +1,6 @@
 """ Challenge098 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 from __future__ import with_statement
 
 

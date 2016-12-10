@@ -1,4 +1,5 @@
 """ Challenge118 """
+# pylint: disable=missing-docstring
 from itertools import permutations
 from pemjh.numbers import is_prime
 

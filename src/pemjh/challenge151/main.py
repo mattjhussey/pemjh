@@ -1,5 +1,6 @@
 """ Challenge151 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def batch(a5, a4, a3, a2):

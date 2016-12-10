@@ -25,8 +25,8 @@ def A(n):
 
 
 def combined_row(top_row, bottom_row):
-    # Step through each point and add it to the higher of
-    # the values to the left or right in the lower branch
+    """ Step through each point and add it to the higher of
+    the values to the left or right in the lower branch """
     top_row_remaining = []
     bottom_row_remaining = []
     top_row_remaining.extend(top_row)
@@ -45,6 +45,7 @@ def combined_row(top_row, bottom_row):
 
 def continue_generator(square, infinite=False):
     # pylint: disable=invalid-name
+    # pylint: disable=missing-docstring
     root = int(square**0.5)
     b = root
     yield b
@@ -97,6 +98,7 @@ def continue_generator(square, infinite=False):
 
 
 def divisors(root, include_n):
+    # pylint: disable=missing-docstring
     yield 1
     limit = int(sqrt(root)) + 1
     mirrored = []
@@ -117,6 +119,7 @@ def divisors(root, include_n):
 
 
 def fact(root):
+    # pylint: disable=missing-docstring
     total = 1
     for i in range(1, root + 1):
         total *= i
@@ -134,6 +137,7 @@ def fibo():
 
 def gcd(a, b):
     # pylint: disable=invalid-name
+    # pylint: disable=missing-docstring
     if b > a:
         a, b = b, a
 
@@ -147,6 +151,7 @@ def gcd(a, b):
 
 
 def get_num_divisors_helped(num, known):
+    # pylint: disable=missing-docstring
     # Is the number already known?
     if num in known:
         return known[num]
@@ -211,6 +216,7 @@ def get_primitive_triples(limit):
 
 
 def get_triangle_route_length(rows):
+    # pylint: disable=missing-docstring
     while len(rows) > 1:
         # Get the bottom row
         bottom_row = rows.pop(len(rows) - 1)
@@ -243,6 +249,7 @@ def memoize(func):
 
 @memoize
 def is_prime(potential_prime):
+    # pylint: disable=missing-docstring
     if potential_prime <= 1:
         return False
 
@@ -261,6 +268,7 @@ def is_prime(potential_prime):
 
 
 def lowest_common_terms(numerator, denominator):
+    # pylint: disable=missing-docstring
     numerator_2 = numerator
     denominator_2 = denominator
     divisor = 2
@@ -274,6 +282,7 @@ def lowest_common_terms(numerator, denominator):
 
 
 def get_num_variations(blocks, tile_sizes, known):
+    # pylint: disable=missing-docstring
     if blocks in known:
         return known[blocks]
     num_variations = 0
@@ -300,6 +309,7 @@ def get_num_variations(blocks, tile_sizes, known):
 
 
 def permutate(sequence):
+    # pylint: disable=missing-docstring
     if len(sequence) == 2:
         yield sequence
         yield sequence[1] + sequence[0]
@@ -313,11 +323,13 @@ def permutate(sequence):
 
 
 def phi(limit):
+    # pylint: disable=missing-docstring
     primes = sieved_primes(limit)
     primes.next()
     phis = [1] * limit
 
     def apply_multiple(multiple, step, prime):
+        # pylint: disable=missing-docstring
         for i in xrange(step - 1, limit, step):
             phis[i] *= multiple
         # Get primeth, if less than limit
@@ -331,12 +343,14 @@ def phi(limit):
 
 
 def polytopic_numbers(root, qty):
+    # pylint: disable=missing-docstring
     div = fact(root)
     return (product([n + i for i in xrange(root)], 1) / div
             for n in xrange(1, qty + 1))
 
 
 def prime_factors(limit):
+    # pylint: disable=missing-docstring
     working_n = limit
     for prime in [sp for sp in sieved_primes(limit) if sp > 1]:
         if prime > working_n:
@@ -348,11 +362,13 @@ def prime_factors(limit):
 
 
 def product(collection, initial):
+    # pylint: disable=missing-docstring
     return reduce(lambda x, y: x*y, collection, initial)
 
 
 def root_convergent_generator(square, infinite=False):
     # pylint: disable=invalid-name
+    # pylint: disable=missing-docstring
     current_a = 1  # Current A
     previous_a = 0  # Previous A
 
@@ -371,6 +387,7 @@ def root_convergent_generator(square, infinite=False):
 
 
 def rough_primes(limit):
+    # pylint: disable=missing-docstring
     current = 5
     while current <= limit:
         yield current

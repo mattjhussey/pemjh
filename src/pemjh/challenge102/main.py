@@ -3,6 +3,8 @@ from __future__ import with_statement
 
 
 def encloses_origin(point_1, point_2, point_3):
+    """ Return True if the triangle formed by the 3 points encloses the
+    origin, else False. """
     # To enclose, 1 point should be left (or right) of 0
     # 0 should be between the two lines joining this point with the other 2
 
@@ -39,6 +41,7 @@ def encloses_origin(point_1, point_2, point_3):
 
 
 def get_y_intercept(x1, y1, x2, y2):
+    """ Return the y intercept of the line. """
     # pylint: disable=invalid-name
     # Assume there is a run
     m = (y2 - y1) / (x2 - x1)

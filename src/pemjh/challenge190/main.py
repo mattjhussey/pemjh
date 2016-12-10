@@ -1,5 +1,6 @@
 """ Challenge190 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def P(m):

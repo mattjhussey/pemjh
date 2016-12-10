@@ -1,4 +1,5 @@
 """ Challenge107 """
+# pylint: disable=missing-docstring
 from __future__ import with_statement
 
 

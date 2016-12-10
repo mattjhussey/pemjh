@@ -1,5 +1,6 @@
 """ Challenge093 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 import operator
 
 

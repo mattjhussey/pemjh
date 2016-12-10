@@ -1,5 +1,6 @@
 """ Challenge094 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def main():

@@ -2,7 +2,7 @@
 
 
 def get_frac(value, power, index, x_value):
-    # Work out the numerator and denomintaor for this value
+    """ Work out the numerator and denomintaor for this value """
     numerator = value
     denominator = 1
     if power != 0:

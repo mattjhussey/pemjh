@@ -1,5 +1,6 @@
 """ Challenge126 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def surrounding_cubes(x, y, z, layer):

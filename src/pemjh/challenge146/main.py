@@ -1,5 +1,6 @@
 """ Challenge146 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def is_pseudo_prime(n):

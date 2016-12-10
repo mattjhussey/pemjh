@@ -1,5 +1,6 @@
 """ Challenge174 """
 # pylint: disable=invalid-name
+# pylint: disable=missing-docstring
 
 
 def getNumEvenDivisors(n):

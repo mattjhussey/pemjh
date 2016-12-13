@@ -1,8 +1,10 @@
 """ Tests for challenge90 """
+import pytest
 from robber import expect
 from pemjh.challenge90 import main
 
 
+@pytest.mark.regression
 def test_challenge90():
     """ Regression testing challenge90 """
     expect(main()).to.eq(1217)

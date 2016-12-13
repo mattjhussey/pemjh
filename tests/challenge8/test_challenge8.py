@@ -29,7 +29,7 @@ thousand_digit = '73167176531330624919225119674426574742355349194934' \
 @pytest.mark.parametrize('digits, huge_number, expected',
                          [
                              (4, thousand_digit, 5832),
-                             (13, thousand_digit, 23514624000)
+                             pytest.mark.regression((13, thousand_digit, 23514624000))
                          ])
 def test_challenge8(digits, huge_number, expected):
     """ Regression testing challenge8 """

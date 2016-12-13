@@ -1,12 +1,14 @@
 """ Tests for challenge87 """
+import pytest
 from robber import expect
 from pemjh.challenge87 import main
 
 
-def test_challenge87():
-    """ Regression testing challenge87 """
-    expect(main(50000000)).to.eq(1097343)
-
-
-def test_challenge87_example():
-    expect(main(50)).to.eq(4)
+@pytest.mark.parametrize('test_input, expected',
+                         [
+                             (50, 4),
+                             pytest.mark.regression((50000000, 1097343))
+                         ])
+def test_challenge87(test_input, expected):
+    """ Testing challenge87 """
+    expect(main(test_input)).to.eq(expected)

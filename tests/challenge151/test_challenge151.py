@@ -1,8 +1,10 @@
 """ Tests for challenge151 """
+import pytest
 from robber import expect
 from pemjh.challenge151 import main
 
 
+@pytest.mark.regression
 def test_challenge151():
     """ Regression testing challenge151 """
     expect(main()).to.eq(0.464399)

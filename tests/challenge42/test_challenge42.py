@@ -1,9 +1,11 @@
 """ Tests for challenge42 """
 from os.path import abspath, dirname, join
+import pytest
 from robber import expect
 from pemjh.challenge42 import main
 
 
+@pytest.mark.regression
 def test_challenge42():
     """ Regression testing challenge42 """
     word_path = join(dirname(abspath(__file__)), 'words.txt')

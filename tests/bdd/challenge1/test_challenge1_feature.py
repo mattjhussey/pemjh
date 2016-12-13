@@ -1,6 +1,6 @@
 # coding=utf-8
 """Example feature tests."""
-
+import pytest
 from pytest import fixture
 from pytest_bdd import given, scenario, then, when
 from robber import expect
@@ -12,6 +12,7 @@ def context():
     return {}
 
 
+@pytest.mark.regression
 @scenario('../../features/challenge1.feature',
           'Testing Challenge1 works as it should.',
           example_converters=dict(input=int, result=int))

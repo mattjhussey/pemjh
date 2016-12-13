@@ -1,9 +1,11 @@
 """ Tests for challenge59 """
 from os.path import abspath, dirname, join
+import pytest
 from robber import expect
 from pemjh.challenge59 import main
 
 
+@pytest.mark.regression
 def test_challenge59():
     """ Regression testing challenge59 """
     cipher_path = join(dirname(abspath(__file__)), 'cipher1.txt')

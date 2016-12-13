@@ -1,9 +1,11 @@
 """ Tests for challenge54 """
 from os.path import abspath, dirname, join
+import pytest
 from robber import expect
 from pemjh.challenge54 import main
 
 
+@pytest.mark.regression
 def test_challenge54():
     """ Regression testing challenge54 """
     hand_path = join(dirname(abspath(__file__)), 'poker.txt')

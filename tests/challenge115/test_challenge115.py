@@ -8,7 +8,7 @@ from pemjh.challenge115 import main
                          [
                              (3, 30),
                              (10, 57),
-                             (50, 168)
+                             pytest.mark.regression((50, 168))
                          ])
 def test_challenge115(input, expected):
     """ Regression testing challenge115 """

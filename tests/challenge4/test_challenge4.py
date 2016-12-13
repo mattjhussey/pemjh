@@ -12,4 +12,3 @@ from pemjh.challenge4 import main
 def test_challenge4(test_input, expected):
     """ Regression testing challenge4 """
     expect(main(test_input)).to.eq(expected)
-

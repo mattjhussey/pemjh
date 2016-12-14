@@ -6,7 +6,7 @@ from pemjh.challenge86 import main
 
 @pytest.mark.parametrize('input, expected',
                          [
-                             (2000, 100),
+                             pytest.mark.example((2000, 100)),
                              pytest.mark.regression((1000000, 1818))
                          ])
 def test_challenge86(input, expected):

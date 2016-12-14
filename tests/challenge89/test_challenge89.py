@@ -15,6 +15,7 @@ def test_challenge89():
         expect(main(inputs)).to.eq(743)
 
 
+@pytest.mark.example
 def test_challenge89_example():
     inputs = [
         'IIIIIIIIIIIIIIII',

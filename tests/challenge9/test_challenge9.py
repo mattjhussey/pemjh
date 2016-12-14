@@ -4,7 +4,10 @@ from robber import expect
 from pemjh.challenge9 import main
 
 
-@pytest.mark.regression('input, expected', [(1000, 31875000)])
-def test_challenge9(input, expected):
+@pytest.mark.parametrize('test_input, expected',
+                         [
+                             pytest.mark.regression((1000, 31875000))
+                         ])
+def test_challenge9(test_input, expected):
     """ Regression testing challenge9 """
-    expect(main(input)).to.eq(expected)
+    expect(main(test_input)).to.eq(expected)

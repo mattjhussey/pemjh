@@ -6,7 +6,7 @@ from pemjh.challenge137 import main
 
 @pytest.mark.parametrize('nuggetIndex, expected',
                          [
-                             (10, 74049690),
+                             pytest.mark.example((10, 74049690)),
                              pytest.mark.regression((15, 1120149658760))
                          ])
 def test_challenge137(nuggetIndex, expected):

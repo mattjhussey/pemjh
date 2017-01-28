@@ -34,7 +34,7 @@ def main():
         classifiers=[
             "Development Status :: 1 - Planning"],
         setup_requires=['pytest-runner'],
-        tests_require=['pytest-bdd', 'robber', 'pytest']
+        tests_require=['pytest-bdd', 'robber', 'pytest', 'pytest-cov']
     )
 
 

@@ -1,6 +1,6 @@
 """ Challenge121 """
 # pylint: disable=missing-docstring
-from pemjh.numbers import fact
+from math import factorial
 
 
 def win_chance(probs, losses):  # probs are always 1 in...
@@ -21,7 +21,7 @@ def win_chance(probs, losses):  # probs are always 1 in...
 
 def main(turns):
     """ challenge121 """
-    den = fact(turns + 1)
+    den = factorial(turns + 1)
     losses_allowed = turns // 2
     if not turns & 1:
         losses_allowed -= 1

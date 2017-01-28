@@ -1,6 +1,7 @@
 """ Common number functions """
-from math import ceil, sqrt
+from math import ceil, factorial, sqrt
 from itertools import cycle
+from pemjh.function_tools import memoize
 
 
 def A(n):
@@ -98,7 +99,8 @@ def continue_generator(square, infinite=False):
 
 
 def divisors(root, include_n):
-    # pylint: disable=missing-docstring
+    """ Generate the divisors of the root. If include_n is True,
+    also return the root. """
     yield 1
     limit = int(sqrt(root)) + 1
     mirrored = []
@@ -116,14 +118,6 @@ def divisors(root, include_n):
     mirrored.reverse()
     for i in mirrored:
         yield i
-
-
-def fact(root):
-    # pylint: disable=missing-docstring
-    total = 1
-    for i in range(1, root + 1):
-        total *= i
-    return total
 
 
 def fibo():
@@ -234,20 +228,7 @@ def get_triangle_route_length(rows):
     return rows[0][0]
 
 
-def memoize(func):
-    """ Remember the calls made and return cached """
-    known = {}
-
-    def decorated(*args, **kwargs):
-        """ The decorating call """
-        key = tuple(args)
-        if key not in known:
-            known[key] = func(*args, **kwargs)
-        return known[key]
-    return decorated
-
-
-@memoize
+@memoize()
 def is_prime(potential_prime):
     # pylint: disable=missing-docstring
     if potential_prime <= 1:
@@ -281,31 +262,27 @@ def lowest_common_terms(numerator, denominator):
     return numerator_2, denominator_2
 
 
-def get_num_variations(blocks, tile_sizes, known):
+def get_num_variations(blocks, tile_sizes):
     # pylint: disable=missing-docstring
-    if blocks in known:
-        return known[blocks]
-    num_variations = 0
 
-    if blocks > 1:
-        for tile_size in tile_sizes:
-            # work out with tile here
-            if blocks >= tile_size:
-                num_variations += get_num_variations(blocks - tile_size,
-                                                     tile_sizes,
-                                                     known)
+    @memoize()
+    def get_num_variations_ts(blocks):
+        num_variations = 0
 
-        # work out with no tile here
-        num_variations += get_num_variations(blocks - 1,
-                                             tile_sizes,
-                                             known)
+        if blocks > 1:
+            for tile_size in tile_sizes:
+                # work out with tile here
+                if blocks >= tile_size:
+                    num_variations += get_num_variations_ts(blocks - tile_size)
 
-    else:
-        num_variations = 1
+            # work out with no tile here
+            num_variations += get_num_variations_ts(blocks - 1)
 
-    known[blocks] = num_variations
+        else:
+            num_variations = 1
 
-    return num_variations
+        return num_variations
+    return get_num_variations_ts(blocks)
 
 
 def permutate(sequence):
@@ -344,7 +321,7 @@ def phi(limit):
 
 def polytopic_numbers(root, qty):
     # pylint: disable=missing-docstring
-    div = fact(root)
+    div = factorial(root)
     return (product([n + i for i in xrange(root)], 1) / div
             for n in xrange(1, qty + 1))
 
@@ -352,9 +329,8 @@ def polytopic_numbers(root, qty):
 def prime_factors(limit):
     # pylint: disable=missing-docstring
     working_n = limit
-    for prime in [sp for sp in sieved_primes(limit) if sp > 1]:
-        if prime > working_n:
-            break
+    for prime in [sp for sp in sieved_primes(limit)
+                  if sp > 1 and sp <= working_n]:
 
         while working_n % prime == 0:
             working_n /= prime

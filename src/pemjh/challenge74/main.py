@@ -1,5 +1,5 @@
 """ Challenge074 """
-from pemjh.numbers import fact
+from math import factorial
 
 
 def fact_sum(facts, num):
@@ -10,7 +10,7 @@ def fact_sum(facts, num):
 def chain_size(num, known):
     """ Get the size of the chain starting with num """
     route = set([num])
-    facts = dict((str(i), fact(i)) for i in xrange(0, 10))
+    facts = dict((str(i), factorial(i)) for i in xrange(0, 10))
     step = fact_sum(facts, num)
     first_step = step
     route_length = 1

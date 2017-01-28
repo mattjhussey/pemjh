@@ -1,11 +1,11 @@
 """ Challenge034 """
-from pemjh.numbers import fact
+from math import factorial
 
 
 def main():
     """ challenge034 """
     limit = 2540160
-    facts = dict((str(i), fact(i)) for i in xrange(0, 10))
+    facts = dict((str(i), factorial(i)) for i in xrange(0, 10))
 
     found = []
     for i in xrange(3, limit + 1):

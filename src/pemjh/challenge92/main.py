@@ -1,7 +1,7 @@
 """ Challenge092 """
 # pylint: disable=invalid-name
 # pylint: disable=missing-docstring
-from pemjh.numbers import fact
+from math import factorial
 
 
 def numbers(current, start, end, digits):
@@ -20,17 +20,17 @@ def numbers(current, start, end, digits):
 def permutations(digits):
     prevI = -1
     nI = 0
-    quantities = fact(len(digits))
+    quantities = factorial(len(digits))
     factors = 1
     for i in digits:
         if i == prevI:
             nI += 1
         else:
-            factors *= fact(nI)
+            factors *= factorial(nI)
             prevI = i
             nI = 1
 
-    factors *= fact(nI)
+    factors *= factorial(nI)
 
     return quantities // factors
 

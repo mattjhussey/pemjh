@@ -3,7 +3,6 @@ from .main import \
     A, \
     continue_generator, \
     divisors, \
-    fact, \
     fibo, \
     gcd, \
     get_num_divisors_helped, \
@@ -23,7 +22,6 @@ __all__ = [
     'A',
     'continue_generator',
     'divisors',
-    'fact',
     'fibo',
     'gcd',
     'get_num_divisors_helped',

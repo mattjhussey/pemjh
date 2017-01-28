@@ -1,5 +1,5 @@
 """ Challenge015 """
-from pemjh.numbers import fact
+from math import factorial
 
 
 def get_routes(grid_size):
@@ -12,7 +12,7 @@ def get_routes(grid_size):
     # Get mid point of row
     midpoint = grid_size
 
-    return fact(row) / (fact(midpoint)**2)
+    return factorial(row) / (factorial(midpoint)**2)
 
 
 def main():

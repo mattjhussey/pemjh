@@ -29,7 +29,7 @@ def main():
         packages=find_packages(where='src'),
         package_data={},
         package_dir={'': 'src'},
-        install_requires=[],
+        install_requires=['numpy'],
         long_description=read("README"),
         classifiers=[
             "Development Status :: 1 - Planning"],

@@ -1,0 +1,9 @@
+# Temp editor files
+/**/*.*~
+
+# Build files
+/**/__pycache__/
+/.coverage
+/.eggs/
+/.tox/
+/**/*.egg-info/

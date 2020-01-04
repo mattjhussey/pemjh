@@ -31,8 +31,8 @@ def get_year_days(year):
     """
     if is_leap_year(year):
         return 366
-    else:
-        return 365
+
+    return 365
 
 
 def get_first_january(year):
@@ -42,7 +42,7 @@ def get_first_january(year):
     1
     """
     total_days = 1
-    for i in xrange(1900, year):
+    for i in range(1900, year):
         total_days += get_year_days(i)
     return total_days % 7
 
@@ -69,7 +69,7 @@ def main():
     """ challenge019 """
     # Loop through years
     total_days = 0
-    for year in xrange(1901, 2001):
+    for year in range(1901, 2001):
         # Loop through the first days of the months for the year
         for day in month_start_days(year):
             if day == 0:

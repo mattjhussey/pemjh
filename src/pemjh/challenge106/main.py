@@ -17,18 +17,18 @@ def increment_trilist(trl):
 def all_subsets(size):
     tri_list = [0] * size
 
-    for i in xrange(3**size - 1):
+    for _ in range(3**size - 1):
         increment_trilist(tri_list)
         # Must be a 1 and a 2 in the list
         if tri_list.count(1) > 0 and tri_list.count(2) > 0:
             # 2 cannot be before the first 1
             if tri_list.index(2) > tri_list.index(1):
                 # Count of 1 and 2 should be equal
-                yield [i for i in tri_list]
+                yield tri_list.copy()
 
 
 def score(lizt):
-    working = [v for v in lizt]
+    working = lizt.copy()
 
     # Assume first value of lizt is a 1, a value of 2 otherwise is a pass
     while len(working) > 0:

@@ -41,7 +41,7 @@ def main():
     highest = 0
 
     # Loop through the rows
-    for row in range(0, len(rows)):
+    for row, _ in enumerate(rows):
         # Loop through the columns
         for column in range(0, number_of_columns):
 

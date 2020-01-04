@@ -41,11 +41,13 @@ def main(limit):
             if so_far < limit:
                 for longer_2 in value:
                     total = so_far + longer_2
-                    if total <= limit:
-                        # Check that longer_1 and longer_2 are paired
-                        paired = longer_1**2 + longer_1*longer_2 + longer_2**2
-                        root = int(paired**0.5)
-                        if root * root == paired:
-                            results.add(total)
+                    if total > limit:
+                        continue
+
+                    # Check that longer_1 and longer_2 are paired
+                    paired = longer_1**2 + longer_1*longer_2 + longer_2**2
+                    root = int(paired**0.5)
+                    if root * root == paired:
+                        results.add(total)
 
     return sum(results)

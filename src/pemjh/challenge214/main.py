@@ -7,7 +7,7 @@ from pemjh.numbers import sieved_primes
 def totients(n, primes=None):
 
     # Get result grid
-    ans = range(n + 1)
+    ans = list(range(n + 1))
 
     # Set each prime to prime - 1
     for p in primes:
@@ -15,7 +15,7 @@ def totients(n, primes=None):
         ans[p] = p - 1
 
         # Step through ans in steps of p
-        for t in xrange(2 * p, n + 1, p):
+        for t in range(2 * p, n + 1, p):
             # Set to current - (current // p)
             ans[t] -= (ans[t] // p)
 
@@ -28,7 +28,7 @@ def totientChainLength():
     def func(n, limit, steps):
         route = [n]
         pos = n
-        for i in xrange(2, limit + 1):
+        for i in range(2, limit + 1):
             # Get next
             pos = steps[pos]
 
@@ -36,16 +36,16 @@ def totientChainLength():
                 if known[pos] == (limit - i + 1):
                     pos = 1
                     break
-                else:
-                    return False
-            else:
-                # Check still possible
-                if pos < (2**(limit - i)):
-                    # Too low
-                    return False
 
-                # Record route
-                route.append(pos)
+                return False
+
+            # Check still possible
+            if pos < (2**(limit - i)):
+                # Too low
+                return False
+
+            # Record route
+            route.append(pos)
 
         # valid route, cache
         i = 25

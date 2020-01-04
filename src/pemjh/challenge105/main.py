@@ -6,7 +6,7 @@ from __future__ import with_statement
 def sized_subsets(sequence, size):
     subsets = list()
     sequence_length = len(sequence)
-    for index in xrange(len(sequence)):
+    for index in range(sequence_length):
 
         if size > (sequence_length - index):
             break

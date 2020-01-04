@@ -1,5 +1,6 @@
 """ Challenge082 """
 from __future__ import with_statement
+from functools import reduce
 
 
 def combine_columns(column1, column2):

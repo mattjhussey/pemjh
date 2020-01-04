@@ -23,15 +23,15 @@ def prime_indices(target,
         mult = primes[prime_index]**((index - 1) // 2)
         if answer != 0 and mult > answer:
             break
-        else:
-            next_prime_index = mult * prime_indices(target // index,
-                                                    index - 1,
-                                                    primes,
-                                                    prime_index + 1,
-                                                    answer)
 
-            if not answer or next_prime_index < answer:
-                answer = next_prime_index
+        next_prime_index = mult * prime_indices(target // index,
+                                                index - 1,
+                                                primes,
+                                                prime_index + 1,
+                                                answer)
+
+        if not answer or next_prime_index < answer:
+            answer = next_prime_index
 
         index += 2
 

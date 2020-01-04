@@ -7,7 +7,7 @@ def main():
     limit = 10000
 
     odd_count = 0
-    for num in [num for num in xrange(2, limit + 1)
+    for num in [num for num in range(2, limit + 1)
                 if int(num**0.5) != num**0.5]:
 
         length = len(list(continue_generator(num))) - 1

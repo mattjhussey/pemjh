@@ -7,7 +7,7 @@ def main():
     maximum = 10000
     total = 0
     known_divisors = {}
-    for number in xrange(1, maximum):
+    for number in range(1, maximum):
         # Get the divisors total
         sum_of_divisors = 0
         for divisor in divisors(number, False):

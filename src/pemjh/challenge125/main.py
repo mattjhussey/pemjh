@@ -9,9 +9,9 @@ def main(limit):
     rt_limit = int(rt_limit)
 
     found = set()
-    for start in xrange(1, rt_limit):
+    for start in range(1, rt_limit):
         square = start**2
-        for end in xrange(start + 1, rt_limit):
+        for end in range(start + 1, rt_limit):
             square += end**2
 
             if square >= limit:

@@ -1,67 +1,57 @@
-""" Challenge259 """
+""" Challenge259
+
+Copied from RenDet on Project Euler forum after my solution was much too slow.
+Ref: https://projecteuler.net/quote_post=
+268727-ee0c355cc05cb3074a97c0ee791485e10c335450"""
 # pylint: disable=invalid-name
 # pylint: disable=missing-docstring
-from fractions import gcd
-from pemjh.function_tools import memoize
+# pylint: disable=too-many-nested-blocks
+from itertools import product
+from math import gcd
 
 
-def tidy(a):
-    g = abs(gcd(a[0], a[1]))
-    if a[1] < 0:
-        return (-a[0] // g, -a[1] // g)
-    else:
-        return (a[0] // g, a[1] // g)
+def som(a, b):
+    x, y = a[0]*b[1]+a[1]*b[0], a[1]*b[1]
+    d = gcd(x, y)
+    return (x//d, y//d)
 
 
-def add(a, b):
-    return tidy((a[0]*b[1] + b[0]*a[1], a[1]*b[1]))
+def prod(a, b):
+    d = gcd(a[0], b[1])*gcd(a[1], b[0])
+    return ((a[0]*b[0])//d, (a[1]*b[1])//d)
 
 
-def sub(a, b):
-    return add(a, (-b[0], b[1]))
-
-
-def mul(a, b):
-    return tidy((a[0] * b[0], a[1] * b[1]))
-
-
-def div(a, b):
-    return mul(a, (b[1], b[0]))
-
-
-@memoize()
-def get_totals(start, end):
-    totals = set()
-
-    # Loop pivot point
-    concatenated = start
-    for pivot in xrange(start + 1, end):
-        # Get left pivot
-        for left in get_totals(start, pivot):
-            # Get right pivot
-            for right in get_totals(pivot, end):
-                # create new from left (+, -, *, /) right
-
-                totals.add(add(left, right))
-
-                totals.add(sub(left, right))
-
-                totals.add(mul(left, right))
-
-                if right[0] != 0:
-                    totals.add(div(left, right))
-        concatenated *= 10
-        concatenated += pivot
-
-    totals.add((concatenated, 1))
-
-    return totals
+def reachable(a, b):
+    w = dict()
+    for i in range(a, b+1):
+        for j in range(i, b+1):
+            w[(i, j)] = set()
+    for j in range(a, b+1):
+        w[(j, j)].add((j, 1))
+    for k in range(1, b-a+1):
+        for c in range(a, b-k+1):
+            w[(c, c+k)].add((int("".join([str(i) for i in range(c, c+k+1)])),
+                             1))
+            K = (int("".join([str(i) for i in range(c)])+"0")//10+1) * \
+                (int("".join([str(i) for i in range(c+k+1, b+1)])+"0")//10+1)
+            for j in range(c, c+k):
+                for z in product(w[(c, j)], w[(j+1, c+k)]):
+                    x, y = z[0], z[1]
+                    for t in [som(x, y), som(x, (-y[0], y[1])), prod(x, y)]:
+                        if t[1] <= K:
+                            w[(c, c+k)].add(t)
+                        if y[0] != 0:
+                            t = prod(x, ((1-2*(y[0] < 0))*y[1],
+                                         (1-2*(y[0] < 0))*y[0]))
+                            if t[1] <= K:
+                                w[(c, c+k)].add(t)
+    return w[(a, b)]
 
 
 def main():
     """ challenge259 """
     lower = 1
-    limit = 10
+    limit = 9
 
-    return sum(x[0] for x in get_totals(lower, limit)
-               if x[1] == 1 and x[0] > 0)
+    return sum(x[0] for x in reachable(lower, limit)
+               if x[0] >= 0 and x[1] == 1)

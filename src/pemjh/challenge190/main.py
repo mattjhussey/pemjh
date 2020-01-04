@@ -1,6 +1,7 @@
 """ Challenge190 """
 # pylint: disable=invalid-name
 # pylint: disable=missing-docstring
+from functools import reduce
 
 
 def P(m):
@@ -10,4 +11,4 @@ def P(m):
 
 def main():
     """ challenge190 """
-    return sum(P(m) for m in xrange(2, 16))
+    return sum(P(m) for m in range(2, 16))

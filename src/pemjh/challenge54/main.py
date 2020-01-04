@@ -18,8 +18,8 @@ def get_duplicate_counts(hand):
         else:
             value_counts[val] = 1
 
-    return dict([[val, count] for val, count in value_counts.iteritems()
-                 if count > 1])
+    return {val: count for val, count in value_counts.items()
+            if count > 1}
 
 
 def is_straight(hand):
@@ -45,7 +45,7 @@ def is_flush(hand):
     >>> is_flush(["01H", "02H", "05H", "09H", "10D"])
     False
     """
-    return len(set([c[2:] for c in hand])) == 1
+    return len({c[2:] for c in hand}) == 1
 
 
 def score_duplicates(duplicates):
@@ -55,36 +55,40 @@ def score_duplicates(duplicates):
     4 for 3 of a kind
     8 for 4 of a kind.
     Add on 0.01 * the value of the duplicate to discriminate face values. """
-    count = duplicates.values()[0]
+
+    count = next(iter(duplicates.values()))
+    first_key = int(next(iter(duplicates.keys())))
     if count == 2:
         # One Pair
-        return 2.0 + int(duplicates.keys()[0]) * 0.01
-    else:
-        # Three of a Kind in this scenario
-        return 4.0 + int(duplicates.keys()[0]) * 0.01
+        return 2.0 + first_key * 0.01
+
+    # Three of a Kind in this scenario
+    return 4.0 + first_key * 0.01
 
 
 def score_2_duplicates(duplicates):
     """ Score a hand with multiple duplicates (2 of a kind/full house """
-    duplicate_count_1 = duplicates.values()[0]
-    duplicate_count_2 = duplicates.values()[1]
-    duplicate_value_1 = int(duplicates.keys()[0])
-    duplicate_value_2 = int(duplicates.keys()[1])
+    duplicates_values = iter(duplicates.values())
+    duplicate_count_1 = next(duplicates_values)
+    duplicate_count_2 = next(duplicates_values)
+    duplicates_keys = iter(duplicates.keys())
+    duplicate_value_1 = int(next(duplicates_keys))
+    duplicate_value_2 = int(next(duplicates_keys))
     if duplicate_count_1 == 2 and duplicate_count_2 == 2:
         # Two Pair
         if duplicate_value_1 > duplicate_value_2:
             return 3.0 + \
                 duplicate_value_1 * 0.01 + \
                 duplicate_value_2 * 0.0001
-        else:
-            return 3.0 + \
-                duplicate_value_2 * 0.01 + \
-                duplicate_value_1 * 0.0001
-    else:
-        # Full House (dc1 over dc2 in all cases)
-        return 7.0 + \
-            duplicate_value_1 * 0.01 + \
-            duplicate_value_2 * 0.0001
+
+        return 3.0 + \
+            duplicate_value_2 * 0.01 + \
+            duplicate_value_1 * 0.0001
+
+    # Full House (dc1 over dc2 in all cases)
+    return 7.0 + \
+        duplicate_value_1 * 0.01 + \
+        duplicate_value_2 * 0.0001
 
 
 def score_hand(hand):
@@ -105,23 +109,24 @@ def score_hand(hand):
     duplicates = get_duplicate_counts(hand)
     if len(duplicates) == 1:
         return score_duplicates(duplicates)
-    elif len(duplicates) == 2:
+
+    if len(duplicates) == 2:
         return score_2_duplicates(duplicates)
-    else:
-        # Check for straight
-        if is_straight(hand):
-            # Straight (no straight flushes)
-            return 5.0 + \
-                int(hand[4][:2]) * 0.01
-        else:
-            if is_flush(hand):
-                # Flush
-                return 6.0 + \
-                    int(hand[4][:2]) * 0.01
-            else:
-                # High Card
-                return 1.0 + \
-                    int(hand[4][:2]) * 0.01
+
+    # Check for straight
+    if is_straight(hand):
+        # Straight (no straight flushes)
+        return 5.0 + \
+            int(hand[4][:2]) * 0.01
+
+    if is_flush(hand):
+        # Flush
+        return 6.0 + \
+            int(hand[4][:2]) * 0.01
+
+    # High Card
+    return 1.0 + \
+        int(hand[4][:2]) * 0.01
 
 
 def compare_hands(hand_one, hand_two):
@@ -137,8 +142,8 @@ def compare_hands(hand_one, hand_two):
     hand_one_score, hand_two_score = score_hand(hand_one), score_hand(hand_two)
     if hand_one_score > hand_two_score:
         return -1
-    else:
-        return 1
+
+    return 1
 
 
 def main(hands):

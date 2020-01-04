@@ -44,7 +44,7 @@ def M(N):
 
 def SD(limit):
     totals = 0
-    for N in xrange(5, limit + 1):
+    for N in range(5, limit + 1):
         ans = M(N)
         if terminates(ans[0], ans[1]):
             totals -= N

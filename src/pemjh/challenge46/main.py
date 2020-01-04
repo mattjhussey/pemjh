@@ -11,7 +11,7 @@ def has_criteria(potential):
     False
     """
     limit = int(sqrt(potential // 2))
-    for square_doubled in [2 * i**2 for i in xrange(limit, 0, -1)]:
+    for square_doubled in [2 * i**2 for i in range(limit, 0, -1)]:
         diff = potential - square_doubled
         if diff == 1 or is_prime(diff):
             return True

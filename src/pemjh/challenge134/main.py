@@ -27,8 +27,8 @@ def jumpSize(t, c, s):
     # Is t after c?
     if t in cycle[cInd:]:
         return tInd - cInd
-    else:
-        return 10 - cInd + tInd
+
+    return 10 - cInd + tInd
 
 
 def f(target, current, step):
@@ -46,23 +46,23 @@ def f(target, current, step):
     # If target >= 10, recur
     if target >= 10:
         return f(target // 10, current // 10, step) * 10 + t
-    else:
-        return current
+
+    return current
 
 
 def main():
     """ challenge134 """
     limit = 10**6
-    primes = sieved_primes(limit + (limit / 10))
+    primes = sieved_primes(limit + (limit // 10))
     # Strip pre 5
-    for _ in xrange(3):
-        primes.next()
+    for _ in range(3):
+        next(primes)
 
-    p1 = primes.next()
+    p1 = next(primes)
     S = 0
 
     while p1 <= limit:
-        p2 = primes.next()
+        p2 = next(primes)
 
         # f(target, current, step)
         n = f(p1, p2, p2)

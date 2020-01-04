@@ -36,9 +36,9 @@ def snake(l):
 
 def main():
     """ challenge149 """
-    values = [sk1(k) for k in xrange(1, 56)]
+    values = [sk1(k) for k in range(1, 56)]
 
-    for k in xrange(55, 4000000):
+    for k in range(55, 4000000):
         values.append(sk2(values[k - 24], values[k - 55]))
 
     values = [int(v) for v in values]
@@ -47,7 +47,7 @@ def main():
     # horizontal and diagonal were included but I have removed them since
     # the answer is in the vertical columns
     routes = []
-    for column in xrange(0, 2000):
+    for column in range(0, 2000):
         routes.append(values[column: 4000000: 2000])
 
     totals = [snake(r) for r in routes]

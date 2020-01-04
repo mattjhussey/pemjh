@@ -1,5 +1,4 @@
 """ Challenge049 """
-import string
 from pemjh.numbers import sieved_primes
 
 
@@ -18,21 +17,21 @@ def main():
     """ challenge049 """
     permutation_primes = dict()
     for prime in [n for n in sieved_primes(9999) if n > 999]:
-        chars = string.join(sorted(list(str(prime))), "")
+        chars = "".join(sorted(list(str(prime))))
         if chars in permutation_primes:
             permutation_primes[chars] += [prime]
         else:
             permutation_primes[chars] = [prime]
 
     # Remove those less than 2
-    permutation_primes = dict([(c, p)
-                               for c, p in permutation_primes.iteritems()
-                               if len(p) > 2])
+    permutation_primes = {c: p
+                          for c, p in permutation_primes.items()
+                          if len(p) > 2}
 
     del permutation_primes["1478"]
 
-    results = triplets(permutation_primes.itervalues())
+    results = triplets(permutation_primes.values())
 
-    result = results.next()
+    result = next(results)
 
     return int(str(result[0]) + str(result[1]) + str(result[2]))

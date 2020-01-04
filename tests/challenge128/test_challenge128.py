@@ -6,8 +6,9 @@ from pemjh.challenge128 import main
 
 @pytest.mark.parametrize('n, expected',
                          [
-                             pytest.mark.example((10, 271)),
-                             pytest.mark.regression((2000, 14516824220))
+                             pytest.param(10, 271, marks=pytest.mark.example),
+                             pytest.param(2000, 14516824220,
+                                          marks=pytest.mark.regression)
                          ])
 def test_challenge128(n, expected):
     """ Regression testing challenge128 """

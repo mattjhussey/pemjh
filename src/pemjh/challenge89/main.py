@@ -63,7 +63,7 @@ def get_numeral(number):
 
 def get_roman_numeral_saving(numeral):
     """ Find the character saving by optimising the Roman Numeral. """
-    print numeral
+    print(numeral)
     # Get length of numeral
     previous_length = len(numeral)
 

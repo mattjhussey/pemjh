@@ -29,7 +29,7 @@ def main(limit):
     """ challenge012 """
     triangle_root = 1
     divisors = triangle_divisors()
-    while divisors.next() <= limit:
+    while next(divisors) <= limit:
         triangle_root += 1
 
     return (triangle_root * (triangle_root + 1)) / 2

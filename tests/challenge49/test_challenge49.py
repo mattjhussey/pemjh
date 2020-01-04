@@ -1,15 +1,14 @@
 """ Tests for challenge49 """
 import pytest
 from robber import expect
-from pemjh.challenge49 import main, triplets
+from pemjh.challenge49 import main
 
 
-@pytest.mark.regression
-def test_challenge49():
+@pytest.mark.parametrize('expected',
+                         [
+                             pytest.param(296962999629,
+                                          marks=pytest.mark.regression)
+                         ])
+def test_challenge49(expected):
     """ Regression testing challenge49 """
-    expect(main()).to.eq(296962999629)
-
-
-def test_triplets():
-    """ Test triplets with no permutations """
-    expect(list(triplets([]))).to.empty()
+    expect(main()).to.eq(expected)

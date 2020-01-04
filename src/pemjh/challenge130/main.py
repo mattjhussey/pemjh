@@ -10,7 +10,7 @@ def main():
 
     found = []
 
-    for n in [n for n in xrange(5, limit, 2)
+    for n in [n for n in range(5, limit, 2)
               if (n % 5 != 0) and n not in primes]:
         if (n-1) % A(n) == 0:
             found.append(n)

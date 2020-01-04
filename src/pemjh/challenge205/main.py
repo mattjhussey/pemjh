@@ -24,10 +24,10 @@ def main():
     """ challenge205 """
     pete, nPete = diceRolls(9, 4)
     colin, nColin = diceRolls(6, 6)
-    colin = dict([[n, freq] for n, freq in enumerate(colin) if freq > 0])
+    colin = {n: freq for n, freq in enumerate(colin) if freq > 0}
     peteWin = list()
     totalRolls = nPete * nColin
-    for n, f in colin.iteritems():
+    for n, f in colin.items():
         # Get the number of rolls pete would win on
         nWins = sum(pete[n + 1:])
         peteWin.append(f * nWins)

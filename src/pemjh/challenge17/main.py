@@ -11,34 +11,34 @@ def get_number_length(number, known):
     """
     if number == 1000:
         return "onethousand"
+
+    current = number
+
+    number_representation = known[0]
+    # If over one hundred then print the hundred section
+    if current > 99:
+        # Get the hundreds
+        hundreds = current // 100
+        # Add the hundreds string
+        number_representation += known[hundreds] + "hundred"
+        # Add "and" if the number is not an exact hundred
+        if current % 100:
+            number_representation += "and"
+        # Remove the hundreds column for later processing
+        current -= (hundreds * 100)
+
+    # Is remainder already known
+    if current in known:
+        number_representation += known[current]
     else:
-        current = number
+        # Get the tens
+        tens = current // 10
+        # Remove the tens column for later processing
+        current -= (tens * 10)
+        # Add the tens string
+        number_representation += known[tens * 10]
 
-        number_representation = known[0]
-        # If over one hundred then print the hundred section
-        if current > 99:
-            # Get the hundreds
-            hundreds = current / 100
-            # Add the hundreds string
-            number_representation += known[hundreds] + "hundred"
-            # Add "and" if the number is not an exact hundred
-            if current % 100:
-                number_representation += "and"
-            # Remove the hundreds column for later processing
-            current -= (hundreds * 100)
-
-        # Is remainder already known
-        if current in known:
-            number_representation += known[current]
-        else:
-            # Get the tens
-            tens = current / 10
-            # Remove the tens column for later processing
-            current -= (tens * 10)
-            # Add the tens string
-            number_representation += known[tens * 10]
-
-            number_representation += known[current]
+        number_representation += known[current]
 
     known[number] = number_representation
 

@@ -10,7 +10,7 @@ def main():
         # * can be after 1, 2, 3, 4
         # = can only be between 5 and 6
         third = potential % 10**4
-        for i in xrange(1, 3):
+        for i in range(1, 3):
             first = potential // 10**(9 - i)
             second = (potential // 10**(4)) % 10**(5 - i)
             product = first * second

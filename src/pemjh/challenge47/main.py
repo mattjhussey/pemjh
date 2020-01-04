@@ -15,7 +15,7 @@ def main():
         if factors[potential_answer] == 0:
             # prime
             count = 0
-            for multiple in xrange(potential_answer, limit, potential_answer):
+            for multiple in range(potential_answer, limit, potential_answer):
                 factors[multiple] += 1
         elif factors[potential_answer] == 4:
             # Found one

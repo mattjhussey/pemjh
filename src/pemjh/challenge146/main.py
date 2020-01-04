@@ -19,7 +19,10 @@ def check(n):
 def main():
     """ challenge146 """
     maximum = 150000000
-    ns = [n for n in range(10, maximum, 30) + range(20, maximum, 30) if
+    concatenation = (i for j in
+                     (range(10, maximum, 30), range(20, maximum, 30))
+                     for i in j)
+    ns = [n for n in concatenation if
           n % 7 == 3 or n % 7 == 4]
 
     total = 0

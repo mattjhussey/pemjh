@@ -21,7 +21,7 @@ def main():
         root_sorted = get_sorted_string(root)
 
         found = True
-        for i in xrange(2, 7):
+        for i in range(2, 7):
             # Try i * root
             multiple = root * i
             multiple_sorted = get_sorted_string(multiple)

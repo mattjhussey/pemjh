@@ -16,8 +16,8 @@ def main():
     limit = 999966663333
     primes = sieved_primes(1000000)
 
-    primes.next()
-    current = primes.next()
+    next(primes)
+    current = next(primes)
 
     total = list()
 

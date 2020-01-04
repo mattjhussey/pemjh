@@ -6,8 +6,8 @@ def main():
     """ challenge033 """
     total_numerator = 1.0
     total_denominator = 1.0
-    for num in xrange(10, 100):
-        for den in xrange(10, 100):
+    for num in range(10, 100):
+        for den in range(10, 100):
             # 12 / 34
             fract = float(num) / den
 

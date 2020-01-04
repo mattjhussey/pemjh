@@ -33,8 +33,8 @@ def main():
         long_description=read("README"),
         classifiers=[
             "Development Status :: 1 - Planning"],
-        setup_requires=['pytest-runner'],
-        tests_require=['pytest-bdd', 'pytest-cov', 'robber', 'pytest']
+        setup_requires=[],
+        tests_require=[]
     )
 
 

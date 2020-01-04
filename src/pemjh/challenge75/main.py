@@ -16,7 +16,7 @@ def main():
         # How many times does total go into limit?
         div = limit // total
 
-        for k in xrange(1, div + 1):
+        for k in range(1, div + 1):
             trip = k * total
 
             if trip in wire_lengths:
@@ -28,5 +28,5 @@ def main():
                                                  k * length_b,
                                                  k * length_c])])
 
-    wire_lengths = [i[0] for i in wire_lengths.iteritems() if len(i[1]) == 1]
+    wire_lengths = [i[0] for i in wire_lengths.items() if len(i[1]) == 1]
     return len(wire_lengths)

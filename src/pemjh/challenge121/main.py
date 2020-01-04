@@ -28,7 +28,7 @@ def main(turns):
 
     chances = 0
     probs = range(2, turns + 2)
-    for losses in xrange(losses_allowed + 1):
+    for losses in range(losses_allowed + 1):
         chances += win_chance(probs, losses)
 
     prize = den // chances

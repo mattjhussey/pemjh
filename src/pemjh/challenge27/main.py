@@ -12,7 +12,7 @@ def main():
     maximum = 1
     primes = list(sieved_primes(limit + 1))
     for prime in primes:
-        for a_side in xrange(-prime, limit + 1):
+        for a_side in range(-prime, limit + 1):
             root = 1
             while True:
                 potential_prime = root * (root + a_side) + prime

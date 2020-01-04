@@ -16,6 +16,6 @@ def main(prime_limit):
         if not any(d for d in prime_range if not current % d):
             primes.append(current)
 
-        current += step.next()
+        current += next(step)
 
     return primes[prime_limit - 1]

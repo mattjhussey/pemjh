@@ -10,7 +10,7 @@ def main(limit):
     rads = [1, ] * limit
 
     for prime in primes[1:]:
-        for i in xrange(prime - 1, limit, prime):
+        for i in range(prime - 1, limit, prime):
             rads[i] *= prime
 
     rad_lookup = [[r, i + 1] for i, r in enumerate(rads)]
@@ -18,7 +18,7 @@ def main(limit):
     rad_lookup.sort()
 
     result = 0
-    for c in xrange(1, limit + 1):
+    for c in range(1, limit + 1):
         found = False
         index = 0
         while not found:

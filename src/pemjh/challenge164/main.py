@@ -10,7 +10,7 @@ def memoize(function):
     def wrapped(*args, **kwargs):
         """ Perform lookup and call function if needed """
         key = tuple(args)
-        print key
+        print(key)
         if key not in known:
             known[key] = function(*args, **kwargs)
         return known[key]
@@ -28,7 +28,7 @@ def numLosses(size, previousThree, useZero):
 
     elif size > 0:
 
-        for next_digit in xrange(0 if useZero else 1, 10):
+        for next_digit in range(0 if useZero else 1, 10):
             nVariations += numLosses(size - 1,
                                      (previousThree[1],
                                       previousThree[2],

@@ -26,7 +26,7 @@ def main():
     decimals = []
 
     # Ignore 2s, since they would end in 0 and not be suitable
-    for i in xrange(1, 1000000, 2):
+    for i in range(1, 1000000, 2):
         decimal_string = str(i)
         # Is the decimal palindromic?
         if decimal_string == decimal_string[::-1]:

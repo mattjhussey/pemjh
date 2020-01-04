@@ -15,7 +15,7 @@ def main():
 
     # Build denominator sequence
     denominators = list()
-    for i in xrange(1, 35):
+    for i in range(1, 35):
         denominators.append(1)
         denominators.append(2 * i)
         denominators.append(1)
@@ -26,6 +26,6 @@ def main():
     for next_den in reversed_denominators:
         num, den = den, (den * next_den + num)
 
-    num, den = 2 * den + num, den
+    num = 2 * den + num
 
     return sum([int(c) for c in str(num)])

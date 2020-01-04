@@ -22,7 +22,7 @@ def binary(n, d):
 
 
 def digits(n):
-    return [binary(v, n) for v in xrange(2**n)]
+    return [binary(v, n) for v in range(2**n)]
 
 
 def getSequences(prefix, remaining):
@@ -31,7 +31,7 @@ def getSequences(prefix, remaining):
 
     seq = list()
     # Find those with the prefix at the start + ?
-    for b in xrange(2):
+    for b in range(2):
         if prefix + str(b) in remaining:
             # Create new remaining
             remain = [s for s in remaining if s != (prefix + str(b))]

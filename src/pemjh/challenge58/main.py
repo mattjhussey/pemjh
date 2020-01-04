@@ -11,7 +11,7 @@ def main():
     # Cycle through layers
     sidestep = 2
     while True:
-        for _ in xrange(1, 4):
+        for _ in range(1, 4):
             current += sidestep
 
             if is_prime(current):

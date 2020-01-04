@@ -1,5 +1,6 @@
 """ Common number functions """
 from math import ceil, factorial, sqrt
+from functools import reduce
 from itertools import cycle
 from pemjh.function_tools import memoize
 
@@ -106,7 +107,7 @@ def divisors(root, include_n):
     mirrored = []
     if include_n:
         mirrored.append(root)
-    for i in xrange(2, limit):
+    for i in range(2, limit):
         if not root % i:
             # Divisor
             yield i
@@ -140,8 +141,8 @@ def gcd(a, b):
     if r == 0:
         # found answer
         return b
-    else:
-        return gcd(b, r)
+
+    return gcd(b, r)
 
 
 def get_num_divisors_helped(num, known):
@@ -149,30 +150,30 @@ def get_num_divisors_helped(num, known):
     # Is the number already known?
     if num in known:
         return known[num]
-    else:
-        n_divisors = 1  # Always 1 or more
 
-        potential_divisor = 2
-        remaining_n = num
-        while remaining_n > 1:
-            if remaining_n % potential_divisor == 0:
-                divide_count = 0
-                while remaining_n % potential_divisor == 0:
-                    divide_count += 1
-                    remaining_n /= potential_divisor
+    n_divisors = 1  # Always 1 or more
 
-                n_divisors *= (divide_count + 1)
+    potential_divisor = 2
+    remaining_n = num
+    while remaining_n > 1:
+        if remaining_n % potential_divisor == 0:
+            divide_count = 0
+            while remaining_n % potential_divisor == 0:
+                divide_count += 1
+                remaining_n /= potential_divisor
 
-                # Is the remaining already known?
-                if remaining_n in known:
-                    n_divisors *= known[remaining_n]
-                    remaining_n = 1
+            n_divisors *= (divide_count + 1)
 
-            potential_divisor += 1
+            # Is the remaining already known?
+            if remaining_n in known:
+                n_divisors *= known[remaining_n]
+                remaining_n = 1
 
-        known[num] = n_divisors
+        potential_divisor += 1
 
-        return n_divisors
+    known[num] = n_divisors
+
+    return n_divisors
 
 
 def get_primitive_triples(limit):
@@ -234,10 +235,10 @@ def is_prime(potential_prime):
     if potential_prime <= 1:
         return False
 
-    if potential_prime == 2 or potential_prime == 3:
+    if potential_prime in (2, 3):
         return True
-    elif potential_prime > 3 and (potential_prime % 6 == 1 or
-                                  potential_prime % 6 == 5):
+    if potential_prime > 3 and (potential_prime % 6 == 1 or
+                                potential_prime % 6 == 5):
         limit = int(sqrt(potential_prime)) + 1
         for i in rough_primes(limit):
             if potential_prime % i == 0:
@@ -302,12 +303,12 @@ def permutate(sequence):
 def phi(limit):
     # pylint: disable=missing-docstring
     primes = sieved_primes(limit)
-    primes.next()
+    next(primes)
     phis = [1] * limit
 
     def apply_multiple(multiple, step, prime):
         # pylint: disable=missing-docstring
-        for i in xrange(step - 1, limit, step):
+        for i in range(step - 1, limit, step):
             phis[i] *= multiple
         # Get primeth, if less than limit
         primeth = step * prime
@@ -322,15 +323,15 @@ def phi(limit):
 def polytopic_numbers(root, qty):
     # pylint: disable=missing-docstring
     div = factorial(root)
-    return (product([n + i for i in xrange(root)], 1) / div
-            for n in xrange(1, qty + 1))
+    return (product([n + i for i in range(root)], 1) / div
+            for n in range(1, qty + 1))
 
 
 def prime_factors(limit):
     # pylint: disable=missing-docstring
     working_n = limit
     for prime in [sp for sp in sieved_primes(limit)
-                  if sp > 1 and sp <= working_n]:
+                  if 1 < sp <= working_n]:
 
         while working_n % prime == 0:
             working_n /= prime
@@ -404,10 +405,13 @@ def sieved_primes(limit):
                         yield next_prime
                         # Remove all multiples
                         filter_num(next_prime)
-                    next_prime += steps.next()
+
+                    # StopIteration won't be thrown from cycle
+                    # pylint: disable=stop-iteration-return
+                    next_prime += next(steps)
 
                 # Yield remaining sieved primes
 
-                for next_prime in xrange(next_prime, limit + 1):
+                for next_prime in range(next_prime, limit + 1):
                     if unsieved[next_prime - 1]:
                         yield next_prime

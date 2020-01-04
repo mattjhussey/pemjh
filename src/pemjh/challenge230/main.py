@@ -48,7 +48,7 @@ def main():
         "70193852110555964462294895493038196"
 
     total = 0
-    for index, n in [[(127 + 19 * n) * 7**n, n] for n in xrange(0, 18)]:
+    for index, n in [[(127 + 19 * n) * 7**n, n] for n in range(0, 18)]:
         total += D(a, b, index) * 10**n
 
     return total

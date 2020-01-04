@@ -21,6 +21,6 @@ def diophantine_x(num):
 def main():
     """ challenge066 """
     limit = 1000
-    solutions = [[num, diophantine_x(num)] for num in xrange(1, limit + 1)
+    solutions = [[num, diophantine_x(num)] for num in range(1, limit + 1)
                  if not is_square(num)]
     return max(solutions, key=lambda x_val: x_val[1])[0]

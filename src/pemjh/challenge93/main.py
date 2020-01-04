@@ -61,10 +61,10 @@ def main():
                                 operator.mul, operator.truediv], 3))
 
     for a, b, c, d in ((a, b, c, d)
-                       for a in xrange(1, 5)
-                       for b in xrange(a + 1, 10)
-                       for c in xrange(b + 1, 6)
-                       for d in xrange(c + 1, 10)):
+                       for a in range(1, 5)
+                       for b in range(a + 1, 10)
+                       for c in range(b + 1, 6)
+                       for d in range(c + 1, 10)):
 
         nums = [False] * maximum
 

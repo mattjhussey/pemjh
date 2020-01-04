@@ -13,8 +13,8 @@ def main(digits, huge_number):
         if "0" not in test_part:
             total = 1
             # Multiple string
-            for i in test_part:
-                total *= int(i)
+            for j in test_part:
+                total *= int(j)
 
             # Compare to highest
             if total > highest:

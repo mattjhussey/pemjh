@@ -7,7 +7,7 @@ def build_root(square_num, num):
 
     def get_next_num(previous):
         """ Get next number """
-        for j in xrange(10):
+        for j in range(10):
             if (previous + j) * j > current:
                 return j - 1
         return 9
@@ -17,7 +17,7 @@ def build_root(square_num, num):
     prev_num = 0
     answer = list()
 
-    for _ in xrange(num):
+    for _ in range(num):
         # Loop through 0 - 9 until goes over current
         next_num = get_next_num(prev_num)
         answer.append(next_num)
@@ -33,7 +33,7 @@ def build_root(square_num, num):
 def main():
     """ challenge080 """
     total = 0
-    for i in xrange(1, 100):
+    for i in range(1, 100):
         if sqrt(i) != int(sqrt(i)):
             total += sum(build_root(i, 100))
 

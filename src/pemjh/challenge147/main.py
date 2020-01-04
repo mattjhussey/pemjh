@@ -9,8 +9,8 @@ def find_aligned_rectangles(across, down):
     across_limit = across + 1
     down_limit = down + 1
     for i, j in [(i, j)
-                 for i in xrange(1, across_limit)
-                 for j in xrange(1, down_limit)]:
+                 for i in range(1, across_limit)
+                 for j in range(1, down_limit)]:
         # How many times does it fit horizontally?
         horizontal = across - i + 1
         # How many times does it fit vertically?
@@ -38,8 +38,8 @@ def main(across, down):
     across_limit = across + 1
     down_limit = down + 1
     for i, j in [(i, j)
-                 for i in xrange(1, across_limit)
-                 for j in xrange(1, down_limit)]:
+                 for i in range(1, across_limit)
+                 for j in range(1, down_limit)]:
         aligned_rectangles = find_aligned_rectangles(i, j)
         diagonal_rectangles = find_diagonal_rectangles(i, j)
         rectangles = aligned_rectangles + diagonal_rectangles

@@ -8,11 +8,11 @@ def numbers(current, start, end, digits):
     if digits == 0:
         yield current
         return
-    elif digits == 1 and start == 0:
+    if digits == 1 and start == 0:
         start = 1
 
     # Build the number,
-    for i in xrange(start, end):
+    for i in range(start, end):
         for j in numbers(current + [i], i, end, digits - 1):
             yield j
 
@@ -51,10 +51,10 @@ def is89(num):
     while True:
         if n == 89:
             return True
-        elif n == 1:
+        if n == 1:
             return False
-        else:
-            n = squareVal(n)
+
+        n = squareVal(n)
 
 
 def main():

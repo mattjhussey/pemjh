@@ -1,5 +1,4 @@
 """ Challenge070 """
-from itertools import izip
 from pemjh.numbers import phi
 
 
@@ -15,7 +14,7 @@ def main():
     """ challenge070 """
     limit = 10**7 - 1
     lowest = [None, limit, limit]
-    for num, phi_num in izip(xrange(limit, 1, -1), phi(limit)[:0:-1]):
+    for num, phi_num in zip(range(limit, 1, -1), phi(limit)[:0:-1]):
         div = float(num) / phi_num
         if div < lowest[1]:
             if is_permutation(num, phi_num):

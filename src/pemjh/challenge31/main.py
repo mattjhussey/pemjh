@@ -15,7 +15,7 @@ def get_pattern_count(left, coins):
     most = left // coin
     # Loop through possible
     count = 0
-    for i in xrange(0, most + 1):
+    for i in range(0, most + 1):
         remaining = left - i * coin
         count += get_pattern_count(remaining, coins[1:])
 

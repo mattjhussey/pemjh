@@ -14,19 +14,6 @@ def get_grid(rows):
     return grid
 
 
-def compare_to_process(left, right):
-    """ Compare left and right """
-    leftlen = left[2][1]
-    rightlen = right[2][1]
-
-    if leftlen < rightlen:
-        return -1
-    elif leftlen == rightlen:
-        return 0
-    else:
-        return 1
-
-
 def main(rows):
     """ challenge083 """
     # Get grid
@@ -54,8 +41,8 @@ def main(rows):
                        [x_coord + 1, y_coord],
                        [x_coord, y_coord - 1],
                        [x_coord, y_coord + 1]]
-                      if nx_coord >= 0 and nx_coord < width and
-                      ny_coord >= 0 and ny_coord < height and
+                      if 0 <= nx_coord < width and
+                      0 <= ny_coord < height and
                       grid[ny_coord][nx_coord][2] is False]
 
         for nx_coord, ny_coord in neighbours:
@@ -73,6 +60,6 @@ def main(rows):
         square[2] = True
 
         # Sort the to_process
-        to_process.sort(compare_to_process)
+        to_process.sort(key=lambda x: x[2][1])
 
     return grid[height - 1][width - 1][1]

@@ -40,7 +40,7 @@ def main():
                 # Gone over, move back to previous and then try multiples
                 found = d / prime
 
-                for m in xrange(2, 5):
+                for m in range(2, 5):
                     d = found * m
                     ratio = float(phi(d, primes)) / float(d - 1)
     return d

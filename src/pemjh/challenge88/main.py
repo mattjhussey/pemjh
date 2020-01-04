@@ -31,7 +31,7 @@ def product_finder(known=None):
 
 def main(limit):
     """ challenge88 """
-    found = [2 * i for i in xrange(limit + 1)]
+    found = [2 * i for i in range(limit + 1)]
 
     find_possible_products = product_finder()
     for product, total, num_digits in set(

@@ -40,7 +40,7 @@ def is_sum(i, abundants):
 
 def main():
     """ challenge023 """
-    abundants = set(i for i in xrange(1, 28124)
+    abundants = set(i for i in range(1, 28124)
                     if sum_of_divisors(i) > (i * 2))
 
-    return sum(i for i in xrange(1, 28124) if not is_sum(i, abundants))
+    return sum(i for i in range(1, 28124) if not is_sum(i, abundants))

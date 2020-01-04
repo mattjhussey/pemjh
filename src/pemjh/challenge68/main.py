@@ -20,7 +20,7 @@ def get_spokes(score, start, start_index, choice, num_spokes):
 
         else:
             # Find further spokes
-            left = [x for x in choice if x != i and x != j]
+            left = [x for x in choice if x not in (i, j)]
             for next_spokes in get_spokes(score,
                                           spoke[2],
                                           1,
@@ -38,7 +38,7 @@ def main():
 
     # 5 spokes, 10 on the outside of one
     # spokes could be 13 (10,1,2) to 27(10,9,8)
-    for score in xrange(3, 18):
+    for score in range(3, 18):
 
         # Finish the 10 spoke
         choice = set(range(1, 10))
@@ -46,7 +46,7 @@ def main():
         for solution in get_spokes(score, 10, 0, choice, limit - 1):
             # Get all of the numbers
             used = [solution[0][1], solution[0][2]]
-            for i in xrange(limit - 1):
+            for i in range(limit - 1):
                 used.append(solution[i][0])
                 used.append(solution[i][2])
 
@@ -64,7 +64,7 @@ def main():
                         start = index
                         highest = spoke[0]
 
-                for _ in xrange(start):
+                for _ in range(start):
                     solution.append(solution[0])
                     solution.pop(0)
 

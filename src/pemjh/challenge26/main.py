@@ -5,7 +5,7 @@ def main():
     """ challenge026 """
     biggest = 0
     biggest_denominator = 0
-    for denominator in xrange(1, 1000):
+    for denominator in range(1, 1000):
         numerator = 1
         numerators = []
         while numerators.count(numerator) == 0:

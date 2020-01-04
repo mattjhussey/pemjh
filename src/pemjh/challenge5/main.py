@@ -19,17 +19,14 @@ def main(limit):
 
             if count > 0:
                 # Get the previous value
-                if prime in primes:
-                    previous = primes[prime]
-                else:
-                    previous = 0
+                previous = primes.get(prime, 0)
 
                 # If more primes are used, add them
                 if count > previous:
                     primes[prime] = count
 
     total = 1
-    for number, prime in primes.iteritems():
+    for number, prime in primes.items():
         total *= number**prime
 
     return total

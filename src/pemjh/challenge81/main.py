@@ -8,7 +8,7 @@ def add_rows(rows):
         row1 = rows[0]
         row2 = rows[1]
 
-        for i in xrange(0, len(row2)):
+        for i, _ in enumerate(row2):
             index1 = row1[i - 1] if i != 0 else row1[i]
             index2 = row1[i] if i != len(row2) - 1 else row1[i - 1]
 
@@ -23,7 +23,7 @@ def main(rows):
     """ challenge081 """
     side = 80
     routes = list()
-    for i in xrange(2 * side - 1):
+    for i in range(2 * side - 1):
         routes.append(list())
 
     for initial_index, row in enumerate(row for row in rows):

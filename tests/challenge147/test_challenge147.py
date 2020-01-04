@@ -5,8 +5,8 @@ from pemjh.challenge147 import main
 
 
 @pytest.mark.parametrize('across, down, expected', [
-    pytest.mark.regression((3, 2, 72)),
-    pytest.mark.regression((47, 43, 846910284))
+    pytest.param(3, 2, 72, marks=pytest.mark.regression),
+    pytest.param(47, 43, 846910284, marks=pytest.mark.regression)
     ])
 def test_challenge147(across, down, expected):
     """ Regression testing challenge147 """

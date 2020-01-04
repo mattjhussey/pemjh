@@ -17,9 +17,9 @@ def main(target):
     # power sums to the number
     i = 2
     answers = []
-    for i in xrange(2, 100):
+    for i in range(2, 100):
         pwr = i
-        for _ in xrange(100):
+        for _ in range(100):
             # Do the digits of pwr == i?
             total = sum_digits(pwr)
             if total == i:

@@ -9,8 +9,8 @@ def main(grid_limit):
     def points(grid_limit):
         """ Generate points up to the limit. """
         return ((x, y)
-                for x in xrange(0, grid_limit + 1)
-                for y in xrange(0, grid_limit + 1))
+                for x in range(0, grid_limit + 1)
+                for y in range(0, grid_limit + 1))
 
     # Loop through each point as the right angle
     for point1 in points(grid_limit):

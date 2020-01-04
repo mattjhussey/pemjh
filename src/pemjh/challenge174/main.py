@@ -20,10 +20,10 @@ def main():
     """ challenge174 """
     limit = 1000000
 
-    nSquares = [getNumEvenDivisors(i) for i in xrange(4, limit + 1, 4)]
+    nSquares = [getNumEvenDivisors(i) for i in range(4, limit + 1, 4)]
 
     nMatches = 0
-    for n in xrange(1, 10 + 1):
+    for n in range(1, 10 + 1):
         nMatches += len([x for x in nSquares if x == n])
 
     return nMatches

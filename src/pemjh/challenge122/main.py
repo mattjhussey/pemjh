@@ -7,10 +7,10 @@ def main():
 
     best = [None, [set([1])]]
 
-    for i in xrange(2, limit + 1):
+    for i in range(2, limit + 1):
         # Loop through from 1 to half i
         facts = list()
-        for j in xrange(1, i // 2 + 1):
+        for j in range(1, i // 2 + 1):
 
             # Get list of sums
             facts.extend(f.union([i])

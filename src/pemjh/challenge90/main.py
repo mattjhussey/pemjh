@@ -39,8 +39,8 @@ def is_valid_addition(cube, new_face):
     Only one of each number except 6, which can have 2. """
     if new_face == '6':
         return cube.count('6') < 2
-    else:
-        return cube.count(new_face) == 0
+
+    return cube.count(new_face) == 0
 
 
 def amend_cubes_for_square(cube0, cube1, square):
@@ -103,8 +103,8 @@ def build_cubes(cube0, cube1, squares_left):
             """ Create an array of full cubes using start as a base. """
             if len(start) == 6:
                 return [start]
-            else:
-                return fill_remaining(start)
+
+            return fill_remaining(start)
 
         # sort each cubes so that cube 0 is the lowest
         # yield each pair of cubes
@@ -121,12 +121,12 @@ def build_cubes(cube0, cube1, squares_left):
             cube0s = ["".join(sorted(c)) for c in cube0s]
             cube1s = ["".join(sorted(c)) for c in cube1s]
 
-            for cube0 in cube0s:
-                for cube1 in cube1s:
-                    if cube0 < cube1:
-                        yield (cube0, cube1)
+            for cube0_out in cube0s:
+                for cube1_out in cube1s:
+                    if cube0_out < cube1_out:
+                        yield (cube0_out, cube1_out)
                     else:
-                        yield (cube1, cube0)
+                        yield (cube1_out, cube0_out)
 
 
 def main():

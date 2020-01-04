@@ -12,7 +12,7 @@ def substitute_primes(template, substitute):
     """
     count = 0
     smallest = int(template)
-    for i in xrange(0, 10):
+    for i in range(0, 10):
         # Swap out the substitute for 0 - 9
         working = template.replace(substitute, str(i))
         # Check if prime
@@ -54,10 +54,10 @@ def main():
         if is_prime(current) and has_3_same_digits(current):
             # Substitute 0 to 9
             word = str(current)
-            for i in xrange(0, 10):
+            for i in range(0, 10):
                 number_of_primes, smallest = substitute_primes(word,
                                                                str(i))
                 if number_of_primes == 8:
                     return smallest
 
-        current += step.next()
+        current += next(step)

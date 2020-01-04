@@ -10,7 +10,7 @@ def valid(num):
 
 def build_sets(existing, left, sequence_exist=0):
     sets = 0
-    for prime_index in xrange(len(left)):
+    for prime_index, _ in enumerate(left):
         new = existing + left[prime_index]
 
         sequence_left = len(left[prime_index])
@@ -19,7 +19,8 @@ def build_sets(existing, left, sequence_exist=0):
         if sequence_new > 9:
             # Cannot be any more
             break
-        elif sequence_new < 9 and (9 - sequence_new < sequence_left):
+
+        if sequence_new < 9 and (9 - sequence_new < sequence_left):
             continue
 
         if valid(new):
@@ -33,7 +34,7 @@ def build_sets(existing, left, sequence_exist=0):
 def main():
     """ challenge118 """
     perms = ["1", "2", "3", "5", "7"]
-    for size in xrange(2, 10):
+    for size in range(2, 10):
         perms.extend([l for l in permutations("123456789", size)
                       if l[-1] != 2 and l[-1] != "5"])
 

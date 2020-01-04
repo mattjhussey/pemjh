@@ -6,8 +6,8 @@
 def divisors(n):
     nums = [0] * (n + 1)
     nums[1] = 1
-    for root in xrange(1, n + 1):
-        for inc in xrange(2 * root, n + 1, root):
+    for root in range(1, n + 1):
+        for inc in range(2 * root, n + 1, root):
             nums[inc] += root
 
     return nums
@@ -18,7 +18,7 @@ def chainLengths(n):
     known = divisors(n)
 
     chains = [0] * (n + 1)
-    for x in xrange(1, n + 1):
+    for x in range(1, n + 1):
 
         if chains[x]:
             continue

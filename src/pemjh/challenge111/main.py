@@ -25,18 +25,17 @@ def main():
     M = [8, 9, 8, 9, 9, 9, 9, 9, 8, 9]
     S = []
 
-    for i in xrange(10):
+    for i in range(10):
         s = 0
         # use M[i] to build up all possible numbers
         for m in [list(("%0" + str(10 - M[i]) + "d") % m)
-                  for m in xrange(0, 10**(10 - M[i]))]:
+                  for m in range(0, 10**(10 - M[i]))]:
             if not any(int(c) == i for c in m):
                 for num in [int("".join(b))
                             for b in build_nums([str(i)] * M[i], m)]:
-                    if num >= 10**(9):
+                    if num >= 10**(9) and is_prime(num):
                         # Check each for primality
-                        if is_prime(num):
-                            s += num
+                        s += num
         S.append(s)
 
     return sum(S)

@@ -10,7 +10,7 @@ def get_num_break_downs(num, last, known):
         known[num] = dict()
 
     num_break_downs = 0
-    for next_num in xrange(last if last <= num else num, 0, -1):
+    for next_num in range(last if last <= num else num, 0, -1):
         left = num - next_num
         if left == 0:
             num_break_downs += 1

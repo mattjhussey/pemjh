@@ -11,11 +11,11 @@ def main():
     best_numerator = 0
     best_denominator = 1
     best = 0
-    for den in xrange(limit, 1, -1):
+    for den in range(limit, 1, -1):
         # Get Numerator range
         high_numerator = int(floor(den * target))
         low_numerator = int(ceil(den * best))
-        for num in xrange(high_numerator, low_numerator - 1, -1):
+        for num in range(high_numerator, low_numerator - 1, -1):
 
             if num % target_numerator == 0 and den % target_denominator == 0:
                 continue

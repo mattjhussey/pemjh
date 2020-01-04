@@ -4,17 +4,17 @@
 
 
 def quad():
-    for i in xrange(10):
-        for j in xrange(10):
+    for i in range(10):
+        for j in range(10):
             s = i + j
-            for k in xrange(min(s + 1, 10)):
+            for k in range(min(s + 1, 10)):
                 if s - k < 10:
                     yield i, j, k, s-k
 
 
 def pair(n):
     if n < 10:
-        for i in xrange(n + 1):
+        for i in range(n + 1):
             yield i, n-i
     else:
         for x, y in pair(18 - n):

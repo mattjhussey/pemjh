@@ -9,8 +9,8 @@ def working(limit):
 
     nSame = 0
     prev = 0
-    for i in xrange(1, limit + 1):
-        for a in xrange(i, limit + 1, i):
+    for i in range(1, limit + 1):
+        for a in range(i, limit + 1, i):
             arr[a] += 1
 
         curr = arr[i]

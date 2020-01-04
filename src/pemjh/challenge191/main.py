@@ -15,7 +15,7 @@ def numLosses(days, previousThree, latesLeft):
 
     elif days > 0:
         # Try 0, 1 and 2
-        for next_digit in xrange(3):
+        for next_digit in range(3):
             nVariations += numLosses(days - 1,
                                      (previousThree[1],
                                       previousThree[2],

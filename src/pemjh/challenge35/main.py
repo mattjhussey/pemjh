@@ -9,7 +9,7 @@ def circulars(number):
     """
     characters = str(number)
 
-    for i in xrange(1, len(characters) + 1):
+    for i in range(1, len(characters) + 1):
         # String from i to end, start to i
         next_string = "%s%s" % (characters[i:], characters[:i])
         yield int(next_string)
@@ -22,23 +22,23 @@ def main():
     prime_flags[0] = False
     prime_flags[1] = False
 
-    for i in xrange(2, int(sqrt(limit)) + 1):
+    for i in range(2, int(sqrt(limit)) + 1):
         if prime_flags[i]:
-            for j in xrange(i**2, limit, i):
+            for j in range(i**2, limit, i):
                 prime_flags[j] = False
 
     disallowed_characters = ["0", "2", "4", "6", "8", "5"]
     # For each in orderedPrimes, remove if any circulars are missing
-    primes = set([p for p, b in enumerate(prime_flags)
-                  if b and ((p < 10) or
-                            not any(c in str(p)
-                                    for c in disallowed_characters))])
+    primes = {p for p, b in enumerate(prime_flags)
+              if b and ((p < 10) or
+                        not any(c in str(p)
+                                for c in disallowed_characters))}
 
     circular_count = 0
 
     while len(primes) > 0:
         # Get all circulars for the next prime
-        circular_list = set(circulars(iter(primes).next()))
+        circular_list = set(circulars(next(iter(primes))))
 
         # Remove all that can be found, if all found then add to count
         all_found = True

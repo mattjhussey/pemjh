@@ -15,7 +15,7 @@ def main():
             sums.add(tuple([num]))
 
         # Check for previous sums
-        for num_a in xrange(2, num // 2 + 1):
+        for num_a in range(2, num // 2 + 1):
             num_b = num - num_a
 
             # Collect each a sum to each b sum

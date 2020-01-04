@@ -19,12 +19,12 @@ def fibo_trunc(trunc):
         b_end = b_end % end_trunc
 
         while a_start >= start_trunc:
-            a_start /= 10
-            b_start /= 10
+            a_start //= 10
+            b_start //= 10
 
         a_start_ret = a_start
         while a_start_ret > end_trunc:
-            a_start_ret /= 10
+            a_start_ret //= 10
 
         # Return
         yield a_start_ret, a_end
@@ -37,7 +37,7 @@ def main():
     end_point_gen = fibo_trunc(9)
     index = 0
     while not found:
-        start, end = end_point_gen.next()
+        start, end = next(end_point_gen)
         index += 1
         if start > lower_limit and end > lower_limit and \
            "".join(sorted(str(start))) == "123456789" and \

@@ -15,7 +15,7 @@ def main():
         # Remove last
         row = row[:-1]
 
-        for i in xrange(1, len(row)):
+        for i in range(1, len(row)):
             row[i] += row[i - 1]
 
         nums.update(row)
@@ -33,7 +33,7 @@ def main():
         primeIter = iter(primes)
         found = False
         while not found:
-            p = primeIter.next()
+            p = next(primeIter)
             if p > n:
                 found = True
             if n % p == 0:

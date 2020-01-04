@@ -8,10 +8,10 @@ def main():
 
     total = 0
 
-    p = [2 * n * n - 1 for n in xrange(2, nmax + 1)]
+    p = [2 * n * n - 1 for n in range(2, nmax + 1)]
     p = [0, 0] + p
 
-    for n in xrange(2, nmax + 1):
+    for n in range(2, nmax + 1):
         t = p[n]
         if t == 1:
             continue
@@ -26,7 +26,7 @@ def main():
                 keep_going = False
             else:
                 while p[i] % t == 0:
-                    p[i] /= t
+                    p[i] //= t
         keep_going = True
         k = 0
         while keep_going:
@@ -36,5 +36,5 @@ def main():
                 keep_going = False
             else:
                 while p[i] % t == 0:
-                    p[i] /= t
+                    p[i] //= t
     return total

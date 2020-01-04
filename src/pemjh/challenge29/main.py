@@ -9,8 +9,8 @@ def main():
     b_upper = 100
 
     nums = set([])
-    for current_a in xrange(a_lower, a_upper + 1):
-        for current_b in xrange(b_lower, b_upper + 1):
+    for current_a in range(a_lower, a_upper + 1):
+        for current_b in range(b_lower, b_upper + 1):
             nums.add(current_a**current_b)
 
     return len(nums)

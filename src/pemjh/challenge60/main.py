@@ -32,12 +32,12 @@ def get_prime_pairs(primes):
     pairs = dict()
 
     count_of_primes = len(primes)
-    for i in xrange(count_of_primes):
+    for i in range(count_of_primes):
         prime_1 = primes[i]
         if prime_1 not in pairs:
             pairs[prime_1] = set()
 
-        for j in xrange(i, count_of_primes):
+        for j in range(i, count_of_primes):
             prime_2 = primes[j]
             if is_concatenated_prime(prime_1, prime_2):
                 pairs[prime_1].add(prime_2)

@@ -12,8 +12,8 @@ def main():
     longest = 0
     answer = 0
 
-    for start in xrange(0, number_of_primes):
-        for end in xrange(start + 1 + longest, number_of_primes):
+    for start in range(0, number_of_primes):
+        for end in range(start + 1 + longest, number_of_primes):
             total = sum(primes[start: end])
             if total >= limit:
                 break

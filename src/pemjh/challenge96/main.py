@@ -16,24 +16,13 @@ def removeValueFromList(l, value):
     return nRemoved
 
 
-def sortSquareLengths(a, b):
-    la = len(a[0])
-    lb = len(b[0])
-    if la > lb:
-        return 1
-    elif la == lb:
-        return 0
-    else:
-        return -1
-
-
-class SGrid(object):
+class SGrid:
 
     def __init__(self, s):
         # Setup 81 squares
-        square = range(1, 10)
-        row = [[copy.deepcopy(square), False] for _ in xrange(9)]
-        self.__rows = [copy.deepcopy(row) for _ in xrange(9)]
+        square = list(range(1, 10))
+        row = [[copy.deepcopy(square), False] for _ in range(9)]
+        self.__rows = [copy.deepcopy(row) for _ in range(9)]
         self.__solution = None
 
         # Load in data
@@ -55,15 +44,15 @@ class SGrid(object):
         def getStartIndex(i):
             if i < 3:
                 return 0
-            elif i < 6:
+            if i < 6:
                 return 3
-            else:
-                return 6
+
+            return 6
 
         rowStart = getStartIndex(r)
-        for row in xrange(rowStart, rowStart + 3):
+        for row in range(rowStart, rowStart + 3):
             columnStart = getStartIndex(c)
-            for column in xrange(columnStart, columnStart + 3):
+            for column in range(columnStart, columnStart + 3):
                 yield self.__rows[row][column]
 
     def setValue(self, r, c, value):
@@ -71,7 +60,7 @@ class SGrid(object):
         removeValueFromList(self.__rows[r], value)
 
         # Remove value from rest of column c
-        removeValueFromList([self.__rows[i][c] for i in xrange(9)],
+        removeValueFromList([self.__rows[i][c] for i in range(9)],
                             value)
 
         # Get the box
@@ -82,7 +71,7 @@ class SGrid(object):
 
         # Remove all but value from square
         sq = self.__rows[r][c]
-        for rem in xrange(1, 10):
+        for rem in range(1, 10):
             if rem != value and rem in sq[0]:
                 sq[0].remove(rem)
 
@@ -90,15 +79,13 @@ class SGrid(object):
         sq[0].append(value)
         sq[1] = True
 
-        return
-
     def __getAllBlocks(self):
         blocks = []
         blocks.extend(self.__rows)
-        blocks.extend([[self.__rows[i][j] for i in xrange(9)]
-                       for j in xrange(9)])
-        for r in xrange(0, 9, 3):
-            for c in xrange(0, 9, 3):
+        blocks.extend([[self.__rows[i][j] for i in range(9)]
+                       for j in range(9)])
+        for r in range(0, 9, 3):
+            for c in range(0, 9, 3):
                 box = list(self.__getBox(r, c))
                 blocks.extend([box])
 
@@ -165,7 +152,7 @@ class SGrid(object):
         blocks = self.__getAllBlocks()
 
         for block in blocks:
-            for i in xrange(1, 10):
+            for i in range(1, 10):
 
                 # Get the squares that contain this number
                 containers = [sq for sq in block if i in sq[0] and not sq[1]]
@@ -197,16 +184,16 @@ class SGrid(object):
                     if len(c[0]) > 1:
                         unsolvedSquares.append(c)
 
-            unsolvedSquares.sort(sortSquareLengths)
+            unsolvedSquares.sort(key=lambda x: len(x[0]))
 
             foundSolution = False
             unsolvedSquares = iter(unsolvedSquares)
             while not foundSolution:
-                sq = unsolvedSquares.next()
+                sq = next(unsolvedSquares)
                 loc = self.__getLocation(sq)
                 sqIter = iter(sq[0])
                 while not foundSolution:
-                    val = sqIter.next()
+                    val = next(sqIter)
                     # Create a clone
                     clone = copy.deepcopy(self)
                     # Set value
@@ -228,10 +215,10 @@ class SGrid(object):
                     if len(sq[0]) != 1:
                         return False
             self.__solution = sum(self.__rows[0][i][0][0] * 10**(2 - i)
-                                  for i in xrange(3))
+                                  for i in range(3))
             return True
-        else:
-            return True
+
+        return True
 
     def __int__(self):
         return self.__solution
@@ -242,11 +229,11 @@ def main(data):
     total = 0
 
     # Read blocks of 10 lines for each puzzle
-    for _ in xrange(50):
+    for _ in range(50):
         # Read header line
         data.pop(0)
         # Read next 9 lines into a list
-        grid = [data.pop(0).strip() for _ in xrange(9)]
+        grid = [data.pop(0).strip() for _ in range(9)]
 
         ans = SGrid(grid)
 

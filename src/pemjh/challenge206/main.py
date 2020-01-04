@@ -2,21 +2,20 @@
 # pylint: disable=invalid-name
 # pylint: disable=missing-docstring
 from math import sqrt, ceil
-from itertools import chain, izip
-import string
+from itertools import chain
 
 
 def splice(mask, values):
     m = list(mask)
     v = list(values)
     v.append(".")
-    spliced = list(chain(*izip(m, v)))
-    return string.join(spliced, "")[:-1]
+    spliced = list(chain(*zip(m, v)))
+    return "".join(spliced)[:-1]
 
 
 def hasMask(n):
     w = str(n)
-    for i in xrange(1, 10):
+    for i in range(1, 10):
         index = (i - 1) * 2
         num = int(w[index: index + 1])
         if num != i:
@@ -39,23 +38,23 @@ def main():
         hasM, wrongIndex = hasMask(sq)
         if hasM:
             return current
-        else:
-            # Get correct section of the same
-            correct = int(zeroed[wrongIndex:])
 
-            # Get the wrong section
-            wrong = int(str(sq)[wrongIndex:])
+        # Get correct section of the same
+        correct = int(zeroed[wrongIndex:])
 
-            # Find difference
-            if correct < wrong:
-                correct += 10**(19 - wrongIndex)
-            diff = correct - wrong
+        # Get the wrong section
+        wrong = int(str(sq)[wrongIndex:])
 
-            sq += diff
+        # Find difference
+        if correct < wrong:
+            correct += 10**(19 - wrongIndex)
+        diff = correct - wrong
 
-            root = int(ceil(sqrt(sq)))
+        sq += diff
 
-            if root == current:
-                root += 1
+        root = int(ceil(sqrt(sq)))
 
-            current = root
+        if root == current:
+            root += 1
+
+        current = root

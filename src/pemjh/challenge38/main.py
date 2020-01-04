@@ -1,5 +1,4 @@
 """ Challenge038 """
-import string
 
 
 def is_pandigital(number):
@@ -25,10 +24,10 @@ def main():
     highest = 0
 
     for multiple, lower_bound, upper_bound in zip(multiples, lower, upper):
-        for number in xrange(lower_bound, upper_bound):
-            answers = [str(number * i) for i in xrange(1, multiple + 1)]
+        for number in range(lower_bound, upper_bound):
+            answers = [str(number * i) for i in range(1, multiple + 1)]
 
-            answers = int(string.join(answers, ""))
+            answers = int("".join(answers))
             if answers > highest:
                 if is_pandigital(answers):
                     highest = answers

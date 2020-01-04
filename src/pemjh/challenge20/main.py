@@ -7,7 +7,7 @@ def factorial(root):
     3628800
     """
     total = 1
-    for i in xrange(1, root + 1):
+    for i in range(1, root + 1):
         total *= i
     return total
 

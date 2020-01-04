@@ -14,7 +14,7 @@ def main():
     sum_ans = None
     for i in centers:
         new_set = [i] + [i + a for a in prev]
-        if sum(new_set) < sum_ans or sum_ans is None:
+        if sum_ans is None or sum(new_set) < sum_ans:
             ans = new_set
             sum_ans = sum(new_set)
 

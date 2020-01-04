@@ -9,7 +9,7 @@ def main():
     while (digits * per_digit) > (10**(digits)):
         digits += 1
     grand_total = 0
-    for i in xrange(2, (9**5) * digits + 1):
+    for i in range(2, (9**5) * digits + 1):
         i = str(i)
         total = 0
         for digit in i:

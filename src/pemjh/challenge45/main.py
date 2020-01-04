@@ -1,4 +1,5 @@
 """ Challenge045 """
+from itertools import dropwhile
 
 
 def pentagonal(i):
@@ -45,5 +46,4 @@ def pentagonal_and_hexagonal():
 
 def main():
     """ challenge045 """
-    from itertools import dropwhile
-    return dropwhile(lambda x: x <= 40755, pentagonal_and_hexagonal()).next()
+    return next(dropwhile(lambda x: x <= 40755, pentagonal_and_hexagonal()))

@@ -6,8 +6,8 @@ from pemjh.numbers import sieved_primes
 def main(limit):
     """ challenge136 """
     primes = sieved_primes(limit)
-    primes.next()
-    primes.next()
+    next(primes)
+    next(primes)
 
     total = 2
     for p in primes:

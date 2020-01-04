@@ -8,12 +8,12 @@ def get_chain_size(origin, known_chains):
 
     >>> known = dict()
     >>> answer = get_chain_size(13, known)
-    >>> print answer, known
+    >>> print(answer, known)
     10 {13: 10}
 
     >>> known = {1: 1}
     >>> answer = get_chain_size(13, known)
-    >>> print answer, known
+    >>> print(answer, known)
     10 {1: 1, 13: 10}
     """
     current = origin
@@ -42,7 +42,7 @@ def main():
     longest = 1
     known_chains = {1: 1}
 
-    for i in xrange(1, limit):
+    for i in range(1, limit):
         new_chain = get_chain_size(i, known_chains)
         if new_chain > chain:
             chain = new_chain

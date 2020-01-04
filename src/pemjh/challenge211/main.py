@@ -54,7 +54,7 @@ def gcd(big, lit):
     return big
 
 
-class primez(object):
+class primez:
     """
     Prime number generator
     """
@@ -66,19 +66,19 @@ class primez(object):
         self.plist = []
         self.limit = syze
         self.sieve = syze * [True]
-        for i in xrange(4, syze, 2):
+        for i in range(4, syze, 2):
             self.sieve[i] = False
         finished = False
-        loop = iter(xrange(3, syze, 2))
+        loop = iter(range(3, syze, 2))
         while not finished:
-            nprime = loop.next()
+            nprime = next(loop)
             if self.sieve[nprime] is False:
                 continue
             spt = nprime*nprime
             if spt > syze:
                 finished = True
             else:
-                for i in xrange(spt, syze, nprime):
+                for i in range(spt, syze, nprime):
                     self.sieve[i] = False
 
     def getList(self):
@@ -86,7 +86,7 @@ class primez(object):
         Return a list of prime numbers.
         """
         self.plist = [2]
-        for i in xrange(3, self.limit, 2):
+        for i in range(3, self.limit, 2):
             if self.sieve[i] is True:
                 self.plist.append(i)
         return self.plist
@@ -98,7 +98,7 @@ class primez(object):
         result = None
         loop = iter(self.plist)
         while result is None:
-            chkn = loop.next()
+            chkn = next(loop)
             if chkn * chkn > number:
                 result = True
             elif number % chkn == 0:
@@ -106,7 +106,7 @@ class primez(object):
         return result
 
 
-class problem211(object):
+class problem211:
     def __init__(self, upbound):
         """
         self.limit is the sqrt of self.biglimit.
@@ -159,8 +159,7 @@ class problem211(object):
         This runs in under a second.
         """
         self.reduceSolutions()
-        keyz = self.solutions.keys()
-        keyz.sort()
+        keyz = sorted(self.solutions.keys())
         prodarr = self.mergeIdent(keyz)
         keyz += chkForMore(keyz, prodarr)
         localans = self.solvePell()
@@ -195,7 +194,7 @@ class problem211(object):
                 if self.hist[j] < minval:
                     minval = self.hist[j]
                     templist = [] + self.getSame(j, self.hist[j])
-            for j in xrange(0, len(templist), minval):
+            for j in range(0, len(templist), minval):
                 mergev = templist[j:j+minval]
                 self.reducev(mergev)
             self.polNums()
@@ -215,8 +214,8 @@ class problem211(object):
         while tval < self.biglimit:
             stind += 1
             tval = keyz[0] * keyz[stind]
-        for i1 in xrange(0, stind-1):
-            for i2 in xrange(i1+1, stind):
+        for i1 in range(0, stind-1):
+            for i2 in range(i1+1, stind):
                 if gcd(keyz[i2], keyz[i1]) != 1:
                     continue
                 prod = keyz[i1]*keyz[i2]
@@ -255,10 +254,10 @@ class problem211(object):
             bval = anum*bxval[0] + bxval[1]
             origa = anum
             period = 0
-            loop2 = iter(xrange(self.limit))
+            loop2 = iter(range(self.limit))
             finished = False
             while not finished:
-                c = loop2.next()
+                c = next(loop2)
                 if period == 0 and anum == origa*2:
                     period = c
                     if period % 2 == 0:
@@ -282,12 +281,11 @@ class problem211(object):
                 if axval[0] > self.biglimit:
                     finished = True
 
-        keyl = self.lowhist.keys()
-        keyl.sort()
+        keyl = sorted(self.lowhist.keys())
         loop1 = iter(keyl[1:])
         finished1 = False
         while not finished1:
-            i = loop1.next()
+            i = next(loop1)
             if i > self.biglimit/2:
                 finished1 = True
             else:
@@ -366,23 +364,23 @@ class problem211(object):
                 first8k[i] = self.solutions[i][::]
             return first8k
         first8k = get_first_8k()
-        for i in xrange(2, self.limit):
+        for i in range(2, self.limit):
             if len(first8k[i]) == 0:
                 temp = i
                 finished = False
                 loop = iter(self.plist)
                 while not finished:
-                    j = loop.next()
+                    j = next(loop)
                     fact = 1
                     while temp % j == 0:
                         fact *= j
-                        temp /= j
+                        temp //= j
                     if fact > 1:
                         xvec = addVecs(first8k[fact], first8k[temp])
                         first8k[i] = xvec
                         finished = True
         self.lowhist = {}
-        for i in xrange(2, self.limit):
+        for i in range(2, self.limit):
             prod = 1
             bad = False
             for j in first8k[i]:
@@ -420,7 +418,7 @@ class problem211(object):
         proda = []
         loop = iter(self.solutions)
         while len(proda) != count:
-            j = loop.next()
+            j = next(loop)
             if i in self.solutions[j]:
                 proda.append(j)
         return proda
@@ -432,8 +430,8 @@ class problem211(object):
         created if this combination is valid.  Then all entries in vector
         are deleted from self.solutions.
         """
-        for ii in xrange(0, len(vector)-1):
-            for jj in xrange(ii+1, len(vector)):
+        for ii in range(0, len(vector)-1):
+            for jj in range(ii+1, len(vector)):
                 i = vector[ii]
                 j = vector[jj]
                 if gcd(j, i) != 1:

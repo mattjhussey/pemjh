@@ -37,7 +37,7 @@ def chance_deck():
 
     def chance_card_move(current):
         """ Return the space to move to """
-        return cards.next()(current)
+        return next(cards)(current)
 
     return chance_card_move
 
@@ -64,7 +64,7 @@ def community_chest_deck():
 
     def community_chest_card_move(current):
         """ Return the space to move to """
-        return cards.next()(current)
+        return next(cards)(current)
 
     return community_chest_card_move
 
@@ -73,7 +73,7 @@ def main():
     """ challenge084 """
     current = 0
 
-    chances = [[0, i] for i in xrange(40)]
+    chances = [[0, i] for i in range(40)]
     moves = 0
 
     double_count = 0
@@ -105,9 +105,9 @@ def main():
             double_count -= 1
         elif current == 30:
             current = 10
-        elif current == 2 or current == 17 or current == 3:
+        elif current in (2, 17, 3):
             current = community_chest_card_move(current)
-        elif current == 7 or current == 22 or current == 36:
+        elif current in (7, 22, 36):
             current = chance_card_move(current)
 
         # Move completed, record final position

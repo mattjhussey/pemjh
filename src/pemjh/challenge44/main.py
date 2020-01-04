@@ -30,9 +30,9 @@ def main():
     while diff == 0:
         pent_k = pent(k)
         # Search back to find any valid values
-        for pent_j in [pent(j) for j in xrange(k, 0, -1)]:
+        for pent_j in [pent(j) for j in range(k, 0, -1)]:
             diff_pk_pj = pent_k - pent_j
-            if diff > 0 and diff < diff_pk_pj:
+            if 0 < diff < diff_pk_pj:
                 break
             if is_pent(pent_j + pent_k) and is_pent(diff_pk_pj):
                 diff = diff_pk_pj

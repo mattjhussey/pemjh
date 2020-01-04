@@ -9,8 +9,8 @@ def semiprimes(n):
     nPrimes = len(primes)
 
     nTwos = 0
-    for i in xrange(nPrimes):
-        for j in xrange(i, nPrimes):
+    for i in range(nPrimes):
+        for j in range(i, nPrimes):
             if primes[i] * primes[j] >= n:
                 break
             nTwos += 1

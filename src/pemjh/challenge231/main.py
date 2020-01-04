@@ -8,16 +8,16 @@ def getFirstMultipleOnOrAfter(target, divisor):
     m = target % divisor
     if m:
         return target + (divisor - m)
-    else:
-        return target
+
+    return target
 
 
 def getFirstMultipleOnOrBefore(target, divisor):
     m = target % divisor
     if m:
         return target - m
-    else:
-        return target
+
+    return target
 
 
 def numInRange(start, end, step):
@@ -34,7 +34,7 @@ def main():
     # Get the primes needed
     primes = sieved_primes(n)
     # Remove 1
-    primes.next()
+    next(primes)
 
     total = 0
     # Cycle through primes

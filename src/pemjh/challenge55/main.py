@@ -27,7 +27,7 @@ def main():
     """ challenge055 """
     limit = 10000
     count = 0
-    for potential in xrange(1, limit + 1):
+    for potential in range(1, limit + 1):
         # Try to mirror
         if not becomes_palindrome(potential):
             count += 1

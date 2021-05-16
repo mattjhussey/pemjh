@@ -5,10 +5,10 @@ from __future__ import with_statement
 import copy
 
 
-def removeValueFromList(l, value):
+def removeValueFromList(values, value):
     nRemoved = 0
 
-    for sq in l:
+    for sq in values:
         if value in sq[0]:
             nRemoved += 1
             sq[0].remove(value)

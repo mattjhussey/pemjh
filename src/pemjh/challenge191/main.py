@@ -9,7 +9,7 @@ def numLosses(days, previousThree, latesLeft):
     nVariations = 0
 
     # If previous 3 are all Absent or LatesLeft == 0 then
-    if all([x == 1 for x in previousThree]) or latesLeft == 0:
+    if all(x == 1 for x in previousThree) or latesLeft == 0:
         # return number of combinations of remaining days
         nVariations = 3**days
 

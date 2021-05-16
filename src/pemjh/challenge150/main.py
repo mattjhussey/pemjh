@@ -28,8 +28,7 @@ def main():
                                       triang2[row+1, 1:row+2] - \
                                       triang1[row+2, 1:row+2]
         row_min = np.min(triang_new)
-        if min_init > row_min:
-            min_init = row_min
+        min_init = min(min_init, row_min)
         triang1 = triang2
         triang2 = triang_new
 

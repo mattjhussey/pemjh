@@ -9,16 +9,16 @@ def main(limit):
     square_limit = int(limit**0.5)
     primes = list(sieved_primes(square_limit))
     primes.remove(1)
-    square_primes = list([n**2 for n in primes])
+    square_primes = list(n**2 for n in primes)
 
     # Get potential cubes
     cube_limit = int(limit**(1.0 / 3.0))
-    cube_primes = list([n**3 for n in [n for n in primes if n <= cube_limit]])
+    cube_primes = list(n**3 for n in [n for n in primes if n <= cube_limit])
 
     # Get potential fourths
     fourth_limit = int(limit**(0.25))
-    fourth_primes = list([n**4 for n in
-                          [n for n in primes if n <= fourth_limit]])
+    fourth_primes = list(n**4 for n in
+                         [n for n in primes if n <= fourth_limit])
 
     answers = set()
     for square in square_primes:

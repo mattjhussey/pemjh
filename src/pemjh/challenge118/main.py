@@ -35,8 +35,8 @@ def main():
     """ challenge118 """
     perms = ["1", "2", "3", "5", "7"]
     for size in range(2, 10):
-        perms.extend([l for l in permutations("123456789", size)
-                      if l[-1] != 2 and l[-1] != "5"])
+        perms.extend([perm for perm in permutations("123456789", size)
+                      if perm[-1] != 2 and perm[-1] != "5"])
 
     perms = ["".join(p) for p in perms]
 

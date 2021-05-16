@@ -13,8 +13,8 @@ def num_variations(blocks, minimum):
 
             # Always an extra 1 block length for the spacer
             left = blocks - tile_size - 1
-            if left < 0:
-                left = 0
+            left = max(left, 0)
+
             num += num_variations(left, minimum)
 
         # work out with no tile here

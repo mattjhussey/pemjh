@@ -31,27 +31,27 @@ def _build_lists():
     all_lists = dict()
 
     # Get all triangular numbers
-    tri = list([n * (n + 1) // 2 for n in range(45, 141)])
+    tri = list(n * (n + 1) // 2 for n in range(45, 141))
     all_lists[3] = tri
 
     # Get all square numbers
-    sq_nums = list([n**2 for n in range(32, 100)])
+    sq_nums = list(n**2 for n in range(32, 100))
     all_lists[4] = sq_nums
 
     # Get all Pentagonal numbers
-    pent = list([n * (3 * n - 1) // 2 for n in range(26, 82)])
+    pent = list(n * (3 * n - 1) // 2 for n in range(26, 82))
     all_lists[5] = pent
 
     # Get all Hexagonal numbers
-    hex_nums = list([n * (2 * n - 1) for n in range(23, 70)])
+    hex_nums = list(n * (2 * n - 1) for n in range(23, 70))
     all_lists[6] = hex_nums
 
     # Get all Heptagonal numbers
-    hept = list([n * (5 * n - 3) // 2 for n in range(21, 64)])
+    hept = list(n * (5 * n - 3) // 2 for n in range(21, 64))
     all_lists[7] = hept
 
     # Get all Octogonal numbers
-    oct_nums = list([n * (3 * n - 2) for n in range(19, 59)])
+    oct_nums = list(n * (3 * n - 2) for n in range(19, 59))
     all_lists[8] = oct_nums
 
     return all_lists

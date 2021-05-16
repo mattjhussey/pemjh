@@ -14,10 +14,10 @@ def combinations(left):
             yield [i]
 
 
-def selection(l, left):
-    for v in l:
+def selection(options, left):
+    for v in options:
         if left > 1:
-            for sel in selection(l, left - 1):
+            for sel in selection(options, left - 1):
                 yield [v] + sel
         else:
             yield [v]

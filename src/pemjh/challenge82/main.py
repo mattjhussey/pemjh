@@ -42,8 +42,8 @@ def combine_columns(column1, column2):
 def main(rows):
     """ challenge082 """
     # Read row data
-    rows = [[int(i) for i in l.strip().split(",")] for l in rows]
+    rows = [[int(i) for i in row.strip().split(",")] for row in rows]
     # Convert to columns
-    columns = [list(l) for l in zip(*rows)]
+    columns = [list(row) for row in zip(*rows)]
     # Reduce the columns
     return min(reduce(combine_columns, columns))

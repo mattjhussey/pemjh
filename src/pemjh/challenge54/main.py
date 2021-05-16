@@ -32,7 +32,7 @@ def is_straight(hand):
     True
     """
     # Get just the numbers
-    nums = list([int(c[:2]) for c in hand])
+    nums = list(int(c[:2]) for c in hand)
 
     # Assume no duplicates, first and last should be 4 apart
     return nums[4] - nums[0] == 4

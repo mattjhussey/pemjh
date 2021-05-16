@@ -11,17 +11,17 @@ def sk2(sk24, sk55):
     return (sk24 + sk55 + 1000000) % 1000000 - 500000
 
 
-def snake(l):
+def snake(route):
 
     maximum = 0
 
     # Set snake at start
-    end = len(l)
+    end = len(route)
     tail = 0
     head = 0
     current = 0
     while tail != end:
-        current += l[head]
+        current += route[head]
         head += 1
 
         if current > maximum:

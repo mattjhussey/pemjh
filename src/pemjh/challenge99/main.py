@@ -8,7 +8,7 @@ def main(numbers):
     highestIndex = 1.0
     highestNumber = 0
     highestLine = 0
-    for nL, l in enumerate(l.split(",") for l in numbers):
+    for nL, l in enumerate(pair.split(",") for pair in numbers):
         n, i = int(l[0]), float(l[1])
         rootedPower = highestIndex / i
         if highestNumber ** rootedPower < n:

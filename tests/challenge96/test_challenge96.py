@@ -5,7 +5,7 @@ from robber import expect
 from pemjh.challenge96 import main
 
 
-@pytest.mark.regression
+
 def test_challenge96():
     """ Regression testing challenge96 """
     f_path = join(dirname(abspath(__file__)), 'sudoku.txt')

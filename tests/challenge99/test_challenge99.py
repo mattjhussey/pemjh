@@ -5,7 +5,7 @@ from robber import expect
 from pemjh.challenge99 import main
 
 
-@pytest.mark.regression
+
 def test_challenge99():
     """ Regression testing challenge99 """
     numbers_path = join(dirname(abspath(__file__)), 'base_exp.txt')

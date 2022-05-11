@@ -5,7 +5,7 @@ from robber import expect
 from pemjh.challenge102 import main
 
 
-@pytest.mark.regression
+
 def test_challenge102():
     """ Regression testing challenge102 """
     triangle_file = join(dirname(abspath(__file__)), 'triangles.txt')

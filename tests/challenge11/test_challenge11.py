@@ -4,7 +4,7 @@ from robber import expect
 from pemjh.challenge11 import main
 
 
-@pytest.mark.regression
+
 def test_challenge11():
     """ Regression testing challenge11 """
     expect(main()).to.eq(70600674)

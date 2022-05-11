@@ -5,7 +5,7 @@ from robber import expect
 from pemjh.challenge83 import main
 
 
-@pytest.mark.regression
+
 def test_challenge83():
     """ Regression testing challenge83 """
     matrix_path = join(dirname(abspath(__file__)), 'matrix.txt')

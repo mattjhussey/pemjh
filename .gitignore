@@ -1,5 +1,6 @@
 # Temp editor files
 /**/*.*~
+/**/*~
 
 # IDE files
 /.vscode
@@ -12,3 +13,5 @@
 /**/*.egg-info/
 /**/*.pyc
 /.pytest_cache
+/coverage.xml
+/reports/**/*

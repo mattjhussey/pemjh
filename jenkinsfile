@@ -15,17 +15,6 @@ pipeline {
                 )
             }
         }
-        stage('test') {
-            agent any;
-            steps {
-                bat """
-                    docker build -t pemjh:test --target test .
-                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:test
-                """
-                junit 'reports/pytest.xml'
-                publishCoverage adapters: [cobertura('coverage.xml')]
-            }
-        }
         stage('flake8') {
             agent any;
             steps {
@@ -37,6 +26,28 @@ pipeline {
                 recordIssues(
                     tool: flake8()
                 )
+            }
+        }
+        stage('test') {
+            agent any;
+            steps {
+                bat """
+                    docker build -t pemjh:test --target test .
+                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:test
+                """
+                junit 'reports/pytest.xml'
+
+                // stash(
+                //     name: "Coverage"
+                //     includes: "coverage.xml"
+                // )
+            }
+        }
+        stage('coverage') {
+            agent any;
+            steps {
+                // unstash name: "Coverage"
+                publishCoverage adapters: [cobertura('coverage.xml')]
             }
         }
     }

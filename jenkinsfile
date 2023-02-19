@@ -5,12 +5,13 @@ pipeline {
             agent any;
             steps {
                 bat """
+                    mkdir reports
                     docker build -t pemjh:lint --target lint .
-                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:lint > reports/pylint.report
+                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:lint
                 """
                 
                 recordIssues(
-                    tool: pyLint(pattern: 'reports/pylint.report')
+                    tool: pyLint()
                 )
             }
         }

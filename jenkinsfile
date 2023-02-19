@@ -44,7 +44,7 @@ pipeline {
                     docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:test
                 """
                 xunit (
-                    tools: JUnit(pattern: 'reports/pytest.xml'),
+                    tools: [JUnit(pattern: 'reports/pytest.xml')],
                     thresholds: [
                         failed(unstableThreshold: '10')
                     ]

@@ -6,8 +6,12 @@ pipeline {
             steps {
                 bat """
                     docker build -t pemjh:lint --target lint .
-                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:lint
+                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:lint > reports/pylint.report
                 """
+                
+                recordIssues(
+                    tool: pyLint(pattern: 'reports/pylint.report')
+                )
             }
         }
         stage('test') {
@@ -24,8 +28,12 @@ pipeline {
             steps {
                 bat """
                     docker build -t pemjh:flake8 --target flake8 .
-                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:flake8
+                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:flake8 > flake8.report
                 """
+                
+                recordIssues(
+                    tool: flake8(pattern: 'reports/flake8.report')
+                )
             }
         }
     }

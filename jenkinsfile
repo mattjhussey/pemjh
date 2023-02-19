@@ -23,6 +23,7 @@ pipeline {
                     docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:test
                 """
                 junit 'reports/pytest.xml'
+                publishCoverage adapters: [cobertura('coverage.xml')]
             }
         }
         stage('flake8') {

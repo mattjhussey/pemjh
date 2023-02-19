@@ -1,6 +1,20 @@
 pipeline {
     agent none
     stages {
+        stage('dockertest') {
+            agent {
+                // Equivalent to "docker build -f Dockerfile --target test ."
+                dockerfile {
+                    filename 'Dockerfile'
+                    additionalBuildArgs '--target test'
+                    // Binds the working directory
+                    args "-v ${env.WORKSPACE}:/usr/src/app"
+                }
+            }
+            steps {
+                echo "Testing"
+            }
+        }
         stage('lint') {
             agent any;
             steps {

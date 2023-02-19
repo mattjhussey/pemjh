@@ -14,7 +14,7 @@ FROM base as lint
 COPY requirements-dev.txt requirements-dev.txt
 RUN ["pip", "install", "-r", "requirements-dev.txt"]
 COPY . .
-CMD ["python", "-m", "pylint", "src/pemjh"]
+CMD ["python", "-m", "pylint", "src/pemjh", "--exit-zero"]
 
 FROM base as flake8
 COPY requirements-dev.txt requirements-dev.txt

@@ -2,12 +2,12 @@ pipeline {
     agent none
     stages {
         stage('lint') {
-            agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                    additionalBuildArgs '--target lint'
-                    args "-t -v ${env.WORKSPACE}:/usr/src/app"
-                }
+            agent any;
+            steps {
+                bat '''
+                    docker build -t pemjh:lint --target test .
+                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:lint
+                '''
             }
         }
     }

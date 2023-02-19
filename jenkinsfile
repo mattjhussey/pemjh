@@ -1,3 +1,7 @@
+// Jenkins running on a windows host currently is unable to execute commands inside linux containers.
+// This file uses direct docker commands to make use of the containers.
+// The side-effect of this is a growing number of dangling images.
+// During a period of development, these containers may speed up containers builds so tidy up of them will be left as a manual task for now.
 pipeline {
     agent none
     stages {
@@ -12,6 +16,7 @@ pipeline {
                 
                 recordIssues(
                     tool: pyLint()
+                    qualityGates: [[threshold: 50, type: 'TOTAL', unstable: true]],
                 )
             }
         }

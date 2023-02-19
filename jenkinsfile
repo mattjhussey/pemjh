@@ -15,8 +15,9 @@ pipeline {
                 """
                 
                 recordIssues(
-                    tool: pyLint()
-                    qualityGates: [[threshold: 50, type: 'TOTAL', unstable: true]],
+                    tool: pyLint(),
+                    // 50 pylint warnings or more sets the build to unstable
+                    qualityGates: [[threshold: 50, type: 'TOTAL', unstable: true]]
                 )
             }
         }
@@ -29,7 +30,9 @@ pipeline {
                 """
                 
                 recordIssues(
-                    tool: flake8()
+                    tool: flake8(),
+                    // 50 pylint warnings or more sets the build to unstable
+                    qualityGates: [[threshold: 50, type: 'TOTAL', unstable: true]]
                 )
             }
         }

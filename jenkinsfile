@@ -49,7 +49,7 @@ pipeline {
         stage('coverage') {
             agent any;
             steps {
-                publishCoverage adapters: [cobertura('coverage.xml')], thresholds: [[thresholdTarget: 'Function', unhealthyThreshold: 50.0, unstableThreshold: 80.0]])]
+                publishCoverage adapters: [cobertura('coverage.xml')], thresholds: [[thresholdTarget: 'Function', unhealthyThreshold: 50.0, unstableThreshold: 80.0]]
             }
         }
     }

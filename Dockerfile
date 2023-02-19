@@ -18,9 +18,9 @@ CMD ["python", "-m", "pylint", "src/pemjh", "--exit-zero", "--output-format=pars
 
 FROM base as flake8
 COPY requirements-dev.txt requirements-dev.txt
-RUN ["pip", "install", "-r", "requirements-dev.txt", "--exit-zero"]
+RUN ["pip", "install", "-r", "requirements-dev.txt"]
 COPY . .
-CMD ["flake8"]
+CMD ["flake8", "--exit-zero"]
 
 # Configure Development Environment
 # Requires -v bind to the working directory. Run the following commands in the working folder to start a dev container

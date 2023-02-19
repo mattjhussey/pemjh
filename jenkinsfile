@@ -9,8 +9,6 @@ pipeline {
                     args "-t -v ${env.WORKSPACE}:/usr/src/app"
                 }
             }
-            steps {
-            }
         }
     }
 }

@@ -8,7 +8,7 @@ COPY requirements-dev.txt requirements-dev.txt
 RUN ["pip", "install", "-r", "requirements-dev.txt"]
 COPY . .
 RUN ["pip", "install", "-e", "."]
-CMD ["pytest"]
+CMD ["pytest", "--junit-xml=reports/pytest.xml"]
 
 FROM base as lint
 COPY requirements-dev.txt requirements-dev.txt

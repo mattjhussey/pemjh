@@ -4,10 +4,28 @@ pipeline {
         stage('lint') {
             agent any;
             steps {
-                bat '''
-                    docker build -t pemjh:lint --target test .
+                bat """
+                    docker build -t pemjh:lint --target lint .
                     docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:lint
-                '''
+                """
+            }
+        }
+        stage('test') {
+            agent any;
+            steps {
+                bat """
+                    docker build -t pemjh:test --target test .
+                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:test
+                """
+            }
+        }
+        stage('flake8') {
+            agent any;
+            steps {
+                bat """
+                    docker build -t pemjh:flake8 --target flake8 .
+                    docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:flake8
+                """
             }
         }
     }

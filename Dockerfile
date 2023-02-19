@@ -18,7 +18,7 @@ CMD ["python", "-m", "pylint", "src/pemjh", "--exit-zero", "--output-format=pars
 
 FROM base as flake8
 COPY requirements-dev.txt requirements-dev.txt
-RUN ["pip", "install", "-r", "requirements-dev.txt"]
+RUN ["pip", "install", "-r", "requirements-dev.txt", "--exit-zero"]
 COPY . .
 CMD ["flake8"]
 

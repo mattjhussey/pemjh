@@ -36,17 +36,11 @@ pipeline {
                     docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:test
                 """
                 junit 'reports/pytest.xml'
-
-                // stash(
-                //     name: "Coverage"
-                //     includes: "coverage.xml"
-                // )
             }
         }
         stage('coverage') {
             agent any;
             steps {
-                // unstash name: "Coverage"
                 publishCoverage adapters: [cobertura('coverage.xml')]
             }
         }

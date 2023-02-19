@@ -4,7 +4,6 @@ from robber import expect
 from pemjh.challenge89 import main
 
 
-
 def test_challenge89():
     """ Regression testing challenge89 """
     from os.path import abspath, dirname, join

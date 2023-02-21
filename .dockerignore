@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Mercurial
+.hgignore
+.hgtags
+
+# IDE
+.vscode
+
+# Build Server
+jenkinsfile
+.gitlab-ci.yml
+
+# Build Artifacts
+.pytest_cache
+.tox
+**/__pycache__
+**/*.pyc
+
+# Admin
+contributors.txt

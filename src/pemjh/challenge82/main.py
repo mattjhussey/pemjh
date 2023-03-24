@@ -5,12 +5,12 @@ from functools import reduce
 
 def combine_columns(column1, column2):
     """ Combine the two rows to find the cheapest route. """
-    down_row = list()
+    down_row = []
 
     # Step through column2
     previous = None
     for column1_value, column2_value in zip(column1, column2):
-        possibles = list()
+        possibles = []
         if previous is not None:
             possibles.append(previous + column2_value)
         # The straight route is column1_value, column2_value
@@ -21,12 +21,12 @@ def combine_columns(column1, column2):
 
         down_row.append(lowest)
 
-    new_row = list()
+    new_row = []
 
     previous = None
     for down_row_value, column2_value in zip(reversed(down_row),
                                              reversed(column2)):
-        possibles = list()
+        possibles = []
         if previous is not None:
             possibles.append(previous + column2_value)
         possibles.append(down_row_value)

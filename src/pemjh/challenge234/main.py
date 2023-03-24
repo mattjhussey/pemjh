@@ -19,7 +19,7 @@ def main():
     next(primes)
     current = next(primes)
 
-    total = list()
+    total = []
 
     for prime in primes:
 

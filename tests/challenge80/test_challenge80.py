@@ -1,8 +1,6 @@
 """ Tests for challenge80 """
-import pytest
 from robber import expect
 from pemjh.challenge80 import main
-
 
 
 def test_challenge80():

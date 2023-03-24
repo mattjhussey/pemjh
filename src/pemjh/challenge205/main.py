@@ -25,7 +25,7 @@ def main():
     pete, nPete = diceRolls(9, 4)
     colin, nColin = diceRolls(6, 6)
     colin = {n: freq for n, freq in enumerate(colin) if freq > 0}
-    peteWin = list()
+    peteWin = []
     totalRolls = nPete * nColin
     for n, f in colin.items():
         # Get the number of rolls pete would win on

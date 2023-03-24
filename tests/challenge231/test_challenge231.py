@@ -1,5 +1,4 @@
 """ Tests for challenge231 """
-import pytest
 from robber import expect
 from pemjh.challenge231 import main
 

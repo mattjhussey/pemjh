@@ -1,8 +1,6 @@
 """ Tests for challenge32 """
-import pytest
 from robber import expect
 from pemjh.challenge32 import main
-
 
 
 def test_challenge32():

@@ -11,7 +11,7 @@ def get_duplicate_counts(hand):
     >>> get_duplicate_counts(["10H", "10C", "10D", "10S", "10?"])
     {'10': 5}
     """
-    value_counts = dict()
+    value_counts = {}
     for val in [c[:2] for c in hand]:
         if val in value_counts:
             value_counts[val] += 1

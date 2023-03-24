@@ -9,7 +9,7 @@ def main():
 
     squares = [n**2 for n in range(n_squares)]
 
-    highest = dict()
+    highest = {}
 
     # Find pairs of values
     for upper_index in range(n_squares):

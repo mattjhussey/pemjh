@@ -20,7 +20,7 @@ def memoize(function):
 
 
 def buildRowOptions(start, end):
-    options = list()
+    options = []
     if end - start == 3:
         # only a 3 can fit
         options.append([])
@@ -66,7 +66,7 @@ def main():
     wallWidth = 32
     wallHeight = 10
 
-    rowLinks = dict()
+    rowLinks = {}
     rows = buildRowOptions(0, wallWidth)
     rows = [tuple(row) for row in rows]
     for row in rows:

@@ -22,9 +22,9 @@ def add_rows(rows):
 def main(rows):
     """ challenge081 """
     side = 80
-    routes = list()
+    routes = []
     for i in range(2 * side - 1):
-        routes.append(list())
+        routes.append([])
 
     for initial_index, row in enumerate(row for row in rows):
         index = initial_index

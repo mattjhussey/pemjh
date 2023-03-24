@@ -29,7 +29,7 @@ def getSequences(prefix, remaining):
     if len(remaining) == 0:
         return [""]  # Don't return the final 0
 
-    seq = list()
+    seq = []
     # Find those with the prefix at the start + ?
     for b in range(2):
         if prefix + str(b) in remaining:

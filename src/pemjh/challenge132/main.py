@@ -9,7 +9,7 @@ def R(k):
     next(primes)
     next(primes)
 
-    facts = list()
+    facts = []
 
     while len(facts) != 40:
         p = next(primes)

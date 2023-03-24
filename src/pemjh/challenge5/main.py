@@ -3,7 +3,7 @@
 
 def main(limit):
     """ challenge5 """
-    primes = dict()
+    primes = {}
     limit = limit + 1
 
     # Loop from 2 to limit (no need to do 1 since it has no effect

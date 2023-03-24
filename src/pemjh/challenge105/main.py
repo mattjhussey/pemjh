@@ -4,7 +4,7 @@ from __future__ import with_statement
 
 
 def sized_subsets(sequence, size):
-    subsets = list()
+    subsets = []
     sequence_length = len(sequence)
     for index in range(sequence_length):
 

@@ -15,7 +15,7 @@ def triplets(permutations):
 
 def main():
     """ challenge049 """
-    permutation_primes = dict()
+    permutation_primes = {}
     for prime in [n for n in sieved_primes(9999) if n > 999]:
         chars = "".join(sorted(list(str(prime))))
         if chars in permutation_primes:

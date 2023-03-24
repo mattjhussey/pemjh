@@ -12,7 +12,7 @@ def _encode(cube):
 
 def main():
     """ challenge062 """
-    cubes = dict()
+    cubes = {}
 
     num = 1
     while True:

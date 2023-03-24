@@ -1,9 +1,7 @@
 """ Tests for challenge82 """
 from os.path import abspath, dirname, join
-import pytest
 from robber import expect
 from pemjh.challenge82 import main
-
 
 
 def test_challenge82():

@@ -7,7 +7,7 @@ def get_num_break_downs(num, last, known):
         if last in known[num]:
             return known[num][last]
     else:
-        known[num] = dict()
+        known[num] = {}
 
     num_break_downs = 0
     for next_num in range(last if last <= num else num, 0, -1):
@@ -34,5 +34,5 @@ def main():
     # 10: 41
 
     target = 100
-    known = dict()
+    known = {}
     return get_num_break_downs(target, target - 1, known)

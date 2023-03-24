@@ -30,7 +30,7 @@ def decrypt(key, code):
 
 def main(ciphers):
     """ challenge059 """
-    numbers = list()
+    numbers = []
     for line in ciphers:
         numbers.extend(line.split(","))
     numbers = [int(n) for n in numbers]

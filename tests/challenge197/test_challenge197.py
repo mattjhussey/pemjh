@@ -1,8 +1,6 @@
 """ Tests for challenge197 """
-import pytest
 from robber import expect
 from pemjh.challenge197 import main
-
 
 
 def test_challenge197():

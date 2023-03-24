@@ -14,7 +14,7 @@ def main():
     #      = 2 + 3 / 4
 
     # Build denominator sequence
-    denominators = list()
+    denominators = []
     for i in range(1, 35):
         denominators.append(1)
         denominators.append(2 * i)
@@ -28,4 +28,4 @@ def main():
 
     num = 2 * den + num
 
-    return sum([int(c) for c in str(num)])
+    return sum(int(c) for c in str(num))

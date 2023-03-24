@@ -181,9 +181,9 @@ class problem211:
         templist = []
         while len(self.hist) > 0:
             minval = self.limit
-            for j in self.hist:
-                if self.hist[j] == minval:
-                    lvec = self.getSame(j, self.hist[j])
+            for j, val in self.hist.items():
+                if val == minval:
+                    lvec = self.getSame(j, val)
                     ok = True
                     for k in lvec:
                         if k in templist:
@@ -191,9 +191,9 @@ class problem211:
                             break
                     if ok:
                         templist += lvec
-                if self.hist[j] < minval:
-                    minval = self.hist[j]
-                    templist = [] + self.getSame(j, self.hist[j])
+                if val < minval:
+                    minval = val
+                    templist = [] + self.getSame(j, val)
             for j in range(0, len(templist), minval):
                 mergev = templist[j:j+minval]
                 self.reducev(mergev)
@@ -360,8 +360,8 @@ class problem211:
         """
         def get_first_8k():
             first8k = self.limit * [[]]
-            for i in self.solutions:
-                first8k[i] = self.solutions[i][::]
+            for i, val in self.solutions.items():
+                first8k[i] = val[::]
             return first8k
         first8k = get_first_8k()
         for i in range(2, self.limit):
@@ -403,8 +403,8 @@ class problem211:
         in self.solutions.
         """
         self.hist = {}
-        for i in self.solutions:
-            for numb in self.solutions[i]:
+        for val in self.solutions.values():
+            for numb in val:
                 if numb in self.hist:
                     self.hist[numb] += 1
                 else:

@@ -35,7 +35,7 @@ def main(target):
     """ challenge112 """
     current_bouncy = 0
     current_number = 100
-    bouncy = list()
+    bouncy = []
     while True:
         if is_bouncy(current_number):
             current_bouncy += 100

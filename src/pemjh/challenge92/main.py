@@ -63,7 +63,7 @@ def main():
 
     n89 = 0
     for number in numbers([], 0, 10, nDigits):
-        if is89(sum([i * i for i in number])):
+        if is89(sum(i * i for i in number)):
             n89 += permutations(number)
 
     return n89

@@ -28,7 +28,7 @@ def each_in_list(nums, lists):
 
 
 def _build_lists():
-    all_lists = dict()
+    all_lists = {}
 
     # Get all triangular numbers
     tri = list(n * (n + 1) // 2 for n in range(45, 141))
@@ -63,7 +63,7 @@ def _build_prefix_map(lists):
     all_nums = set(chain(*all_lists))
 
     # Get set of all known numbers
-    prefixes = dict()
+    prefixes = {}
     for num in all_nums:
         prefix = str(num)[:2]
         if prefix in prefixes:

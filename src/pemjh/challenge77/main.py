@@ -4,7 +4,7 @@ from pemjh.numbers import is_prime
 
 def main():
     """ challenge077 """
-    nums = dict()
+    nums = {}
 
     num = 2
     while True:

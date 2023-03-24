@@ -16,7 +16,7 @@ def number_of_perimeters(length):
     # a <= b <= (n - a) / 2 + a
     # b <= c <= n - a - b
 
-    limit = (length // 3)
+    limit = length // 3
     if length % 3 != 0:
         limit += 1
     for a_length in range(1, limit):

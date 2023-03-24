@@ -29,7 +29,7 @@ def is_concatenated_prime(new, existing):
 
 def get_prime_pairs(primes):
     """ Get pairs of primes that concatenate to a prime """
-    pairs = dict()
+    pairs = {}
 
     count_of_primes = len(primes)
     for i in range(count_of_primes):

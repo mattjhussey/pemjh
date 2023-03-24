@@ -8,7 +8,7 @@ def skim_network(grid):
     connected_rows = [0]
     available_connections = sorted([(l, 0, i) for i, l in enumerate(grid[0])
                                     if l > 0])
-    connections = list()
+    connections = []
 
     # While there are available connections
     while len(available_connections) > 0:

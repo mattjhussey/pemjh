@@ -4,7 +4,7 @@ from math import factorial
 
 def fact_sum(facts, num):
     """ Return collection of factorials for each digit in num """
-    return sum([facts[c] for c in str(num)])
+    return sum(facts[c] for c in str(num))
 
 
 def chain_size(num, known):

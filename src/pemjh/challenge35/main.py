@@ -11,7 +11,7 @@ def circulars(number):
 
     for i in range(1, len(characters) + 1):
         # String from i to end, start to i
-        next_string = "%s%s" % (characters[i:], characters[:i])
+        next_string = f"{characters[i:]}{characters[:i]}"
         yield int(next_string)
 
 

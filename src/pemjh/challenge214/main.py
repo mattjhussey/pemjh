@@ -23,7 +23,7 @@ def totients(n, primes=None):
 
 
 def totientChainLength():
-    known = dict()
+    known = {}
 
     def func(n, limit, steps):
         route = [n]

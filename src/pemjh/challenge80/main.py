@@ -15,7 +15,7 @@ def build_root(square_num, num):
     # Convert the number to a string
     current = square_num
     prev_num = 0
-    answer = list()
+    answer = []
 
     for _ in range(num):
         # Loop through 0 - 9 until goes over current

@@ -1,8 +1,6 @@
 """ Tests for challenge101 """
-import pytest
 from robber import expect
 from pemjh.challenge101 import main
-
 
 
 def test_challenge101():

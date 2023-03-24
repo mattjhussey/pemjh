@@ -10,7 +10,7 @@ def main():
         numerators = []
         while numerators.count(numerator) == 0:
             numerators.append(numerator)
-            numerator = ((numerator * 10) % denominator)
+            numerator = (numerator * 10) % denominator
 
         if numerator > 0:
             cycle_length = len(numerators) - numerators.index(numerator)

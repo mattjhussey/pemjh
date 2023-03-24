@@ -16,4 +16,4 @@ def main():
             r -= dr
         dr /= 2
 
-    return '%.12f' % r
+    return f'{r:.12f}'

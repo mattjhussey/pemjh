@@ -41,7 +41,7 @@ def main():
     highest = 0
 
     # Loop through the rows
-    for row, _ in enumerate(rows):
+    for rowindex, row in enumerate(rows):
         # Loop through the columns
         for column in range(0, number_of_columns):
 
@@ -49,28 +49,28 @@ def main():
             if column < (number_of_columns - 3):
                 total = 1
                 for i in range(0, 4):
-                    total *= rows[row][column + i]
+                    total *= row[column + i]
                 highest = max(total, highest)
 
                 # Diagonal down
-                if row < (len(rows) - 3):
+                if rowindex < (len(rows) - 3):
                     total = 1
                     for i in range(0, 4):
-                        total *= rows[row + i][column + i]
+                        total *= rows[rowindex + i][column + i]
                     highest = max(total, highest)
 
                 # Diagonal up
-                if row > 2:
+                if rowindex > 2:
                     total = 1
                     for i in range(0, 4):
-                        total *= rows[row - i][column + i]
+                        total *= rows[rowindex - i][column + i]
                     highest = max(total, highest)
 
             # Vertical
-            if row < (len(rows) - 3):
+            if rowindex < (len(rows) - 3):
                 total = 1
                 for i in range(0, 4):
-                    total *= rows[row + i][column]
+                    total *= rows[rowindex + i][column]
                 highest = max(total, highest)
 
     return highest

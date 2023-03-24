@@ -9,7 +9,7 @@ def main():
 
     for i in range(2, limit + 1):
         # Loop through from 1 to half i
-        facts = list()
+        facts = []
         for j in range(1, i // 2 + 1):
 
             # Get list of sums
@@ -21,4 +21,4 @@ def main():
         shortest = min(len(eq) for eq in facts)
         best.append([eq for eq in facts if len(eq) == shortest])
 
-    return sum([len(s[0]) - 1 for s in best[1:]])
+    return sum(len(s[0]) - 1 for s in best[1:])

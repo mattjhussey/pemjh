@@ -5,7 +5,7 @@ from pemjh.numbers import get_primitive_triples
 def main():
     """ challenge075 """
     limit = 1500000
-    wire_lengths = dict()
+    wire_lengths = {}
 
     # Generate triples lower than target
     for total, length_a, length_b, length_c in \

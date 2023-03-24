@@ -5,7 +5,7 @@ from __future__ import with_statement
 
 
 def getWord_Squares(word, square):
-    word_squares = dict()
+    word_squares = {}
     for w, s in zip(word, square):
         if w in word_squares:
             if word_squares[w] != s:
@@ -28,7 +28,7 @@ def uniqueRight(word_squares):
 
 
 def mapWord(word, word_squares):
-    mapped = list()
+    mapped = []
     for c in word:
         mapped.append(word_squares[c])
 
@@ -38,7 +38,7 @@ def mapWord(word, word_squares):
 def main(words):
     """ challenge098 """
     def get_grouped_words():
-        groupedWords = dict()
+        groupedWords = {}
         for line in words:
             for word in [word.strip('"') for word in line.split(',')]:
                 orderedWord = "".join(sorted(word))
@@ -47,12 +47,13 @@ def main(words):
                 else:
                     groupedWords[orderedWord] = [word]
 
-        return {key: groupedWords[key] for key in groupedWords
-                if len(groupedWords[key]) > 1}
+        groupedWords.items()
+        return {key: val for key, val in groupedWords.items()
+                if len(val) > 1}
     groupedWords = get_grouped_words()
 
     # Get squares
-    squares = list()
+    squares = []
     # 2
     squares.append([str(x*x) for x in range(4, 9)])
     # 3

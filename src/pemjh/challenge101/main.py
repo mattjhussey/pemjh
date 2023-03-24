@@ -29,7 +29,7 @@ def main():
         # Create a sequence using the values
         # in the sequence up to power to extrapolate from
 
-        worked_sequence = list()
+        worked_sequence = []
 
         for x_value in range(1, highest_power + 2):
             y_value = 0

@@ -24,7 +24,7 @@ def selection(options, left):
 
 
 def equatedNumbers(a, b, c, d, operators):
-    nums = list()
+    nums = []
 
     for ops in operators:
         # ((w ? x) ? y) ? z

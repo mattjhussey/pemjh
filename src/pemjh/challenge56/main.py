@@ -8,7 +8,7 @@ def main():
         for index in range(1, 100):
             val = base**index
             val = str(val)
-            total = sum([int(c) for c in val])
+            total = sum(int(c) for c in val)
             if total > highest:
                 highest = total
 

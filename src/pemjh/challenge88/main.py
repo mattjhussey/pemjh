@@ -4,7 +4,7 @@
 def product_finder(known=None):
     """ Return a function configured to find possible products using a
     cache. """
-    __known = known or dict()
+    __known = known or {}
 
     def find_possible_products(limit):
         """ Return the set of possible products up to limit. """

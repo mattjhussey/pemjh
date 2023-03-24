@@ -22,7 +22,7 @@ def prod(a, b):
 
 
 def reachable(a, b):
-    w = dict()
+    w = {}
     for i in range(a, b+1):
         for j in range(i, b+1):
             w[(i, j)] = set()

@@ -4,10 +4,12 @@
 
 # IDE files
 /.vscode
+/.idea
 
 # Build files
 /**/__pycache__/
 /.coverage
+/**/.coverage
 /.eggs/
 /.tox/
 /**/*.egg-info/

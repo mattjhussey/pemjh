@@ -13,7 +13,7 @@ variablesavailable:
 lint:
   script:
     - docker build -t pemjh:lint --target lint .
-    - docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:lint
+    - docker run --rm -t -v ${PWD}:/usr/src/app pemjh:lint
 
 #image: python:3.8.1
 

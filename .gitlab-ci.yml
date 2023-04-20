@@ -1,11 +1,20 @@
-before_script:
-  - docker info
+#before_script:
+#  - docker info
 
-image: python:3.8.1
-
-nothing:
+variablesavailable:
   script:
-    - pip --version
+    - export
+
+lint:
+  script:
+    - docker build -t pemjh:lint --target lint .
+    - docker run --rm -t -v ${env.WORKSPACE}:/usr/src/app pemjh:lint
+
+#image: python:3.8.1
+
+#nothing:
+#  script:
+#    - pip --version
   
 # This is a sample build configuration for Python.
 # Check our guides at https://confluence.atlassian.com/x/VYk8Lw for more examples.

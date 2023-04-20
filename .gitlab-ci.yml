@@ -21,11 +21,13 @@ test:
     - pip install -e .
     - sh -c "pytest --junit-xml=reports/pytest.xml --cov-report xml || if [ $? = 1 ]; then exit 0; fi"
   artifacts:
+    paths:
+      - reports/pytest.xml
+      - coverage.xml
     reports:
       coverage_report:
         coverage_format: cobertura
         path: coverage.xml
-    reports:
       junit: reports/pytest.xml
 
 #toxbuild:

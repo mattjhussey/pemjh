@@ -1,5 +1,5 @@
-#before_script:
-#  - docker info
+before_script:
+  - docker info
 
 image: docker
 
@@ -12,16 +12,19 @@ variablesavailable:
 
 lint:
   script:
+    - docker info
     - docker build -t pemjh:lint --target lint .
     - docker run --rm -t -v ${PWD}:/usr/src/app pemjh:lint
 
 flake8:
   script:
+    - docker info
     - docker build -t pemjh:flake8 --target flake8 .
     - docker run --rm -t -v ${PWD}:/usr/src/app pemjh:flake8
 
 test:
   script:
+    - docker info
     - docker build -t pemjh:test --target test .
     - docker run --rm -t -v ${PWD}:/usr/src/app pemjh:test
 

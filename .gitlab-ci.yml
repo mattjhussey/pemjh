@@ -3,6 +3,9 @@
 
 image: docker
 
+services:
+  - docker:dind
+
 variablesavailable:
   script:
     - export

@@ -20,7 +20,7 @@ test:
     - pip install -r requirements-dev.txt
     - pip install -e .
     - sh -c "pytest --junit-xml=reports/pytest.xml || if [ $? = 1 ]; then exit 0; fi"
-    - coverage xml
+    - coverage xml --include src/**
   artifacts:
     paths:
       - reports/pytest.xml

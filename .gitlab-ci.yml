@@ -28,7 +28,7 @@ toxbuild:
 pages:
   stage: deploy
   dependencies:
-    - test
+    - toxbuild
   script:
     - mv htmlcov/ public/
   artifacts:

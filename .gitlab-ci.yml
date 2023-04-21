@@ -5,7 +5,7 @@ variablesavailable:
     - export
 
 toxbuild:
-  stage: buildtest
+  stage: test
   script:
     - pip install -U tox
     - pip --version

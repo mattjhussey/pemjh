@@ -20,16 +20,32 @@ test:
     - pip install -r requirements-dev.txt
     - pip install -e .
     - sh -c "pytest --junit-xml=reports/pytest.xml || if [ $? = 1 ]; then exit 0; fi"
+    - coverage html
     - coverage xml
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
   artifacts:
     paths:
       - reports/pytest.xml
+      - htmlcov
       - coverage.xml
     reports:      
       coverage_report:
         coverage_format: cobertura
         path: coverage.xml
       junit: reports/pytest.xml
+
+pages:
+  stage: deploy
+  dependencies:
+    - test
+  script:
+    - mv htmlcov/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master
 
 #toxbuild:
 #    script:

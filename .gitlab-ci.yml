@@ -4,22 +4,13 @@ variablesavailable:
   script:
     - export
 
-lint:
+toxbuild:
+  stage: buildtest
   script:
-    - pip install -r requirements-dev.txt
-    - pip install -e .
-    - python -m pylint src/pemjh --exit-zero --output-format=parseable
-
-flake8:
-  script:
-    - pip install -r requirements-dev.txt
-    - flake8 --exit-zero
-
-test:
-  script:
-    - pip install -r requirements-dev.txt
-    - pip install -e .
-    - sh -c "pytest --junit-xml=reports/pytest.xml || if [ $? = 1 ]; then exit 0; fi"
+    - pip install -U tox
+    - pip --version
+    - tox --version
+    - tox
     - coverage html
     - coverage xml
   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
@@ -46,10 +37,3 @@ pages:
     expire_in: 30 days
   only:
     - master
-
-#toxbuild:
-#    script:
-#      - pip install -U tox
-#      - pip --version
-#      - tox --version
-#      - tox

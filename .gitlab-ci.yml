@@ -7,7 +7,7 @@ variablesavailable:
 toxbuild:
   stage: test
   script:
-    - pip install -U tox
+    - pip install -U tox coverage
     - pip --version
     - tox --version
     - tox

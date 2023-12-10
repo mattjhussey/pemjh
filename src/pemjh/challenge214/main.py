@@ -48,7 +48,7 @@ def totientChainLength():
             route.append(pos)
 
         # valid route, cache
-        i = 25
+        i = limit
         for v in route:
             known[v] = i
             i -= 1
@@ -56,10 +56,8 @@ def totientChainLength():
     return func
 
 
-def main():
+def main(limit, length):
     """ challenge214 """
-    limit = 40000000
-    length = 25
     primes = list(sieved_primes(limit))
     phis = totients(limit, primes[1:])
     total = 0

@@ -10,7 +10,7 @@ toxbuild:
     - pip install -U tox coverage
     - pip --version
     - tox --version
-    - tox
+    - tox --parallel
     - coverage html
     - coverage xml
   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'

@@ -4,13 +4,21 @@ variablesavailable:
   script:
     - export
 
-toxbuild:
+lint:
+  stage: test
+  script:
+    - pip install -U tox
+    - pip --version
+    - tox --version
+    - tox --parallel -m lint
+
+test:
   stage: test
   script:
     - pip install -U tox coverage
     - pip --version
     - tox --version
-    - tox --parallel
+    - tox -m test
     - coverage html
     - coverage xml
   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
@@ -28,7 +36,8 @@ toxbuild:
 pages:
   stage: deploy
   dependencies:
-    - toxbuild
+    - lint
+    - test
   script:
     - mv htmlcov/ public/
   artifacts:

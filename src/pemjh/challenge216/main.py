@@ -2,9 +2,8 @@
 # pylint: disable=invalid-name
 
 
-def main():
+def main(nmax):
     """ challenge216 """
-    nmax = 50000000
 
     total = 0
 

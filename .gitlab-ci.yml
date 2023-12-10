@@ -1,11 +1,19 @@
 image: python:3.10
 
+# Default gitlab stages are: .pre, build, test, deploy, .post
+stages:
+  - info # For outputting info about the build to aid with debugging, e.g. environment variables.
+  - lint # Static analysis of the code
+  - test # Testing the functionality of the code
+  - deploy # Deploying code or documents
+
 variablesavailable:
+  stage: info
   script:
     - export
 
 lint:
-  stage: test
+  stage: lint
   script:
     - pip install -U tox
     - pip --version

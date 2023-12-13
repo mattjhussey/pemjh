@@ -4,6 +4,9 @@ from pemjh.numbers import sieved_primes, is_prime
 MAXIMUM_PRIME = 0
 
 
+LOOKUP = {2: (11, 11), 3: (110, 110), 4: (1000, 1000), 5: (10000, 30000)}
+
+
 def get_number_length(number):
     """
     >>> get_number_length(1)
@@ -78,9 +81,15 @@ def next_digits_dictionary(found, number_to_find, pairs, limit, potential):
     return current_solution
 
 
-def main():
+def main(n_primes):
     """ challenge060 """
-    primes = list(sieved_primes(10000))
+    if (n_primes < 2 or n_primes > 5):
+        # Function only designed for 2-5
+        return -1
+
+    prime_limit, sum_limit = LOOKUP[n_primes]
+
+    primes = list(sieved_primes(prime_limit))
     primes.remove(1)
     primes.remove(2)
 
@@ -88,6 +97,7 @@ def main():
     pairs = get_prime_pairs(primes)
 
     # Generate prime numbers
-    answer = next_digits_dictionary([], 5, pairs, 30000, set(pairs.keys()))
+    answer = next_digits_dictionary(
+        [], n_primes, pairs, sum_limit, set(pairs.keys()))
 
     return sum(answer)

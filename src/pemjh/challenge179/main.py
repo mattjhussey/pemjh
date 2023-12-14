@@ -22,7 +22,6 @@ def working(limit):
     return nSame
 
 
-def main():
+def main(limit):
     """ challenge179 """
-    limit = 10**7
     return working(limit)

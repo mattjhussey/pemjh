@@ -1,0 +1,49 @@
+name: Run test and lint on challenge code
+on:
+  push:
+    branches: [ ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Lint:
+    name: Run linting (e.g. pylint and flake8)
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Install tools
+        run: |
+             pip install -U tox
+             pip --version
+             tox --version
+      - name: Run Lint
+        run: |
+             tox --parallel -m lint
+
+  Test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+             pip install -U tox coverage
+             pip --version
+             tox --version
+
+      - name: Run Tests
+        run: |
+             tox -m test
+
+      - name: Generate Coverage
+        run: |
+             coverage html
+             coverage xml

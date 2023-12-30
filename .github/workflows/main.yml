@@ -20,9 +20,22 @@ jobs:
              pip install -U tox
              pip --version
              tox --version
+
       - name: Run PyLint
         run: |
-             tox -e py310-lint
+             tox -e py310-lint | tee log.txt
+
+      - id: collect_score
+        name: Collect score
+        run: |
+             echo "score=$( cat log.txt | grep -oP '^Your code has been rated at \K\d+\.\d+' )"  >> "$GITHUB_OUTPUT"
+
+      - name: "Score: ${{ steps.collect_score.outputs.score }}"
+        env:
+          SCORE: ${{ steps.collect_score.outputs.score }}
+        run: |
+             echo "score=${SCORE}"
+
   flake8:
     name: Run flake8
     runs-on: ubuntu-latest

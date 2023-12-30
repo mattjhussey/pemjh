@@ -6,8 +6,8 @@ on:
     branches: [ main ]
 
 jobs:
-  Lint:
-    name: Run linting (e.g. pylint and flake8)
+  pylint:
+    name: Run pylint
     runs-on: ubuntu-latest
     container:
       image: python:3.10
@@ -20,9 +20,26 @@ jobs:
              pip install -U tox
              pip --version
              tox --version
-      - name: Run Lint
+      - name: Run PyLint
         run: |
-             tox --parallel -m lint
+             tox -e py310-lint
+  flake8:
+    name: Run flake8
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Install tools
+        run: |
+             pip install -U tox
+             pip --version
+             tox --version
+      - name: Run Flake8
+        run: |
+             tox -e py310-flake8
 
   Test:
     name: Run tests

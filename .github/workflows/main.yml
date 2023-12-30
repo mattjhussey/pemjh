@@ -6,8 +6,8 @@ on:
     branches: [ main ]
 
 jobs:
-  pylint:
-    name: Run pylint
+  Lint:
+    name: Run linting (e.g. pylint and flake8)
     runs-on: ubuntu-latest
     container:
       image: python:3.10
@@ -20,39 +20,9 @@ jobs:
              pip install -U tox
              pip --version
              tox --version
-
-      - name: Run PyLint
+      - name: Run Lint
         run: |
-             tox -e py310-lint | tee log.txt
-
-      - id: collect_score
-        name: Collect score
-        run: |
-             echo "score=$( cat log.txt | grep -oP '^Your code has been rated at \K\d+\.\d+' )"  >> "$GITHUB_OUTPUT"
-
-      - name: "Score: ${{ steps.collect_score.outputs.score }}"
-        env:
-          SCORE: ${{ steps.collect_score.outputs.score }}
-        run: |
-             echo "score=${SCORE}"
-
-  flake8:
-    name: Run flake8
-    runs-on: ubuntu-latest
-    container:
-      image: python:3.10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Install tools
-        run: |
-             pip install -U tox
-             pip --version
-             tox --version
-      - name: Run Flake8
-        run: |
-             tox -e py310-flake8
+             tox --parallel -m lint
 
   Test:
     name: Run tests

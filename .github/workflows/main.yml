@@ -42,7 +42,7 @@ jobs:
 
       - name: Run Tests
         run: |
-             tox -m test
+             tox -m test | tee log.txt
 
       - name: Generate Coverage
         run: |
@@ -50,11 +50,11 @@ jobs:
              coverage xml
 
       - id: collect_coverage
-        name: Collect (fake) coverage number
+        name: Collect coverage number
         run: |
-             echo "coverage=95" >> "$GITHUB_OUTPUT"
+             echo "coverage=$( cat log.txt | grep -oP '^TOTAL\s+\d+\s+\d+\s+\d+\s+\d+\s+\K\d+\%$' )"  >> "$GITHUB_OUTPUT"
 
-      - name: codecoverage-${{ steps.collect_coverage.outputs.coverage }}
+      - name: "Code Coverage: ${{ steps.collect_coverage.outputs.coverage }}"
         env:
           COVERAGE: ${{ steps.collect_coverage.outputs.coverage }}
         run: |

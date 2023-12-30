@@ -29,6 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: python:3.10
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,3 +48,12 @@ jobs:
         run: |
              coverage html
              coverage xml
+
+      - id: collect_coverage
+        name: Collect (fake) coverage number
+        run: |
+             echo "coverage=95" >> "$GITHUB_OUTPUT"
+
+      - name: codecoverage-${{ steps.collect_coverage.outputs.coverage }}
+        env:
+          COVERAGE: ${{ steps.collect_coverage.outputs.coverage }}

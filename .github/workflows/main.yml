@@ -57,3 +57,5 @@ jobs:
       - name: codecoverage-${{ steps.collect_coverage.outputs.coverage }}
         env:
           COVERAGE: ${{ steps.collect_coverage.outputs.coverage }}
+        run: |
+             echo "coverage=${COVERAGE}"

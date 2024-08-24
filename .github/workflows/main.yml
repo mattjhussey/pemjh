@@ -23,7 +23,8 @@ jobs:
 
       - name: Run Tox
         run: |
-             tox run-parallel | tee log.txt
+             tox run | tee log.txt
+        # Cannot run in parallel because it won't produce the log files for the scores. Does that really matter though?
 
       - id: collect_score
         name: Collect lint score

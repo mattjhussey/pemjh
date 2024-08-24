@@ -9,7 +9,6 @@ def main():
             val = base**index
             val = str(val)
             total = sum(int(c) for c in val)
-            if total > highest:
-                highest = total
+            highest = max(highest, total)
 
     return highest

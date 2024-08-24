@@ -117,8 +117,7 @@ def divisors(root, include_n):
                 mirrored.append(pair)
 
     mirrored.reverse()
-    for i in mirrored:
-        yield i
+    yield from mirrored
 
 
 def fibo():

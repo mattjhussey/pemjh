@@ -24,8 +24,7 @@ def snake(route):
         current += route[head]
         head += 1
 
-        if current > maximum:
-            maximum = current
+        maximum = max(current, maximum)
 
         if current < 1 or head == end:
             tail = head

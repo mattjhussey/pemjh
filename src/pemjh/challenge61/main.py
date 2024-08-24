@@ -97,8 +97,7 @@ def potentials(oct_nums, prefixes):
             if depth == 0:
                 yield answer
             else:
-                for remainder in _recursive_build(depth - 1, answer):
-                    yield remainder
+                yield from _recursive_build(depth - 1, answer)
 
     for num in oct_nums:
         for potential in _recursive_build(5, [num]):

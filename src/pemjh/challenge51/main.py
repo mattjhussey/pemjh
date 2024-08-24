@@ -19,8 +19,7 @@ def substitute_primes(template, substitute):
         if working[0] != "0":
             working = int(working)
             if is_prime(int(working)):
-                if working < smallest:
-                    smallest = working
+                smallest = min(smallest, working)
                 count += 1
 
     return count, smallest

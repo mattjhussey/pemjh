@@ -30,8 +30,7 @@ def fill_remaining(cube):
             if len(cube) == 5:
                 yield cube + str(i)
             else:
-                for sub in fill_remaining(cube + str(i)):
-                    yield sub
+                yield from fill_remaining(cube + str(i))
 
 
 def is_valid_addition(cube, new_face):
@@ -96,8 +95,7 @@ def build_cubes(cube0, cube1, squares_left):
     if len(squares_left) > 1:
         # Pass each down to build more cubes
         for cubes in suitable_cubes:
-            for complete in build_cubes(cubes[0], cubes[1], squares_left[1:]):
-                yield complete
+            yield from build_cubes(cubes[0], cubes[1], squares_left[1:])
     else:
         def get_full_cubes(start):
             """ Create an array of full cubes using start as a base. """

@@ -12,6 +12,5 @@ def main(limit):
         if n % 5 != 0:
             an = A(n)
 
-            if an > maximum:
-                maximum = an
+            maximum = max(an, maximum)
     return n

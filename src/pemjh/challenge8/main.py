@@ -17,7 +17,6 @@ def main(digits, huge_number):
                 total *= int(j)
 
             # Compare to highest
-            if total > highest:
-                highest = total
+            highest = max(highest, total)
 
     return highest

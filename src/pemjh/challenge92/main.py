@@ -13,8 +13,7 @@ def numbers(current, start, end, digits):
 
     # Build the number,
     for i in range(start, end):
-        for j in numbers(current + [i], i, end, digits - 1):
-            yield j
+        yield from numbers(current + [i], i, end, digits - 1)
 
 
 def permutations(digits):

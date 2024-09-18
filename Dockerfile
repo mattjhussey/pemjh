@@ -1,27 +1,11 @@
-FROM python:3.10 as base
+FROM python:3.12 as base
 
 WORKDIR /usr/src/app
 
-# Execute Tests
-FROM base as test
-COPY requirements-dev.txt requirements-dev.txt
-RUN ["pip", "install", "-r", "requirements-dev.txt"]
-COPY . .
-RUN ["pip", "install", "-e", "."]
-CMD sh -c "pytest --junit-xml=reports/pytest.xml --cov-report xml || if [ $? = 1 ]; then exit 0; fi"
-
-FROM base as lint
-COPY requirements-dev.txt requirements-dev.txt
-RUN ["pip", "install", "-r", "requirements-dev.txt"]
-COPY . .
-RUN ["pip", "install", "-e", "."]
-CMD ["python", "-m", "pylint", "src/pemjh", "--exit-zero", "--output-format=parseable"]
-
-FROM base as flake8
-COPY requirements-dev.txt requirements-dev.txt
-RUN ["pip", "install", "-r", "requirements-dev.txt"]
-COPY . .
-CMD ["flake8", "--exit-zero"]
+# Execute Tox
+FROM base as tox
+RUN ["pip", "install", "tox"]
+RUN ["tox"]
 
 # Configure Development Environment
 # Requires -v bind to the working directory. Run the following commands in the working folder to start a dev container

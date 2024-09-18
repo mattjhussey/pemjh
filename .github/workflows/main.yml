@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  pylint:
+  runtox:
     name: Run tox test and lint
     runs-on: ubuntu-latest
     container:

@@ -7,7 +7,7 @@ from pemjh.challenge60 import main
 @pytest.mark.parametrize(
     ("nPrimes", "expected"), [
         pytest.param(5, 26033, marks=pytest.mark.fullresult),
-        pytest.param(4, 792, marks=pytest.mark.example),
+        pytest.param(4, 792),
         (3, 107),
         (1, -1)]
 )

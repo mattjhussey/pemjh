@@ -6,8 +6,7 @@ from pemjh.challenge3 import main
 
 @pytest.mark.parametrize('test_input, expected',
                          [
-                             pytest.param(13195, 29,
-                                          marks=pytest.mark.example),
+                             pytest.param(13195, 29),
                              pytest.param(600851475143, 6857,
                                           marks=pytest.mark.regression)
                          ])

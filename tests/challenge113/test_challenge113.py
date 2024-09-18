@@ -6,7 +6,7 @@ from pemjh.challenge113 import main
 
 @pytest.mark.parametrize('input, expected',
                          [
-                             pytest.param(6, 12951, marks=pytest.mark.example),
+                             pytest.param(6, 12951),
                              pytest.param(10, 277032,
                                           marks=pytest.mark.example),
                              pytest.param(100, 51161058134250,
